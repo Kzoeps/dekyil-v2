@@ -10,13 +10,13 @@ const rooms = [
   {
     title: "Suite Room",
     price: "Nu.6500+ / per night",
-    imageUrl: Suite,
+    image: Suite,
     href: "/rooms/suite",
   },
   {
     title: "Deluxe Room",
     price: "Nu.4500+ / per night",
-    imageUrl: Delux,
+    image: Delux,
     href: "/rooms/deluxe",
   },
 ]
