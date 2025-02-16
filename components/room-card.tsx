@@ -1,4 +1,4 @@
-import Image from "next/image"
+import Image, { StaticImageData } from "next/image"
 import Link from "next/link"
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
@@ -6,17 +6,17 @@ import { Button } from "@/components/ui/button"
 interface RoomCardProps {
   title: string
   price: string
-  imageUrl: any
+  image: StaticImageData | string
   href: string
 }
 
-export function RoomCard({ title, price, imageUrl, href }: RoomCardProps) {
+export function RoomCard({ title, price, image, href }: RoomCardProps) {
   return (
     <Card className="group overflow-hidden border-none">
       <CardHeader className="p-0">
         <div className="aspect-[4/3] overflow-hidden">
           <Image
-            src={imageUrl || "/placeholder.svg"}
+            src={image || "/placeholder.svg"}
             alt={title}
             width={600}
             height={450}
