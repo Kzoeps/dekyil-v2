@@ -4,7 +4,8 @@ import Suite from "@/public/suite.webp"
 import Delux from "@/public/deluxe.webp"
 import DrukAir from "@/public/drukair_logo.webp"
 import { RoomCard } from "@/components/room-card";
-import { Card, CardContent } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { TripAdvisorWidget } from "@/components/tripadvisor-widget";
 
 const rooms = [
   {
@@ -68,5 +69,31 @@ export default function Home() {
             <RoomCard key={room.title} {...room} />
           ))}
         </div>
-      </section>    </main>);
+      </section>
+
+      <section className="container mx-auto px-4 py-16">
+        <Card>
+          <CardHeader>
+            <CardTitle className="text-center text-2xl font-bold">How to Find Us</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="aspect-video overflow-hidden rounded-lg bg-muted">
+              <iframe
+                width="100%"
+                height="100%"
+                src="https://www.youtube.com/embed/3KrwGtUJSm8?si=K6MMH4NgVLt_uO-j"
+                title="Directions to Dekyl Guest House"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              ></iframe>
+            </div>
+          </CardContent>
+        </Card>
+      </section>
+      <section>
+        <TripAdvisorWidget />
+      </section>
+
+    </main>);
+
 }
