@@ -7,19 +7,16 @@ import {
     CarouselNext,
     CarouselPrevious,
 } from "@/components/ui/carousel"
-import DroneImage from "@/public/images/drone.webp"
 import { X } from "lucide-react"
 import Image from "next/image"
 import * as React from "react"
 import { Card, CardContent } from "../ui/card"
 
 const images = [
-    "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot_16-Feb_22-37-46_21925-YkYC1qpKvSVKXG1JOxGJYREs6IOmGj.png",
-    "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot_16-Feb_22-37-46_21925-YkYC1qpKvSVKXG1JOxGJYREs6IOmGj.png",
-    "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot_16-Feb_22-37-46_21925-YkYC1qpKvSVKXG1JOxGJYREs6IOmGj.png",
-    "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot_16-Feb_22-37-46_21925-YkYC1qpKvSVKXG1JOxGJYREs6IOmGj.png",
-    "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot_16-Feb_22-37-46_21925-YkYC1qpKvSVKXG1JOxGJYREs6IOmGj.png",
-    "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot_16-Feb_22-37-46_21925-YkYC1qpKvSVKXG1JOxGJYREs6IOmGj.png",
+    "/images/room-205/deluxe_205_corner_view.webp",
+    "/images/room-205/deluxe_205_jakar_view.webp",
+    "/images/room-205/deluxe_205.webp",
+    "/images/room-205/deluxe-205-main.webp",
 ]
 
 function CarouselWithDialog() {
@@ -47,10 +44,11 @@ function CarouselWithDialog() {
                             className="md:basis-1/2 lg:basis-1/4"
                         >
                             <Card>
-                                <CardContent className="flex aspect-[16/9] p-0 items-center justify-center">
+                                <CardContent className="flex relative aspect-[16/9] p-0 items-center justify-center">
                                     <Image
                                         onClick={() => openFullscreen(index)}
-                                        src={DroneImage}
+                                        src={src}
+                                        fill
                                         alt="drone image"
                                         className="rounded-xl"
                                         objectFit="cover"
@@ -74,10 +72,10 @@ function CarouselWithDialog() {
                     </button>
                     <div className="relative w-full h-full">
                         <Image
-                            src={DroneImage || "/placeholder.svg"}
+                            src={images[fullscreenIndex]}
                             alt={`Fullscreen image ${fullscreenIndex + 1}`}
-                            layout="fill"
-                            objectFit="contain"
+                            fill
+                            className="object-contain"
                         />
                     </div>
                 </div>
