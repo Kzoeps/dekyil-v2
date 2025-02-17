@@ -9,6 +9,10 @@ const ROOM_205_IMAGES = [
     "/images/room-205/deluxe_205.webp",
     "/images/room-205/deluxe-205-main.webp",
 ]
+const ROOM_207_IMAGES = [
+    "/images/room-207/room_207_bed.webp",
+    "/images/room-207/room_207.webp",
+]
 
 export default function Deluxe() {
     return (
@@ -25,6 +29,14 @@ export default function Deluxe() {
                     className="mb-12"
                 />
                 <ImageCarousel images={ROOM_205_IMAGES} />
+            </section>
+            <section className="mx-auto py-16 max-w-[1440px]">
+                <SectionTitle
+                    title="Room 207"
+                    description="Nu. 4500 per night"
+                    className="mb-12"
+                />
+                <ImageCarousel images={ROOM_207_IMAGES} />
             </section>
         </main>
     )
