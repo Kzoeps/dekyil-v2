@@ -11,8 +11,11 @@ import DroneImage from "@/public/images/drone.webp"
 import { X } from "lucide-react"
 import Image from "next/image"
 import * as React from "react"
+import { Card, CardContent } from "../ui/card"
 
 const images = [
+    "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot_16-Feb_22-37-46_21925-YkYC1qpKvSVKXG1JOxGJYREs6IOmGj.png",
+    "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot_16-Feb_22-37-46_21925-YkYC1qpKvSVKXG1JOxGJYREs6IOmGj.png",
     "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot_16-Feb_22-37-46_21925-YkYC1qpKvSVKXG1JOxGJYREs6IOmGj.png",
     "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot_16-Feb_22-37-46_21925-YkYC1qpKvSVKXG1JOxGJYREs6IOmGj.png",
     "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot_16-Feb_22-37-46_21925-YkYC1qpKvSVKXG1JOxGJYREs6IOmGj.png",
@@ -34,20 +37,26 @@ function CarouselWithDialog() {
     }
 
     return (
-        <div className="w-full max-w-4xl mx-auto px-6">
+        <>
             {/* Main Carousel */}
-            <Carousel className="w-full max-w-[1200px] mx-auto">
-                <CarouselContent>
+            <Carousel className="w-full lg:max-w-4xl 2xl:max-w-[1300px] mx-auto px-2">
+                <CarouselContent className="w-full">
                     {images.map((src, index) => (
-                        <CarouselItem key={index}>
-                            <div
-                                className="relative aspect-[16/9] md:basis-1/2 lg:basis-1/4 w-full cursor-pointer rounded-lg border bg-white"
-                                onClick={() => openFullscreen(index)}
-                            >
-                                <span className="text-3xl font-semibold">
-                                    {index + 1}
-                                </span>
-                            </div>
+                        <CarouselItem
+                            key={index}
+                            className="md:basis-1/2 lg:basis-1/4"
+                        >
+                            <Card>
+                                <CardContent className="flex aspect-[16/9] p-0 items-center justify-center">
+                                    <Image
+                                        onClick={() => openFullscreen(index)}
+                                        src={DroneImage}
+                                        alt="drone image"
+                                        className="rounded-xl"
+                                        objectFit="cover"
+                                    />
+                                </CardContent>
+                            </Card>
                         </CarouselItem>
                     ))}
                 </CarouselContent>
@@ -73,7 +82,7 @@ function CarouselWithDialog() {
                     </div>
                 </div>
             )}
-        </div>
+        </>
     )
 }
 
