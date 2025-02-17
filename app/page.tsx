@@ -6,6 +6,7 @@ import DrukAir from '@/public/drukair_logo.webp'
 import { RoomCard } from '@/components/room-card'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import HeroSection from '@/components/hero-section'
+import SectionTitle from '@/components/section-title'
 
 const rooms = [
     {
@@ -46,14 +47,11 @@ export default function Home() {
                 </Card>
             </section>
             <section className="container mx-auto px-4 py-16">
-                <div className="mb-12 text-center">
-                    <h2 className="text-3xl font-bold tracking-tight">
-                        Our Rooms
-                    </h2>
-                    <p className="mt-4 text-muted-foreground">
-                        Choose from our carefully designed rooms
-                    </p>
-                </div>
+                <SectionTitle
+                    className="mb-12"
+                    title="Our Rooms"
+                    description="Choose from our carefully designed rooms"
+                />
                 <div className="grid gap-8 sm:grid-cols-2 lg:gap-12">
                     {rooms.map((room) => (
                         <RoomCard key={room.title} {...room} />
