@@ -1,8 +1,8 @@
 import Image from 'next/image'
-import DroneImage from '@/public/drone.webp'
-import Suite from '@/public/suite.webp'
-import Delux from '@/public/deluxe.webp'
-import DrukAir from '@/public/drukair_logo.webp'
+import DroneImage from '@/public/images/drone.webp'
+import Suite from '@/public/images/suite.webp'
+import Deluxe from '@/public/images/deluxe.webp'
+import DrukAir from '@/public/images/drukair_logo.webp'
 import { RoomCard } from '@/components/room-card'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import HeroSection from '@/components/hero-section'
@@ -18,7 +18,7 @@ const rooms = [
     {
         title: 'Deluxe Room',
         price: 'Nu.4500+ / per night',
-        image: Delux,
+        image: Deluxe,
         href: '/rooms/deluxe',
     },
 ]
