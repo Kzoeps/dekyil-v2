@@ -12,7 +12,7 @@ export function TripAdvisorWidget() {
     script.async = true
     script.setAttribute("data-loadtrk", "true")
     script.onload = () => {
-      // @ts-ignore
+      // @ts-expect-error loading the script and type is not defined because its from tripadvisor
       script.loadtrk = true
     }
     document.body.appendChild(script)
