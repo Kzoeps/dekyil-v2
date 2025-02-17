@@ -12,14 +12,11 @@ import Image from "next/image"
 import * as React from "react"
 import { Card, CardContent } from "../ui/card"
 
-const images = [
-    "/images/room-205/deluxe_205_corner_view.webp",
-    "/images/room-205/deluxe_205_jakar_view.webp",
-    "/images/room-205/deluxe_205.webp",
-    "/images/room-205/deluxe-205-main.webp",
-]
+export interface CarouselWithDialogProps {
+    images: string[]
+}
 
-function CarouselWithDialog() {
+export default function ImageCarousel({ images }: CarouselWithDialogProps) {
     const [fullscreenIndex, setFullscreenIndex] = React.useState<number | null>(
         null
     )
@@ -82,8 +79,4 @@ function CarouselWithDialog() {
             )}
         </>
     )
-}
-
-export default function ImageCarousel() {
-    return <CarouselWithDialog />
 }
