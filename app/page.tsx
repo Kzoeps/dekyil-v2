@@ -5,7 +5,6 @@ import Delux from "@/public/deluxe.webp"
 import DrukAir from "@/public/drukair_logo.webp"
 import { RoomCard } from "@/components/room-card";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { TripAdvisorWidget } from "@/components/tripadvisor-widget";
 
 const rooms = [
   {
