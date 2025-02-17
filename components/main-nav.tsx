@@ -2,7 +2,7 @@
 
 import * as React from "react"
 import Link from "next/link"
-// import { Menu, X } from "lucide-react"
+import { Menu, X } from "lucide-react"
 
 import {
   NavigationMenu,
@@ -12,7 +12,7 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu"
-// import { Button } from "@/components/ui/button"
+import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 
 const rooms = [
@@ -29,7 +29,7 @@ const rooms = [
 ]
 
 export function MainNav() {
-  // const [isOpen, setIsOpen] = React.useState(false)
+  const [isOpen, setIsOpen] = React.useState(false)
 
   return (
     <nav className="fixed top-0 z-50 w-full bg-black/20 backdrop-blur-sm">
@@ -40,10 +40,9 @@ export function MainNav() {
           </Link>
 
           {/* Mobile menu button */}
-          {/* <Button variant="ghost" className="md:hidden" onClick={() => setIsOpen(!isOpen)}>
+          <Button variant="ghost" className="md:hidden" onClick={() => setIsOpen(!isOpen)}>
             {isOpen ? <X className="h-6 w-6 text-white" /> : <Menu className="h-6 w-6 text-white" />}
-          </Button>*/}
-
+          </Button>
           {/* Desktop menu */}
           <div className="hidden md:block">
             <NavigationMenu>
@@ -60,7 +59,7 @@ export function MainNav() {
                   </Link>
                 </NavigationMenuItem>
                 <NavigationMenuItem>
-                  <NavigationMenuTrigger className="text-white">ROOMS</NavigationMenuTrigger>
+                  <NavigationMenuTrigger className="text-white bg-none">ROOMS</NavigationMenuTrigger>
                   <NavigationMenuContent>
                     <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2">
                       {rooms.map((room) => (
@@ -100,7 +99,7 @@ export function MainNav() {
         </div>
 
         {/* Mobile menu */}
-        {true && (
+        {isOpen && (
           <div className="md:hidden">
             <div className="space-y-1 px-2 pb-3 pt-2">
               <Link href="/" className="block rounded-md px-3 py-2 text-base font-medium text-white hover:bg-white/20">

@@ -46,7 +46,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="container mx-auto py-16">
+      <section className="container mx-auto py-4">
         <Card className="border-none shadow-none">
           <CardContent className="flex flex-col items-center space-y-4 p-6">
             <p className="text-sm font-medium text-muted-foreground">Official hotel partner of</p>
@@ -54,7 +54,6 @@ export default function Home() {
               src={DrukAir}
               alt="Drukair - Royal Bhutan Airlines"
               width={160}
-              height={40}
               className="dark:brightness-200"
             />
           </CardContent>
@@ -90,10 +89,6 @@ export default function Home() {
           </CardContent>
         </Card>
       </section>
-      <section>
-        <TripAdvisorWidget />
-      </section>
-
     </main>);
 
 }
