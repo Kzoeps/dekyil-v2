@@ -1,18 +1,22 @@
 "use client"
 import React, { useEffect, useState } from "react"
-import Image from "next/image"
+import Image, { StaticImageData } from "next/image"
 import { X } from "lucide-react"
 
+export interface ImageGridImage {
+    src: string | StaticImageData
+    alt: string
+}
+
 export interface ImageGridProps {
-    images: { src: string; alt: string }[]
+    images: ImageGridImage[]
     title?: string
 }
 
 const ImageGrid = ({ images, title }: ImageGridProps) => {
-    const [selectedImage, setSelectedImage] = useState<{
-        src: string
-        alt: string
-    } | null>(null)
+    const [selectedImage, setSelectedImage] = useState<ImageGridImage | null>(
+        null
+    )
 
     useEffect(() => {
         if (selectedImage) {
