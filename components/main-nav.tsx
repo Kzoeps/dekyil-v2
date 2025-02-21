@@ -57,14 +57,14 @@ export function MainNav() {
                         )}
                     </Button>
                     {/* Desktop menu */}
-                    <div className="hidden md:block font-worksans font-normal">
+                    <div className="hidden md:block font-worksans font-normal text-base">
                         <NavigationMenu>
                             <NavigationMenuList>
                                 <NavigationMenuItem>
                                     <Link href="/" legacyBehavior passHref>
                                         <NavigationMenuLink
                                             className={cn(
-                                                "group inline-flex h-10 w-max items-center justify-center rounded-md px-4 py-2 text-sm  text-white transition-colors hover:bg-white/20 hover:text-white focus:bg-white/20 focus:text-white focus:outline-none disabled:pointer-events-none disabled:opacity-50"
+                                                "group inline-flex h-10 w-max items-center justify-center rounded-md px-4 py-2  text-white transition-colors hover:bg-white/20 hover:text-white focus:bg-white/20 focus:text-white focus:outline-none disabled:pointer-events-none disabled:opacity-50"
                                             )}
                                         >
                                             Home
@@ -72,7 +72,7 @@ export function MainNav() {
                                     </Link>
                                 </NavigationMenuItem>
                                 <NavigationMenuItem>
-                                    <NavigationMenuTrigger className="text-white bg-none">
+                                    <NavigationMenuTrigger className="text-white text-base bg-none">
                                         Rooms
                                     </NavigationMenuTrigger>
                                     <NavigationMenuContent>
@@ -84,7 +84,7 @@ export function MainNav() {
                                                             href={room.href}
                                                             className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
                                                         >
-                                                            <div className="text-sm leading-none">
+                                                            <div className="leading-none">
                                                                 {room.title}
                                                             </div>
                                                             <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
@@ -108,7 +108,7 @@ export function MainNav() {
                                         >
                                             <NavigationMenuLink
                                                 className={cn(
-                                                    "group inline-flex h-10 w-max items-center justify-center rounded-md px-4 py-2 text-sm  text-white transition-colors hover:bg-white/20 hover:text-white focus:bg-white/20 focus:text-white focus:outline-none disabled:pointer-events-none disabled:opacity-50"
+                                                    "group inline-flex h-10 w-max items-center justify-center rounded-md px-4 py-2  text-white transition-colors hover:bg-white/20 hover:text-white focus:bg-white/20 focus:text-white focus:outline-none disabled:pointer-events-none disabled:opacity-50"
                                                 )}
                                             >
                                                 {item}
