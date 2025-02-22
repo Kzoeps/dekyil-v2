@@ -2,7 +2,7 @@ import HeroSection from "@/components/hero-section"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { MapPin, Phone, Mail, Clock } from "lucide-react"
 import Image from "next/image"
-import DroneImage from "@/public/images/drone.webp"
+import View from "@/public/images/view.webp"
 import { DekyilInformation } from "@/lib/constants"
 import Link from "next/link"
 
@@ -10,7 +10,7 @@ export default function ContactPage() {
     return (
         <main className="relative min-h-screen">
             <HeroSection
-                image={DroneImage}
+                image={View}
                 title="Enjoy Bumthang"
                 description="Live with a scenic view of the Bumthang valley"
             />
