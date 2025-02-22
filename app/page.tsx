@@ -1,25 +1,25 @@
-import Image from 'next/image'
-import DroneImage from '@/public/images/drone.webp'
-import Suite from '@/public/images/suite.webp'
-import Deluxe from '@/public/images/deluxe.webp'
-import DrukAir from '@/public/images/drukair_logo.webp'
-import { RoomCard } from '@/components/room-card'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import HeroSection from '@/components/hero-section'
-import SectionTitle from '@/components/section-title'
+import Image from "next/image"
+import DroneImage from "@/public/images/drone.webp"
+import Suite from "@/public/images/suite.webp"
+import Deluxe from "@/public/images/deluxe.webp"
+import DrukAir from "@/public/images/drukair_logo.webp"
+import { RoomCard } from "@/components/room-card"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import HeroSection from "@/components/hero-section"
+import SectionTitle from "@/components/section-title"
 
 const rooms = [
     {
-        title: 'Suite Room',
-        price: 'Nu.6500+ / per night',
+        title: "Suite Room",
+        price: "Nu.6500+ / per night",
         image: Suite,
-        href: '/rooms/suite',
+        href: "/rooms/suite",
     },
     {
-        title: 'Deluxe Room',
-        price: 'Nu.4500+ / per night',
+        title: "Deluxe Room",
+        price: "Nu.4500+ / per night",
         image: Deluxe,
-        href: '/rooms/deluxe',
+        href: "/rooms/deluxe",
     },
 ]
 export default function Home() {
@@ -31,10 +31,10 @@ export default function Home() {
                 description="Live with a scenic view of the Bumthang valley"
             />
 
-            <section className="container mx-auto py-4">
-                <Card className="border-none shadow-none">
+            <section className="container mx-auto py-4 bg-gray-50">
+                <Card className="border-none shadow-none bg-gray-50">
                     <CardContent className="flex flex-col items-center space-y-4 p-6">
-                        <p className="text-sm font-medium text-muted-foreground">
+                        <p className="text-sm font-normal tracking-tight text-muted-foreground">
                             Official hotel partner of
                         </p>
                         <Image
