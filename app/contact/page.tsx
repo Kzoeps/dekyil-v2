@@ -3,6 +3,8 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { MapPin, Phone, Mail, Clock } from "lucide-react"
 import Image from "next/image"
 import DroneImage from "@/public/images/drone.webp"
+import { DekyilInformation } from "@/lib/constants"
+import Link from "next/link"
 
 export default function ContactPage() {
     return (
@@ -13,41 +15,54 @@ export default function ContactPage() {
                 description="Live with a scenic view of the Bumthang valley"
             />
             <div className="container mx-auto px-4 py-16">
-                <h1 className="mb-12 text-center text-4xl font-bold tracking-tight">
+                <h2 className="mb-12 text-center text-4xl font-playfair font-bold tracking-tight">
                     Contact Us
-                </h1>
+                </h2>
 
                 <div className="grid gap-8 md:grid-cols-2">
                     <div className="space-y-8">
-                        <Card>
+                        <Card className="rounded-none">
                             <CardHeader>
-                                <CardTitle>Contact Information</CardTitle>
+                                <CardTitle className="font-playfair text-lg">
+                                    Contact Information
+                                </CardTitle>
                             </CardHeader>
                             <CardContent className="space-y-4">
                                 <div className="flex items-center space-x-2">
-                                    <MapPin className="h-5 w-5 text-muted-foreground" />
-                                    <p>Jakar, Bumthang, Bhutan</p>
+                                    <Phone className="h-5 w-5 text-muted-foreground" />
+                                    <p className="">
+                                        {DekyilInformation.PHONE_ACHI} /{" "}
+                                        {DekyilInformation.PHONE_AMA}
+                                    </p>
                                 </div>
                                 <div className="flex items-center space-x-2">
-                                    <Phone className="h-5 w-5 text-muted-foreground" />
-                                    <p>+975 3 631304</p>
+                                    <MapPin className="h-5 w-5 text-muted-foreground" />
+                                    <p>{DekyilInformation.ADDRESS}</p>
                                 </div>
+
                                 <div className="flex items-center space-x-2">
                                     <Mail className="h-5 w-5 text-muted-foreground" />
-                                    <p>info@dekylguesthouse.bt</p>
+                                    <Link
+                                        href={`mailto:${DekyilInformation.EMAIL}`}
+                                        className="hover:text-red-400 font-worksans tracking-tight"
+                                    >
+                                        {DekyilInformation.EMAIL}
+                                    </Link>
                                 </div>
                                 <div className="flex items-center space-x-2">
                                     <Clock className="h-5 w-5 text-muted-foreground" />
                                     <p>
-                                        Check-in: 2:00 PM, Check-out: 12:00 PM
+                                        Check-in: 11:00 AM, Check-out: 01:00 PM
                                     </p>
                                 </div>
                             </CardContent>
                         </Card>
 
-                        <Card>
+                        <Card className="rounded-none">
                             <CardHeader>
-                                <CardTitle>Location</CardTitle>
+                                <CardTitle className="font-playfair text-lg">
+                                    Location
+                                </CardTitle>
                             </CardHeader>
                             <CardContent>
                                 <div className="aspect-video overflow-hidden rounded-md">
@@ -65,12 +80,14 @@ export default function ContactPage() {
                     </div>
 
                     <div className="space-y-8">
-                        <Card>
+                        <Card className="rounded-none">
                             <CardHeader>
-                                <CardTitle>About Our Location</CardTitle>
+                                <CardTitle className="font-playfair text-lg">
+                                    About Our Location
+                                </CardTitle>
                             </CardHeader>
                             <CardContent>
-                                <p className="mb-4">
+                                <p className="mb-4 ">
                                     Dekyl Guest House is nestled in the heart of
                                     Bumthang, offering a perfect blend of
                                     traditional Bhutanese hospitality and modern
@@ -78,7 +95,7 @@ export default function ContactPage() {
                                     to local attractions and breathtaking views
                                     of the surrounding landscape.
                                 </p>
-                                <p>
+                                <p className="">
                                     We&apos;re just a short walk from the Jakar
                                     Dzong and other cultural landmarks. Our
                                     friendly staff can provide recommendations
@@ -89,9 +106,11 @@ export default function ContactPage() {
                             </CardContent>
                         </Card>
 
-                        <Card>
+                        <Card className="rounded-none">
                             <CardHeader>
-                                <CardTitle>Scenic Views</CardTitle>
+                                <CardTitle className="font-playfair text-lg">
+                                    Scenic Views
+                                </CardTitle>
                             </CardHeader>
                             <CardContent>
                                 <div className="relative aspect-video overflow-hidden rounded-md">
@@ -102,7 +121,7 @@ export default function ContactPage() {
                                         className="object-cover"
                                     />
                                 </div>
-                                <p className="mt-4">
+                                <p className="mt-4 ">
                                     Wake up to stunning views of the Bumthang
                                     valley and surrounding mountains. Our guest
                                     house offers a tranquil retreat after a day

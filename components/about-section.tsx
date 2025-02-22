@@ -1,6 +1,6 @@
-import Image from "next/image"
 import DroneImage from "@/public/images/deluxe.webp"
 import AnotherImage from "@/public/images/flowers.webp"
+import Image from "next/image"
 
 export default function AboutSection() {
     return (
@@ -31,10 +31,16 @@ export default function AboutSection() {
                 </div>
 
                 <div className="space-y-6">
-                    <h2 className="text-4xl font-serif">About Us</h2>
+                    <div className="inline-block">
+                        <h2 className="text-4xl font-bold font-playfair tracking-tight ">
+                            About Us
+                        </h2>
+                        <hr className="mt-3 w-full bg-slate-500" />
+                    </div>
+
                     <div className="space-y-4 text-muted-foreground">
                         <p>
-                            DeKyi Guest House is a family owned and run hotel
+                            Dekyil Guest House is a family owned and run hotel
                             located in the heart of Bumthang and features a
                             scenic view of the Bumthang valley and the Jakar
                             Dzong. It is ideally located within walking distance
