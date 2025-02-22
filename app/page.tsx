@@ -1,27 +1,12 @@
-import Image from "next/image"
-import DroneImage from "@/public/images/drone.webp"
-import Suite from "@/public/images/suite.webp"
-import Deluxe from "@/public/images/deluxe.webp"
-import DrukAir from "@/public/images/drukair_logo.webp"
-import { RoomCard } from "@/components/room-card"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import HeroSection from "@/components/hero-section"
+import { RoomCard } from "@/components/room-card"
 import SectionTitle from "@/components/section-title"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { ROOMS } from "@/lib/constants"
+import DroneImage from "@/public/images/drone.webp"
+import DrukAir from "@/public/images/drukair_logo.webp"
+import Image from "next/image"
 
-const rooms = [
-    {
-        title: "Suite Room",
-        price: "Nu.6500+ / per night",
-        image: Suite,
-        href: "/rooms/suite",
-    },
-    {
-        title: "Deluxe Room",
-        price: "Nu.4500+ / per night",
-        image: Deluxe,
-        href: "/rooms/deluxe",
-    },
-]
 export default function Home() {
     return (
         <main className="relative min-h-screen">
@@ -53,7 +38,7 @@ export default function Home() {
                     description="Choose from our carefully designed rooms"
                 />
                 <div className="flex flex-col sm:flex-row w-full justify-center gap-8 sm:gap-12">
-                    {rooms.map((room) => (
+                    {ROOMS.map((room) => (
                         <RoomCard key={room.title} {...room} />
                     ))}
                 </div>

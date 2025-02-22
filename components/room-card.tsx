@@ -12,38 +12,38 @@ interface RoomCardProps {
 
 export function RoomCard({ title, price, image, href }: RoomCardProps) {
     return (
-        <Card className="group flex-1 overflow-hidden border-none rounded-none max-w-[500px]">
-            <CardHeader className="p-0">
-                <div className="aspect-[4/3] relative max-h-[300px] overflow-hidden">
-                    <Image
-                        src={image || "/placeholder.svg"}
-                        fill
-                        alt={title}
-                        className="h-full w-full object-cover transition-[opacity,transform]  duration-300 group-hover:scale-105 hover:opacity-40"
-                    />
-                </div>
-            </CardHeader>
-            <CardContent className="text-center">
-                <h3 className="mt-4 font-playfair text-xl font-semibold tracking-tight">
-                    {title}
-                </h3>
-                <p className="mt-2 text-muted-foreground">{price}</p>
-            </CardContent>
-            <CardFooter className="flex justify-center pb-6">
-                <Button
-                    asChild
-                    variant="default"
-                    className="rounded-full bg-primary px-8 hover:bg-primary/90"
-                >
-                    <Link
-                        href={href}
-                        title={`Explore ${title}`}
-                        className="font-worksans"
+        <Link
+            href={href}
+            title={`Explore ${title}`}
+            className="max-w-[500px] w-full"
+        >
+            <Card className="group overflow-hidden border-none rounded-none max-w-[500px]">
+                <CardHeader className="p-0">
+                    <div className="aspect-[4/3] relative max-h-[300px] overflow-hidden">
+                        <Image
+                            src={image || "/placeholder.svg"}
+                            fill
+                            alt={title}
+                            className="h-full w-full object-cover transition-[opacity,transform]  duration-300 group-hover:scale-105 hover:opacity-40"
+                        />
+                    </div>
+                </CardHeader>
+                <CardContent className="text-center">
+                    <h3 className="mt-4 font-playfair text-xl font-semibold tracking-tight">
+                        {title}
+                    </h3>
+                    <p className="mt-2 text-muted-foreground">{price}</p>
+                </CardContent>
+                <CardFooter className="flex justify-center pb-6">
+                    <Button
+                        asChild
+                        variant="default"
+                        className="rounded-full bg-primary px-8 hover:bg-primary/90"
                     >
-                        Explore
-                    </Link>
-                </Button>
-            </CardFooter>
-        </Card>
+                        <p>Explore</p>
+                    </Button>
+                </CardFooter>
+            </Card>
+        </Link>
     )
 }
