@@ -1,5 +1,29 @@
-import Link from 'next/link'
-import { Facebook, Instagram, Twitter } from 'lucide-react'
+import Link from "next/link"
+import { Facebook, Instagram, Twitter } from "lucide-react"
+import { DekyilInformation } from "@/lib/constants"
+
+const MENU_LINKS = [
+    {
+        title: "Home",
+        href: "/",
+    },
+    {
+        title: "Rooms",
+        href: "/rooms",
+    },
+    {
+        title: "Contact",
+        href: "/contact",
+    },
+    {
+        title: "About Us",
+        href: "/about-us",
+    },
+    {
+        title: "Gallery",
+        href: "/gallery",
+    },
+]
 
 export function Footer() {
     return (
@@ -8,10 +32,10 @@ export function Footer() {
                 <div className="grid gap-8 sm:grid-cols-2 md:grid-cols-4">
                     {/* About Column */}
                     <div className="space-y-4">
-                        <h3 className="text-lg font-semibold">
-                            About Dekyl Guest House
+                        <h3 className="text-lg font-playfair font-semibold">
+                            About Us
                         </h3>
-                        <p className="text-sm text-muted-foreground">
+                        <p className="text-sm tracking-tight text-muted-foreground">
                             Experience luxury and comfort in the heart of
                             Bumthang valley. Our guest house offers a perfect
                             blend of traditional charm and modern amenities.
@@ -20,87 +44,72 @@ export function Footer() {
 
                     {/* Quick Menu Column */}
                     <div className="space-y-4">
-                        <h3 className="text-lg font-semibold">Quick Menu</h3>
-                        <ul className="space-y-2 text-sm">
-                            <li>
-                                <Link href="/" className="hover:underline">
-                                    Home
-                                </Link>
-                            </li>
-                            <li>
-                                <Link href="/rooms" className="hover:underline">
-                                    Rooms
-                                </Link>
-                            </li>
-                            <li>
-                                <Link
-                                    href="/amenities"
-                                    className="hover:underline"
-                                >
-                                    Amenities
-                                </Link>
-                            </li>
-                            <li>
-                                <Link
-                                    href="/gallery"
-                                    className="hover:underline"
-                                >
-                                    Gallery
-                                </Link>
-                            </li>
-                            <li>
-                                <Link
-                                    href="/contact"
-                                    className="hover:underline"
-                                >
-                                    Contact
-                                </Link>
-                            </li>
+                        <h3 className="text-lg font-playfair font-semibold">
+                            Quick Menu
+                        </h3>
+
+                        <ul className="space-y-2 text-sm font-worksans tracking-tight text-muted-foreground">
+                            {MENU_LINKS.map((link) => (
+                                <li key={link.title}>
+                                    <Link
+                                        href={link.href}
+                                        title={link.title}
+                                        className="hover:underline transition-all duration-500 ease-in-out"
+                                    >
+                                        {link.title}
+                                    </Link>
+                                </li>
+                            ))}
                         </ul>
                     </div>
 
                     {/* Contact Information Column */}
                     <div className="space-y-4">
-                        <h3 className="text-lg font-semibold">Contact Us</h3>
-                        <ul className="space-y-2 text-sm">
-                            <li>Dekyl Guest House</li>
-                            <li>Jakar, Bumthang, Bhutan</li>
-                            <li>Phone: +975 3 631304</li>
-                            <li>Email: info@dekylguesthouse.bt</li>
+                        <h3 className="text-lg font-semibold font-playfair">
+                            Contact Us
+                        </h3>
+                        <ul className="space-y-2 text-sm text-muted-foreground font-worksans tracking-tight">
+                            <li>{DekyilInformation.DEKYIL}</li>
+                            <li>
+                                Phone: {DekyilInformation.PHONE_ACHI}/
+                                {DekyilInformation.PHONE_AMA}
+                            </li>
+                            <li>
+                                <Link
+                                    className="hover:text-red-400 transition-all duration-300 ease-in-out"
+                                    href={`mailto:${DekyilInformation.EMAIL}`}
+                                >
+                                    Email: {DekyilInformation.EMAIL}
+                                </Link>
+                            </li>
+                            <li>{DekyilInformation.ADDRESS}</li>
                         </ul>
                     </div>
 
                     {/* Social Media Column */}
                     <div className="space-y-4">
-                        <h3 className="text-lg font-semibold">Follow Us</h3>
-                        <div className="flex space-x-4">
-                            <a
-                                href="https://facebook.com"
+                        <h3 className="text-lg font-semibold font-playfair">
+                            Follow Us
+                        </h3>
+                        <div className="flex space-x-4 ">
+                            <Link
+                                href={DekyilInformation.FACEBOOK}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="text-muted-foreground hover:text-primary"
+                                className="text-muted-foreground hover:text-red-400 transition-all duration-300 ease-in-out "
                             >
                                 <Facebook className="h-6 w-6" />
                                 <span className="sr-only">Facebook</span>
-                            </a>
-                            <a
-                                href="https://instagram.com"
+                            </Link>
+                            <Link
+                                href={DekyilInformation.INSTAGRAM}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="text-muted-foreground hover:text-primary"
+                                className="text-muted-foreground hover:text-red-400 transition-all duration-300 ease-in-out "
                             >
                                 <Instagram className="h-6 w-6" />
                                 <span className="sr-only">Instagram</span>
-                            </a>
-                            <a
-                                href="https://twitter.com"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="text-muted-foreground hover:text-primary"
-                            >
-                                <Twitter className="h-6 w-6" />
-                                <span className="sr-only">Twitter</span>
-                            </a>
+                            </Link>
                         </div>
                     </div>
                 </div>
