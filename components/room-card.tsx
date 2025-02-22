@@ -12,7 +12,7 @@ interface RoomCardProps {
 
 export function RoomCard({ title, price, image, href }: RoomCardProps) {
   return (
-    <Card className="group overflow-hidden border-none">
+    <Card className="group overflow-hidden border-none rounded-none">
       <CardHeader className="p-0">
         <div className="aspect-[4/3] overflow-hidden">
           <Image
@@ -25,12 +25,12 @@ export function RoomCard({ title, price, image, href }: RoomCardProps) {
         </div>
       </CardHeader>
       <CardContent className="text-center">
-        <h3 className="mt-4 text-xl font-semibold tracking-tight">{title}</h3>
+        <h3 className="mt-4 font-playfair text-xl font-semibold tracking-tight">{title}</h3>
         <p className="mt-2 text-muted-foreground">{price}</p>
       </CardContent>
       <CardFooter className="flex justify-center pb-6">
         <Button asChild variant="default" className="rounded-full bg-primary px-8 hover:bg-primary/90">
-          <Link href={href}>Explore</Link>
+          <Link href={href} title="Suite Room" className="font-worksans">Explore</Link>
         </Button>
       </CardFooter>
     </Card>
