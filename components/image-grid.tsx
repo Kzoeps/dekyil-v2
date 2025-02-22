@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react"
 import Image, { StaticImageData } from "next/image"
 import { X } from "lucide-react"
+import SectionTitle from "./section-title"
 
 export interface ImageGridImage {
     src: string | StaticImageData
@@ -33,13 +34,10 @@ const ImageGrid = ({ images, title }: ImageGridProps) => {
 
     return (
         <>
-            <div className="container mx-auto px-4 py-8">
-                <section className="mb-12">
-                    {title && (
-                        <h2 className="text-2xl font-semibold mb-6 text-center underline">
-                            {title}
-                        </h2>
-                    )}
+            <div className="container mx-auto px-4 pt-8">
+                <section className="">
+                    {title && <SectionTitle className="mb-12 mt-5" title={title} />}
+
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                         {images.map((image, index) => (
                             <div
