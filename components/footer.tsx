@@ -1,6 +1,6 @@
-import Link from "next/link"
-import { Facebook, Instagram, Twitter } from "lucide-react"
 import { DekyilInformation } from "@/lib/constants"
+import { Facebook, Instagram } from "lucide-react"
+import Link from "next/link"
 
 const MENU_LINKS = [
     {
