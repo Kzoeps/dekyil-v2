@@ -72,7 +72,7 @@ export default function Home() {
                                 width="100%"
                                 height="100%"
                                 src="https://www.youtube.com/embed/3KrwGtUJSm8?si=K6MMH4NgVLt_uO-j"
-                                title="Directions to Dekyl Guest House"
+                                title="Youtube video player - Directions to Dekyil Guest House"
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                 allowFullScreen
                             ></iframe>
