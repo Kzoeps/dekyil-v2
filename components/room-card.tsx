@@ -19,7 +19,7 @@ export function RoomCard({ title, price, image, href }: RoomCardProps) {
                         src={image || "/placeholder.svg"}
                         fill
                         alt={title}
-                        className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                        className="h-full w-full object-cover transition-[opacity,transform]  duration-300 group-hover:scale-105 hover:opacity-40"
                     />
                 </div>
             </CardHeader>
@@ -37,7 +37,7 @@ export function RoomCard({ title, price, image, href }: RoomCardProps) {
                 >
                     <Link
                         href={href}
-                        title="Suite Room"
+                        title={`Explore ${title}`}
                         className="font-worksans"
                     >
                         Explore

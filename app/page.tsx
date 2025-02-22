@@ -31,7 +31,7 @@ export default function Home() {
                 description="Live with a scenic view of the Bumthang valley"
             />
 
-            <section className="container mx-auto py-4 bg-gray-50">
+            <section className="w-full pt-2 pb-4 bg-gray-50">
                 <Card className="border-none shadow-none bg-gray-50">
                     <CardContent className="flex flex-col items-center space-y-4 p-6">
                         <p className="text-sm font-normal tracking-tight text-muted-foreground">
