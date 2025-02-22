@@ -52,7 +52,7 @@ export default function Home() {
                     title="Our Rooms"
                     description="Choose from our carefully designed rooms"
                 />
-                <div className="grid gap-8 sm:grid-cols-2 lg:gap-12">
+                <div className="flex flex-col sm:flex-row w-full justify-center gap-8 sm:gap-12">
                     {rooms.map((room) => (
                         <RoomCard key={room.title} {...room} />
                     ))}
@@ -60,9 +60,9 @@ export default function Home() {
             </section>
 
             <section className="container mx-auto px-4 py-16">
-                <Card>
+                <Card className="rounded-none">
                     <CardHeader>
-                        <CardTitle className="text-center text-2xl font-bold">
+                        <CardTitle className="text-center font-playfair text-2xl font-bold">
                             How to Find Us
                         </CardTitle>
                     </CardHeader>
