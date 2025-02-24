@@ -3,7 +3,7 @@ import * as React from "react"
 
 export interface SectionTitleProps {
     title?: string
-    description?: string
+    description?: string | React.ReactElement
     className?: string
 }
 
@@ -14,13 +14,16 @@ export default function SectionTitle({
 }: SectionTitleProps) {
     return (
         <div className={cn("text-center", className)}>
-            {title && (
-                <h2 className="text-4xl font-bold font-playfair tracking-tight">
-                    {title}
-                </h2>
-            )}
-            {title && <hr className="mt-3 mx-auto w-1/3 bg-slate-500" />}
-            {description && (
+            <div>
+                {title && (
+                    <h2 className="text-4xl font-bold font-playfair tracking-tight">
+                        {title}
+                    </h2>
+                )}
+                {title && <hr className="mt-3 mx-auto w-1/3 bg-slate-500" />}
+            </div>
+            {description && React.isValidElement(description) && description}
+            {description && typeof description === "string" && (
                 <p className="mt-4 text-muted-foreground">{description}</p>
             )}
         </div>

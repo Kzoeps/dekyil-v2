@@ -1,5 +1,6 @@
 import HeroSection from "@/components/hero-section"
 import ImageGrid from "@/components/image-grid"
+import PriceInfo from "@/components/price-info"
 import SectionTitle from "@/components/section-title"
 import DeluxeMainImage from "@/public/images/room-205/deluxe-205-main.webp"
 
@@ -33,6 +34,9 @@ const ROOM_207_IMAGES = [
     },
 ]
 
+const DELUXE_DESC =
+    "The deluxe room at Dekyil offers a comfortable and cosy experience. The rooms feature a backdrop of the Jakar Dzong and also modern amenities such as floor heating in the bathroom, double glazed windows and more to make sure your stay at Dekyil feels just like home."
+
 export default function Deluxe() {
     return (
         <main className="relative min-h-screen">
@@ -41,19 +45,26 @@ export default function Deluxe() {
                 title="Deluxe Room"
                 description="Our hotel rooms"
             />
+            <section className="mx-auto py-16 max-w-[1440px] px-4">
+                <SectionTitle
+                    title="The Deluxe Room"
+                    description={DELUXE_DESC}
+                    className="mb-12 flex flex-col gap-12"
+                />
+            </section>
             <section className="mx-auto py-16 max-w-[1440px]">
                 <SectionTitle
                     title="Room 205"
-                    description="Nu. 4500 per night"
-                    className="mb-12"
+                    description={<PriceInfo price="4500" />}
+                    className="mb-12 flex flex-col gap-4"
                 />
                 <ImageGrid images={ROOM_205_IMAGES} />
             </section>
             <section className="mx-auto py-16 max-w-[1440px]">
                 <SectionTitle
                     title="Room 207"
-                    description="Nu. 4500 per night"
-                    className="mb-12"
+                    className="mb-12 flex flex-col gap-4"
+                    description={<PriceInfo price="4500" />}
                 />
                 <ImageGrid images={ROOM_207_IMAGES} />
             </section>
