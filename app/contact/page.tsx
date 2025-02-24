@@ -74,6 +74,7 @@ export default function ContactPage() {
                                         style={{ border: 0 }}
                                         allowFullScreen
                                         loading="lazy"
+                                        title="Google Map pin for Dekyil"
                                         referrerPolicy="no-referrer-when-downgrade"
                                     ></iframe>
                                 </div>

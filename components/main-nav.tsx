@@ -47,6 +47,7 @@ export function MainNav() {
                     {/* Mobile menu button */}
                     <Button
                         variant="ghost"
+                        name="Nav Toggle button"
                         className="md:hidden"
                         onClick={() => setIsOpen(!isOpen)}
                     >
