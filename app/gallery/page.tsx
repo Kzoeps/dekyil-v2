@@ -41,14 +41,22 @@ export default function GalleryPage() {
         <main className="relative min-h-screen">
             <HeroSection
                 image={SuiteShot}
-                title="Enjoy Bumthang"
-                description="Live with a scenic view of the Bumthang valley"
+                title="The Gallery"
+                description="Food. rooms. scenes. dekyil."
             />
             <section>
                 <SectionTitle
                     title="The Gallery"
-                    description="a picture collection of all things Dekyil"
-                    className="mb-12 py-8"
+                    description={
+                        <p className="text-muted-foreground mt-6">
+                            The Gallery is a picture collection of all things{" "}
+                            <br />
+                            <span className="font-bold italic text-blue-400">
+                                Dekyil.
+                            </span>
+                        </p>
+                    }
+                    className="mb-6 py-8"
                 />
                 <ImageGrid images={GALLERY_IMAGES} />
             </section>
