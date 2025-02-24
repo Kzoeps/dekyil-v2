@@ -3,6 +3,7 @@ import PriceInfo from "@/components/price-info"
 import { RoomCard } from "@/components/room-card"
 import SectionTitle from "@/components/section-title"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import LiteYoutube from "@/components/ui/lite-youtube"
 import { ROOMS } from "@/lib/constants"
 import DroneImage from "@/public/images/drone.webp"
 import DrukAir from "@/public/images/drukair_logo.webp"
@@ -51,7 +52,7 @@ export default function Home() {
                 </div>
             </section>
 
-            <section className="container mx-auto px-4 py-16">
+            <section className="container mx-auto px-4 py-16 max-w-[700px]">
                 <Card className="rounded-none">
                     <CardHeader>
                         <CardTitle className="text-center font-playfair text-2xl font-bold">
@@ -60,14 +61,7 @@ export default function Home() {
                     </CardHeader>
                     <CardContent>
                         <div className="aspect-video overflow-hidden rounded-lg bg-muted">
-                            <iframe
-                                width="100%"
-                                height="100%"
-                                src="https://www.youtube.com/embed/3KrwGtUJSm8?si=K6MMH4NgVLt_uO-j"
-                                title="Youtube video player - Directions to Dekyil Guest House"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                allowFullScreen
-                            ></iframe>
+                            <LiteYoutube videoId="3KrwGtUJSm8" />
                         </div>
                     </CardContent>
                 </Card>
