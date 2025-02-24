@@ -1,4 +1,5 @@
 import HeroSection from "@/components/hero-section"
+import PriceInfo from "@/components/price-info"
 import { RoomCard } from "@/components/room-card"
 import SectionTitle from "@/components/section-title"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
@@ -39,7 +40,13 @@ export default function Home() {
                 />
                 <div className="flex flex-col sm:flex-row w-full justify-center gap-8 sm:gap-12">
                     {ROOMS.map((room) => (
-                        <RoomCard key={room.title} {...room} />
+                        <RoomCard
+                            key={room.title}
+                            price={<PriceInfo price={room.price} />}
+                            title={room.title}
+                            image={room.image}
+                            href={room.href}
+                        />
                     ))}
                 </div>
             </section>

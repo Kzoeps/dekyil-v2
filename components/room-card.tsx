@@ -2,10 +2,11 @@ import Image, { StaticImageData } from "next/image"
 import Link from "next/link"
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
+import { isValidElement, ReactElement } from "react"
 
 interface RoomCardProps {
     title: string
-    price: string
+    price: string | ReactElement
     image: StaticImageData | string
     href: string
 }
@@ -32,7 +33,11 @@ export function RoomCard({ title, price, image, href }: RoomCardProps) {
                     <h3 className="mt-4 font-playfair text-xl font-semibold tracking-tight">
                         {title}
                     </h3>
-                    <p className="mt-2 text-muted-foreground">{price}</p>
+                    {isValidElement(price) ? (
+                        price
+                    ) : (
+                        <p className="mt-2 text-muted-foreground">{price}</p>
+                    )}
                 </CardContent>
                 <CardFooter className="flex justify-center pb-6">
                     <Button

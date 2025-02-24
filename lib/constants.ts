@@ -14,13 +14,13 @@ export enum DekyilInformation {
 export const ROOMS = [
     {
         title: "Suite Room",
-        price: "Nu.6500+ / per night",
+        price: "6500",
         image: Suite,
         href: "/rooms/suite",
     },
     {
         title: "Deluxe Room",
-        price: "Nu.4500+ / per night",
+        price: "4500",
         image: Deluxe,
         href: "/rooms/deluxe",
     },
