@@ -61,7 +61,10 @@ export default function Home() {
                     </CardHeader>
                     <CardContent className="p-2 md:p-6">
                         <div className="aspect-video overflow-hidden rounded-lg bg-muted">
-                            <LiteYoutube videoId="3KrwGtUJSm8" />
+                            <LiteYoutube
+                                videoId="3KrwGtUJSm8"
+                                title="Video for directions to dekyil"
+                            />
                         </div>
                     </CardContent>
                 </Card>

@@ -2,7 +2,7 @@
 import dynamic from "next/dynamic"
 import "lite-youtube-embed/src/lite-yt-embed.css"
 import { useEffect } from "react"
-function LiteYoutube({ videoId }: { videoId: string }) {
+function LiteYoutube({ videoId, title }: { videoId: string; title?: string }) {
     useEffect(() => {
         // @ts-expect-error since this is webcomopnent without typings gives issues
         import("lite-youtube-embed")
@@ -21,7 +21,7 @@ function LiteYoutube({ videoId }: { videoId: string }) {
             <a
                 href="https://youtube.com/watch?v=goiWrNiaT0I"
                 className="lyt-playbtn"
-                title="Play Directions Video"
+                title={title || "Play Youtube Video"}
             ></a>
             {/* @ts-expect-error same reasoning as above */}
         </lite-youtube>
