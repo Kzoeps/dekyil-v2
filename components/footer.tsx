@@ -35,7 +35,7 @@ export function Footer() {
                         <h3 className="text-lg font-playfair font-semibold">
                             About Us
                         </h3>
-                        <p className="text-sm tracking-tight text-muted-foreground">
+                        <p className="text-sm tracking-tight ">
                             Experience luxury and comfort in the heart of
                             Bumthang valley. Our guest house offers a perfect
                             blend of traditional charm and modern amenities.
@@ -48,7 +48,7 @@ export function Footer() {
                             Quick Menu
                         </h3>
 
-                        <ul className="space-y-2 text-sm font-worksans tracking-tight text-muted-foreground">
+                        <ul className="space-y-2 text-sm font-worksans tracking-tight ">
                             {MENU_LINKS.map((link) => (
                                 <li key={link.title}>
                                     <Link
@@ -68,7 +68,7 @@ export function Footer() {
                         <h3 className="text-lg font-semibold font-playfair">
                             Contact Us
                         </h3>
-                        <ul className="space-y-2 text-sm text-muted-foreground font-worksans tracking-tight">
+                        <ul className="space-y-2 text-sm  font-worksans tracking-tight">
                             <li>{DekyilInformation.DEKYIL}</li>
                             <li>
                                 Phone: {DekyilInformation.PHONE_ACHI}/
@@ -96,7 +96,7 @@ export function Footer() {
                                 href={DekyilInformation.FACEBOOK}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="text-muted-foreground hover:text-red-400 transition-all duration-300 ease-in-out "
+                                className=" hover:text-red-400 transition-all duration-300 ease-in-out "
                             >
                                 <Facebook className="h-6 w-6" />
                                 <span className="sr-only">Facebook</span>
@@ -105,7 +105,7 @@ export function Footer() {
                                 href={DekyilInformation.INSTAGRAM}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="text-muted-foreground hover:text-red-400 transition-all duration-300 ease-in-out "
+                                className=" hover:text-red-400 transition-all duration-300 ease-in-out "
                             >
                                 <Instagram className="h-6 w-6" />
                                 <span className="sr-only">Instagram</span>
@@ -114,7 +114,7 @@ export function Footer() {
                     </div>
                 </div>
 
-                <div className="mt-8 border-t border-gray-200 dark:border-gray-800 pt-8 text-center text-sm text-muted-foreground">
+                <div className="mt-8 border-t border-gray-200 dark:border-gray-800 pt-8 text-center text-sm ">
                     <p>
                         &copy; {new Date().getFullYear()} Dekyl Guest House. All
                         rights reserved.
