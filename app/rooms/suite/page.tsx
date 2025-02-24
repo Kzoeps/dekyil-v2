@@ -1,5 +1,6 @@
 import HeroSection from "@/components/hero-section"
 import ImageGrid from "@/components/image-grid"
+import PriceInfo from "@/components/price-info"
 import SectionTitle from "@/components/section-title"
 import SuiteRoomPano from "@/public/images/room-203/suite_203_pano.webp"
 const ROOM_203_IMAGES = [
@@ -73,10 +74,10 @@ export default function SuitePage() {
             <section className="mx-auto py-16 max-w-[1440px]">
                 <SectionTitle
                     title="The Suite Room"
-                    description="Nu. 8500 per night"
+                    description={<PriceInfo className="mt-6" price="6500" />}
                     className="mb-12"
                 />
-                <p className="px-4 text-center">
+                <p className="px-4 text-center text-muted-foreground">
                     Dekyil Guest House&apos;s suite room provides a luxurious
                     experience to your stay in Bumthang. The large window panes
                     offer an expansive view of the Chamkhar valley and also make
