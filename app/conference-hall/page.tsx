@@ -46,7 +46,7 @@ export default function ConferenceHallPage() {
             />
             <section className="container mx-auto px-4 py-16">
                 <SectionTitle
-                    title="Conf. Hall"
+                    title="Conference Hall"
                     className="mb-12"
                     description="The conference hall at Dekyil is of comfortable and peaceful atmosphere that is perfect for meeting of any size and kind. We offer projector together with a pointer and a refreshment station for snacking up during your long arduous meet."
                 />
