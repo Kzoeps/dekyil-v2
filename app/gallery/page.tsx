@@ -44,7 +44,7 @@ export default function GalleryPage() {
                 title="The Gallery"
                 description="Food. rooms. scenes. dekyil."
             />
-            <section>
+            <section className="pb-8">
                 <SectionTitle
                     title="The Gallery"
                     description={
