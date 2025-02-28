@@ -116,7 +116,7 @@ export function Footer() {
 
                 <div className="mt-8 border-t border-gray-200 dark:border-gray-800 pt-8 text-center text-sm ">
                     <p>
-                        &copy; {new Date().getFullYear()} Dekyl Guest House. All
+                        &copy; {new Date().getFullYear()} Dekyil Guest House. All
                         rights reserved.
                     </p>
                 </div>
