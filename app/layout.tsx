@@ -26,11 +26,27 @@ export const metadata: Metadata = {
     openGraph: {
         title: "Dekyil Guest House",
         description: "Dekyil Guest House is a family-run hotel in Bumthang.",
+        type: "website",
+        siteName: "Dekyil Guest House",
+
     },
     twitter: {
         title: "Dekyil Guest House",
         description: "Dekyil Guest House is a family-run hotel in Bumthang.",
+        creator: "@kzoeps",
+        card: "summary_large_image"
     },
+    robots: {
+        index: true,
+        follow: true,
+        nocache: false,
+        googleBot: {
+            index: true,
+            follow: true,
+            noimageindex: false,
+        }
+    },
+    category: "accommodations",
 }
 
 export default function RootLayout({
