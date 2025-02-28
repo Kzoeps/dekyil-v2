@@ -20,6 +20,10 @@ export const metadata: Metadata = {
         "Experience the charm of Dekyil Guest House, offering scenic valley views and authentic Bhutanese cuisine.",
     keywords:
         "Dekyil Guest House, family-run hotel, Bumthang accommodations, Chakhar valley views, Bhutanese cuisine",
+    openGraph: {
+        title: "Dekyil Guest House",
+        description: "Dekyil Guest House is a family-run hotel in Bumthang.",
+    },
 }
 
 export default function RootLayout({
