@@ -7,7 +7,14 @@ import LiteYoutube from "@/components/ui/lite-youtube"
 import { ROOMS } from "@/lib/constants"
 import DroneImage from "@/public/images/drone.webp"
 import DrukAir from "@/public/images/drukair_logo.webp"
+import { Metadata } from "next"
 import Image from "next/image"
+
+export const metadata: Metadata = {
+    alternates: {
+        canonical: "/",
+    }
+}
 
 export default function Home() {
     return (
