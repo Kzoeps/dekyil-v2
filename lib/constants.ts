@@ -1,5 +1,6 @@
 import Suite from "@/public/images/suite.webp"
 import Deluxe from "@/public/images/deluxe.webp"
+import { Metadata } from "next"
 
 export enum DekyilInformation {
     PHONE_ACHI = "+975-17-55-41-52",
@@ -25,3 +26,19 @@ export const ROOMS = [
         href: "/rooms/deluxe",
     },
 ]
+
+export const DEFAULT_METADATA: Metadata = {
+    authors: [{ name: "Karma Yoezer", url: "https://www,kzoeps.com" }],
+    publisher: "dekylguesthouse.com",
+    robots: {
+        index: true,
+        follow: true,
+        nocache: false,
+        googleBot: {
+            index: true,
+            follow: true,
+            noimageindex: false,
+        },
+    },
+    category: "accommodations",
+}

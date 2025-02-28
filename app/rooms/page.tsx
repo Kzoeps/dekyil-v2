@@ -8,7 +8,8 @@ import { Metadata } from "next"
 export const metadata: Metadata = {
     title: "Rooms",
     description: "Explore the Dekyil Guest House Rooms",
-    keywords: "Dekyil Guest House, Rooms, Hotel in Bumthang, Bumthang, Bhutan, Chamkhar Valley",
+    keywords:
+        "Dekyil Guest House, Rooms, Hotel in Bumthang, Bumthang, Bhutan, Chamkhar Valley",
     alternates: {
         canonical: "/rooms",
     },

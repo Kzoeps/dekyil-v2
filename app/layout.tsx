@@ -3,6 +3,7 @@ import { MainNav } from "@/components/main-nav"
 import type { Metadata } from "next"
 import { Playfair_Display, Work_Sans } from "next/font/google"
 import "./globals.css"
+import { DEFAULT_METADATA } from "@/lib/constants"
 
 const playfair = Playfair_Display({
     variable: "--font-playfair-display",
@@ -29,25 +30,13 @@ export const metadata: Metadata = {
         type: "website",
         siteName: "Dekyil Guest House",
     },
-    authors: [{ name: "Karma Yoezer", url: "https://www,kzoeps.com" }],
-    publisher: "dekylguesthouse.com",
     twitter: {
         title: "Dekyil Guest House",
         description: "Dekyil Guest House is a family-run hotel in Bumthang.",
         creator: "@kzoeps",
         card: "summary_large_image",
     },
-    robots: {
-        index: true,
-        follow: true,
-        nocache: false,
-        googleBot: {
-            index: true,
-            follow: true,
-            noimageindex: false,
-        },
-    },
-    category: "accommodations",
+    ...DEFAULT_METADATA,
 }
 
 export default function RootLayout({
