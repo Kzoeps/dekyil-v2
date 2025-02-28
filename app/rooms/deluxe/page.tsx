@@ -3,6 +3,7 @@ import ImageGrid from "@/components/image-grid"
 import PriceInfo from "@/components/price-info"
 import SectionTitle from "@/components/section-title"
 import DeluxeMainImage from "@/public/images/room-205/deluxe-205-main.webp"
+import { Metadata } from "next"
 
 const ROOM_205_IMAGES = [
     {
@@ -36,6 +37,16 @@ const ROOM_207_IMAGES = [
 
 const DELUXE_DESC =
     "The deluxe room at Dekyil offers a comfortable and cosy experience. The rooms feature a backdrop of the Jakar Dzong and also modern amenities such as floor heating in the bathroom, double glazed windows and more to make sure your stay at Dekyil feels just like home."
+
+export const metadata: Metadata = {
+    title: "Deluxe Rooms",
+    description: "Explore the Deluxe Rooms at Dekyil Guest House",
+    keywords:
+        "Dekyil Guest House, Deluxe Rooms, Hotel in Bumthang, Bumthang, Bhutan, Chamkhar Valley",
+    alternates: {
+        canonical: "/rooms/deluxe",
+    },
+}
 
 export default function Deluxe() {
     return (

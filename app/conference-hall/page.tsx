@@ -9,6 +9,7 @@ import ConferenceSingle from "@/public/images/conference/conf-single.webp"
 import ConferenceSingle2 from "@/public/images/conference/conf-single-2.webp"
 import ConferenceOutside2 from "@/public/images/conference/outside-2.webp"
 import LiteYoutube from "@/components/ui/lite-youtube"
+import { Metadata } from "next"
 
 const CONFERENCE_HALL_IMAGES = [
     {
@@ -36,6 +37,17 @@ const CONFERENCE_HALL_IMAGES = [
         alt: "Conference Hall and Hotel outside view night shot",
     },
 ]
+
+export const metadata: Metadata = {
+    title: "Conference Hall",
+    description:
+        "The conference hall at Dekyil is of comfortable and peaceful atmosphere that is perfect for meeting of any size and kind. We offer projector together with a pointer and a refreshment station for snacking up during your long arduous meet.",
+    keywords:
+        "Conference Hall, Dekyil Guest House, Bumthang, Bhutan, meeting space, projector, refreshment station",
+    alternates: {
+        canonical: "/conference-hall",
+    },
+}
 
 export default function ConferenceHallPage() {
     return (

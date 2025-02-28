@@ -11,9 +11,14 @@ import { Metadata } from "next"
 import Image from "next/image"
 
 export const metadata: Metadata = {
+    title: "Dekyil Guest House | A Family-Run Hotel in Bumthang",
+    description:
+        "Experience the charm of Dekyil Guest House, offering scenic valley views and authentic Bhutanese cuisine.",
+    keywords:
+        "Dekyil Guest House, Hotels in Bumthang, family-run, Chamkhar, Bhutan",
     alternates: {
         canonical: "/",
-    }
+    },
 }
 
 export default function Home() {

@@ -6,6 +6,18 @@ import View from "@/public/images/view.webp"
 import { DekyilInformation } from "@/lib/constants"
 import Link from "next/link"
 import CupFlowerView from "@/public/images/cupFlowerView.webp"
+import { Metadata } from "next"
+
+export const metadata: Metadata = {
+    title: "Contact Us",
+    description:
+        "Get in touch with Dekyil Guest House for inquiries and bookings.",
+    keywords:
+        "Dekyil Guest House, contact, inquiries, bookings, hotel bookings, Bumthang",
+    alternates: {
+        canonical: "/contact",
+    },
+}
 
 export default function ContactPage() {
     return (

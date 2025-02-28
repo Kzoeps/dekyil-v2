@@ -3,6 +3,16 @@ import { RoomCard } from "@/components/room-card"
 import SectionTitle from "@/components/section-title"
 import { ROOMS } from "@/lib/constants"
 import RoomImage from "@/public/images/deluxe.webp"
+import { Metadata } from "next"
+
+export const metadata: Metadata = {
+    title: "Rooms",
+    description: "Explore the Dekyil Guest House Rooms",
+    keywords: "Dekyil Guest House, Rooms, Hotel in Bumthang, Bumthang, Bhutan, Chamkhar Valley",
+    alternates: {
+        canonical: "/rooms",
+    },
+}
 
 export default function RoomsPage() {
     return (

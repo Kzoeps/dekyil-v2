@@ -3,6 +3,7 @@ import ImageGrid from "@/components/image-grid"
 import PriceInfo from "@/components/price-info"
 import SectionTitle from "@/components/section-title"
 import SuiteRoomPano from "@/public/images/room-203/suite_203_pano.webp"
+import { Metadata } from "next"
 const ROOM_203_IMAGES = [
     {
         src: "/images/room-203/suite_203_pano.webp",
@@ -63,6 +64,16 @@ const SUITE_BATHROOM_IMAGES = [
         alt: "Bathroom view 5",
     },
 ]
+
+export const metadata: Metadata = {
+    title: "Suite Room",
+    description: "Explore the Suite Room at Dekyil Guest House",
+    keywords:
+        "Dekyil Guest House, Suite Room, Hotel in Bumthang, Bumthang, Bhutan, Chamkhar Valley",
+    alternates: {
+        canonical: "/rooms/suite",
+    },
+}
 export default function SuitePage() {
     return (
         <main className="relative min-h-screen">

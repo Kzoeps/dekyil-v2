@@ -8,6 +8,7 @@ import ConfShot from "@/public/images/conf.webp"
 import ViewShot from "@/public/images/view.webp"
 import TeaCupShot from "@/public/images/cupView.webp"
 import SceneWithWireShot from "@/public/images/sceneWire.webp"
+import { Metadata } from "next"
 
 const GALLERY_IMAGES = [
     {
@@ -35,6 +36,16 @@ const GALLERY_IMAGES = [
         alt: "Scene with wire at Dekyil Hotel",
     },
 ]
+
+export const metadata: Metadata = {
+    title: "Gallery",
+    description: "Explore the Dekyil Guest House Gallery",
+    keywords:
+        "Dekyil Guest House, Gallery, Bumthang, Bhutan, Bumthang Pictures, Chamkhar Valley",
+    alternates: {
+        canonical: "/gallery",
+    },
+}
 
 export default function GalleryPage() {
     return (

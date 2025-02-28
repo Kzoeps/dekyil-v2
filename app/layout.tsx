@@ -15,7 +15,10 @@ const workSans = Work_Sans({
 })
 
 export const metadata: Metadata = {
-    title: "Dekyil Guest House | Family-Run Hotel in Bumthang with Scenic Valley Views",
+    title: {
+        template: "%s | Dekyil Guest House",
+        default: "Dekyil Guest House",
+    },
     description:
         "Experience the charm of Dekyil Guest House, offering scenic valley views and authentic Bhutanese cuisine.",
     keywords:
