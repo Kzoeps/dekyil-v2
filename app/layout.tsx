@@ -24,6 +24,10 @@ export const metadata: Metadata = {
         title: "Dekyil Guest House",
         description: "Dekyil Guest House is a family-run hotel in Bumthang.",
     },
+    twitter: {
+        title: "Dekyil Guest House",
+        description: "Dekyil Guest House is a family-run hotel in Bumthang.",
+    },
 }
 
 export default function RootLayout({
