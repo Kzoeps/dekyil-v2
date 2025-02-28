@@ -9,6 +9,7 @@ import ViewShot from "@/public/images/view.webp"
 import TeaCupShot from "@/public/images/cupView.webp"
 import SceneWithWireShot from "@/public/images/sceneWire.webp"
 import { Metadata } from "next"
+import { PIPE_DEKYIL } from "@/lib/constants"
 
 const GALLERY_IMAGES = [
     {
@@ -37,9 +38,14 @@ const GALLERY_IMAGES = [
     },
 ]
 
+enum GalleryMetadata {
+    Title = `Gallery ${PIPE_DEKYIL}`,
+    Description = "A picture collection of all things Dekyil, Chamkhar, Bumthang & Bhutan",
+}
+
 export const metadata: Metadata = {
     title: "Gallery",
-    description: "Explore the Dekyil Guest House Gallery",
+    description: GalleryMetadata.Description,
     keywords:
         "Dekyil Guest House, Gallery, Bumthang, Bhutan, Bumthang Pictures, Chamkhar Valley",
     alternates: {

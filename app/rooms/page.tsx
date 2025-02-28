@@ -11,20 +11,12 @@ enum RoomsMetadata {
 }
 
 export const metadata: Metadata = {
-    title: RoomsMetadata.Title,
+    title: "Rooms",
     description: RoomsMetadata.Description,
     keywords:
         "Dekyil Guest House, Rooms, Hotel in Bumthang, Bumthang, Bhutan, Chamkhar Valley",
     alternates: {
         canonical: "/rooms",
-    },
-    openGraph: {
-        title: RoomsMetadata.Title,
-        description: RoomsMetadata.Description,
-    },
-    twitter: {
-        title: RoomsMetadata.Title,
-        description: RoomsMetadata.Description,
     },
 }
 
