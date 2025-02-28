@@ -12,6 +12,8 @@ export enum DekyilInformation {
     INSTAGRAM = "https://www.instagram.com/dekyilguesthouse3/",
 }
 
+export const PIPE_DEKYIL = "| Dekyil Guest House"
+
 export const ROOMS = [
     {
         title: "Suite Room",

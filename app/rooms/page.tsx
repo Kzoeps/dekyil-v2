@@ -1,17 +1,30 @@
 import HeroSection from "@/components/hero-section"
 import { RoomCard } from "@/components/room-card"
 import SectionTitle from "@/components/section-title"
-import { ROOMS } from "@/lib/constants"
+import { PIPE_DEKYIL, ROOMS } from "@/lib/constants"
 import RoomImage from "@/public/images/deluxe.webp"
 import { Metadata } from "next"
 
+enum RoomsMetadata {
+    Description = "Explore our suite and deluxe rooms at Dekyil Guest House. Wake up to scenic views of Bumthang Valley",
+    Title = `Rooms ${PIPE_DEKYIL}`,
+}
+
 export const metadata: Metadata = {
-    title: "Rooms",
-    description: "Explore the Dekyil Guest House Rooms",
+    title: RoomsMetadata.Title,
+    description: RoomsMetadata.Description,
     keywords:
         "Dekyil Guest House, Rooms, Hotel in Bumthang, Bumthang, Bhutan, Chamkhar Valley",
     alternates: {
         canonical: "/rooms",
+    },
+    openGraph: {
+        title: RoomsMetadata.Title,
+        description: RoomsMetadata.Description,
+    },
+    twitter: {
+        title: RoomsMetadata.Title,
+        description: RoomsMetadata.Description,
     },
 }
 
