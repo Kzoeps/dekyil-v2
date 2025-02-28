@@ -28,13 +28,14 @@ export const metadata: Metadata = {
         description: "Dekyil Guest House is a family-run hotel in Bumthang.",
         type: "website",
         siteName: "Dekyil Guest House",
-
     },
+    authors: [{ name: "Karma Yoezer", url: "https://www,kzoeps.com" }],
+    publisher: "dekylguesthouse.com",
     twitter: {
         title: "Dekyil Guest House",
         description: "Dekyil Guest House is a family-run hotel in Bumthang.",
         creator: "@kzoeps",
-        card: "summary_large_image"
+        card: "summary_large_image",
     },
     robots: {
         index: true,
@@ -44,7 +45,7 @@ export const metadata: Metadata = {
             index: true,
             follow: true,
             noimageindex: false,
-        }
+        },
     },
     category: "accommodations",
 }
