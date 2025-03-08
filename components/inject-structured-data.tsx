@@ -1,6 +1,7 @@
 import React from "react"
+import { Thing, WithContext } from 'schema-dts'
 export interface InjectStructuredDataProps {
-  data: Record<string, unknown>
+  data: WithContext<Thing>
 }
 export default function InjectStructuredData({ data }: InjectStructuredDataProps) {
   return (
