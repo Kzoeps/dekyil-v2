@@ -1,4 +1,5 @@
 import HeroSection from "@/components/hero-section"
+import InjectStructuredData from "@/components/inject-structured-data"
 import PriceInfo from "@/components/price-info"
 import { RoomCard } from "@/components/room-card"
 import SectionTitle from "@/components/section-title"
@@ -24,9 +25,7 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(HotelSchema) }} />
+      <InjectStructuredData data={HotelSchema} />
       <main className="relative min-h-screen">
         <HeroSection
           image={DroneImage}

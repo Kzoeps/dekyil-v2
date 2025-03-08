@@ -46,6 +46,88 @@ export const DEFAULT_METADATA: Metadata = {
   category: "accommodations",
 }
 
+export const SuiteRoomSchema: WithContext<HotelRoom> = {
+  '@context': "https://schema.org",
+  "@type": "HotelRoom",
+  name: "Suite Room",
+  description: "Suite rooms available with twin or double beds. Packed with all amenities from underfloor heating, dental kits and heaters",
+  bed: [
+    {
+      "@type": "BedDetails",
+      numberOfBeds: 2,
+      typeOfBed: "Twin XL"
+    },
+    {
+      "@type": "BedDetails",
+      numberOfBeds: 1,
+      typeOfBed: "King-Size"
+    }
+  ],
+  occupancy: {
+    "@type": "QuantitativeValue",
+    minValue: 1,
+    maxValue: 3
+  },
+  amenityFeature: [
+    {
+      "@type": "LocationFeatureSpecification",
+      name: "Underfloor Bathroom Heating",
+      value: true
+    },
+    {
+      "@type": "LocationFeatureSpecification",
+      name: "Free WiFi",
+      value: true
+    },
+    {
+      "@type": "LocationFeatureSpecification",
+      name: "Hot Water",
+      value: true
+    },
+    {
+      "@type": "LocationFeatureSpecification",
+      name: "Complimentary Tea/Coffee Station",
+      value: true
+    },
+    {
+      "@type": "LocationFeatureSpecification",
+      name: "Complimentary Toilet Kit",
+      value: true
+    }
+  ],
+  address: {
+    '@type': "PostalAddress",
+    streetAddress: "Chamkhar",
+    addressLocality: "Chhokhor",
+    addressRegion: "Bumthang",
+    addressCountry: "BT",
+    postalCode: "32001"
+  },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: 27.546484,
+    longitude: 90.753263
+  },
+  smokingAllowed: false,
+  numberOfFullBathrooms: 1,
+  containedInPlace: {
+    "@type": "Place",
+    name: "Dekyil Guest House",
+    address: {
+      '@type': "PostalAddress",
+      streetAddress: "Chamkhar",
+      addressLocality: "Chhokhor",
+      addressRegion: "Bumthang",
+      addressCountry: "BT",
+      postalCode: "32001"
+    },
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: 27.546484,
+      longitude: 90.753263
+    }
+  }
+}
 export const DeluxeRoomSchema: WithContext<HotelRoom> = {
   '@context': "https://schema.org",
   "@type": "HotelRoom",

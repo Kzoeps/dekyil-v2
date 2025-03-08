@@ -1,5 +1,6 @@
 import HeroSection from "@/components/hero-section"
 import ImageGrid from "@/components/image-grid"
+import InjectStructuredData from "@/components/inject-structured-data"
 import PriceInfo from "@/components/price-info"
 import SectionTitle from "@/components/section-title"
 import { DeluxeRoomSchema } from "@/lib/constants"
@@ -52,9 +53,7 @@ export const metadata: Metadata = {
 export default function Deluxe() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(DeluxeRoomSchema) }} />
+      <InjectStructuredData data={DeluxeRoomSchema} />
       <main className="relative min-h-screen">
         <HeroSection
           image={DeluxeMainImage}
