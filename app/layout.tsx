@@ -6,53 +6,53 @@ import "./globals.css"
 import { DEFAULT_METADATA } from "@/lib/constants"
 
 const playfair = Playfair_Display({
-    variable: "--font-playfair-display",
-    subsets: ["latin"],
+  variable: "--font-playfair-display",
+  subsets: ["latin"],
 })
 
 const workSans = Work_Sans({
-    variable: "--font-work-sans",
-    subsets: ["latin"],
+  variable: "--font-work-sans",
+  subsets: ["latin"],
 })
 
+const DESCRIPTION = "Experience warm Bhutanese hospitality at Dekyil Guest House, a family-owned, women-led hotel in Bumthang. Enjoy scenic valley views, modern amenities, and a prime location near Chamkhar town. Book your stay for a cozy and memorable retreat!"
 export const metadata: Metadata = {
-    title: {
-        template: "%s | Dekyil Guest House",
-        default: "Dekyil Guest House",
-    },
-    description:
-        "Experience the charm of Dekyil Guest House, offering scenic valley views and authentic Bhutanese cuisine.",
-    keywords:
-        "Dekyil Guest House, family-run hotel, Bumthang accommodations, Chakhar valley views, Bhutanese cuisine",
-    openGraph: {
-        title: "Dekyil Guest House",
-        description: "Dekyil Guest House is a family-run hotel in Bumthang.",
-        type: "website",
-        siteName: "Dekyil Guest House",
-    },
-    twitter: {
-        title: "Dekyil Guest House",
-        description: "Dekyil Guest House is a family-run hotel in Bumthang.",
-        creator: "@kzoeps",
-        card: "summary_large_image",
-    },
-    ...DEFAULT_METADATA,
+  title: {
+    template: "%s | Dekyil Guest House",
+    default: "Dekyil Guest House",
+  },
+  description: DESCRIPTION,
+  keywords:
+    "Dekyil Guest House, family-run hotel, Bumthang accommodations, Chakhar valley views, Bhutanese cuisine",
+  openGraph: {
+    title: "Dekyil Guest House",
+    description: DESCRIPTION,
+    type: "website",
+    siteName: "Dekyil Guest House",
+  },
+  twitter: {
+    title: "Dekyil Guest House",
+    description: DESCRIPTION,
+    creator: "@kzoeps",
+    card: "summary_large_image",
+  },
+  ...DEFAULT_METADATA,
 }
 
 export default function RootLayout({
-    children,
+  children,
 }: Readonly<{
-    children: React.ReactNode
+  children: React.ReactNode
 }>) {
-    return (
-        <html lang="en">
-            <body
-                className={`${playfair.variable} ${workSans.variable} antialiased`}
-            >
-                <MainNav />
-                {children}
-                <Footer />
-            </body>
-        </html>
-    )
+  return (
+    <html lang="en">
+      <body
+        className={`${playfair.variable} ${workSans.variable} antialiased`}
+      >
+        <MainNav />
+        {children}
+        <Footer />
+      </body>
+    </html>
+  )
 }
