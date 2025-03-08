@@ -4,11 +4,10 @@ import { RoomCard } from "@/components/room-card"
 import SectionTitle from "@/components/section-title"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import LiteYoutube from "@/components/ui/lite-youtube"
-import { ROOMS } from "@/lib/constants"
+import { HotelSchema, ROOMS } from "@/lib/constants"
 import DroneImage from "@/public/images/drone.webp"
 import DrukAir from "@/public/images/drukair_logo.webp"
 import { Metadata } from "next"
-import { WithContext, Hotel } from "schema-dts"
 import Image from "next/image"
 
 export const metadata: Metadata = {
@@ -18,73 +17,8 @@ export const metadata: Metadata = {
   keywords:
     "Dekyil Guest House, Hotels in Bumthang, family-run, women-owned, Chamkhar, Bhutan",
   alternates: {
-    canonical: "/",
+    canonical: "https://www.dekyilguesthouse.com/",
   },
-}
-
-const HotelSchema: WithContext<Hotel> = {
-  '@context': "https://schema.org",
-  '@type': "Hotel",
-  name: "Dekyil Guest House",
-  address: {
-    '@type': "PostalAddress",
-    streetAddress: "Chamkhar",
-    addressLocality: "Chhokhor",
-    addressRegion: "Bumthang",
-    addressCountry: "Bhutan",
-    postalCode: "32001"
-  },
-  geo: {
-    "@type": "GeoCoordinates",
-    latitude: 27.546484,
-    longitude: 90.753263
-  },
-  telephone: "+975-17554152",
-  email: "dekyilguesthouse@gmail.com",
-  starRating: {
-    "@type": "Rating",
-    ratingValue: 3,
-    ratingExplanation: "Tourism Council of Bhutan accredits hotels every 2 years. Dekyil Guest House was accredited a 3 star hotel in 2024",
-    author: {
-      "@type": "Organization",
-      name: "Tourism Council Of Bhutan",
-      url: "tourism.gov.bt"
-    }
-  },
-  numberOfRooms: 13,
-  checkinTime: "11:00",
-  checkoutTime: "13:00",
-  petsAllowed: false,
-  currenciesAccepted: "EUR, USD, INR, BTN",
-  paymentAccepted: "Cash, Credit Card",
-  openingHours: "Mo, Tu, We, Th, Fr, Sa, Su 07:00-18:00",
-  amenityFeature: [
-    {
-      "@type": "LocationFeatureSpecification",
-      name: "Free WiFi",
-      value: true
-    },
-    {
-      "@type": "LocationFeatureSpecification",
-      name: "Parking",
-      value: true
-    },
-    {
-      "@type": "LocationFeatureSpecification",
-      name: "Restaurant",
-      value: true
-    }
-  ],
-  aggregateRating: {
-    "@type": "AggregateRating",
-    ratingValue: "5",
-    reviewCount: "47",
-    author: {
-      "@type": "Organization",
-      name: "TripAdvisor",
-      url: "https://www.tripadvisor.com/"
-    }
-  }
 }
 
 export default function Home() {
