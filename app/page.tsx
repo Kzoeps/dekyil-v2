@@ -8,6 +8,7 @@ import { ROOMS } from "@/lib/constants"
 import DroneImage from "@/public/images/drone.webp"
 import DrukAir from "@/public/images/drukair_logo.webp"
 import { Metadata } from "next"
+import { WithContext, Hotel } from "schema-dts"
 import Image from "next/image"
 
 export const metadata: Metadata = {
@@ -21,66 +22,136 @@ export const metadata: Metadata = {
   },
 }
 
+const HotelSchema: WithContext<Hotel> = {
+  '@context': "https://schema.org",
+  '@type': "Hotel",
+  name: "Dekyil Guest House",
+  address: {
+    '@type': "PostalAddress",
+    streetAddress: "Chamkhar",
+    addressLocality: "Chhokhor",
+    addressRegion: "Bumthang",
+    addressCountry: "Bhutan",
+    postalCode: "32001"
+  },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: 27.546484,
+    longitude: 90.753263
+  },
+  telephone: "+975-17554152",
+  email: "dekyilguesthouse@gmail.com",
+  starRating: {
+    "@type": "Rating",
+    ratingValue: 3,
+    ratingExplanation: "Tourism Council of Bhutan accredits hotels every 2 years. Dekyil Guest House was accredited a 3 star hotel in 2024",
+    author: {
+      "@type": "Organization",
+      name: "Tourism Council Of Bhutan",
+      url: "tourism.gov.bt"
+    }
+  },
+  numberOfRooms: 13,
+  checkinTime: "11:00",
+  checkoutTime: "13:00",
+  petsAllowed: false,
+  currenciesAccepted: "EUR, USD, INR, BTN",
+  paymentAccepted: "Cash, Credit Card",
+  openingHours: "Mo, Tu, We, Th, Fr, Sa, Su 07:00-18:00",
+  amenityFeature: [
+    {
+      "@type": "LocationFeatureSpecification",
+      name: "Free WiFi",
+      value: true
+    },
+    {
+      "@type": "LocationFeatureSpecification",
+      name: "Parking",
+      value: true
+    },
+    {
+      "@type": "LocationFeatureSpecification",
+      name: "Restaurant",
+      value: true
+    }
+  ],
+  aggregateRating: {
+    "@type": "AggregateRating",
+    ratingValue: "5",
+    reviewCount: "47",
+    author: {
+      "@type": "Organization",
+      name: "TripAdvisor",
+      url: "https://www.tripadvisor.com/"
+    }
+  }
+}
+
 export default function Home() {
   return (
-    <main className="relative min-h-screen">
-      <HeroSection
-        image={DroneImage}
-        title="Enjoy Bumthang"
-        description="Live with a scenic view of the Bumthang valley"
-      />
-
-      <section className="w-full pt-2 pb-4 bg-gray-50">
-        <Card className="border-none shadow-none bg-gray-50">
-          <CardContent className="flex flex-col items-center space-y-4 p-6">
-            <p className="text-sm font-normal tracking-tight text-muted-foreground">
-              Official hotel partner of
-            </p>
-            <Image
-              src={DrukAir}
-              alt="Drukair - Royal Bhutan Airlines"
-              width={160}
-              className="dark:brightness-200"
-            />
-          </CardContent>
-        </Card>
-      </section>
-      <section className="container mx-auto px-4 py-16">
-        <SectionTitle
-          className="mb-12"
-          title="Our Rooms"
-          description="Choose from our carefully designed rooms"
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(HotelSchema) }} />
+      <main className="relative min-h-screen">
+        <HeroSection
+          image={DroneImage}
+          title="Enjoy Bumthang"
+          description="Live with a scenic view of the Bumthang valley"
         />
-        <div className="flex flex-col sm:flex-row w-full justify-center items-center gap-8 sm:gap-12">
-          {ROOMS.map((room) => (
-            <RoomCard
-              key={room.title}
-              price={<PriceInfo price={room.price} />}
-              title={room.title}
-              image={room.image}
-              href={room.href}
-            />
-          ))}
-        </div>
-      </section>
 
-      <section className="container mx-auto px-4 py-16 max-w-[700px]">
-        <Card className="rounded-none">
-          <CardHeader className="py-2 md:p-6">
-            <CardTitle className="text-center font-playfair text-2xl font-bold">
-              How to Find Us
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="p-2 md:p-6">
-            <div className="aspect-video overflow-hidden rounded-lg bg-muted">
-              <LiteYoutube
-                videoId="3KrwGtUJSm8"
-                title="Video for directions to dekyil"
+        <section className="w-full pt-2 pb-4 bg-gray-50">
+          <Card className="border-none shadow-none bg-gray-50">
+            <CardContent className="flex flex-col items-center space-y-4 p-6">
+              <p className="text-sm font-normal tracking-tight text-muted-foreground">
+                Official hotel partner of
+              </p>
+              <Image
+                src={DrukAir}
+                alt="Drukair - Royal Bhutan Airlines"
+                width={160}
+                className="dark:brightness-200"
               />
-            </div>
-          </CardContent>
-        </Card>
-      </section>
-    </main>
+            </CardContent>
+          </Card>
+        </section>
+        <section className="container mx-auto px-4 py-16">
+          <SectionTitle
+            className="mb-12"
+            title="Our Rooms"
+            description="Choose from our carefully designed rooms"
+          />
+          <div className="flex flex-col sm:flex-row w-full justify-center items-center gap-8 sm:gap-12">
+            {ROOMS.map((room) => (
+              <RoomCard
+                key={room.title}
+                price={<PriceInfo price={room.price} />}
+                title={room.title}
+                image={room.image}
+                href={room.href}
+              />
+            ))}
+          </div>
+        </section>
+
+        <section className="container mx-auto px-4 py-16 max-w-[700px]">
+          <Card className="rounded-none">
+            <CardHeader className="py-2 md:p-6">
+              <CardTitle className="text-center font-playfair text-2xl font-bold">
+                How to Find Us
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="p-2 md:p-6">
+              <div className="aspect-video overflow-hidden rounded-lg bg-muted">
+                <LiteYoutube
+                  videoId="3KrwGtUJSm8"
+                  title="Video for directions to dekyil"
+                />
+              </div>
+            </CardContent>
+          </Card>
+        </section>
+      </main>
+    </>
   )
 }
