@@ -1,6 +1,6 @@
 import React from "react"
 export interface InjectStructuredDataProps {
-  data: Record<string, any>
+  data: Record<string, unknown>
 }
 export default function InjectStructuredData({ data }: InjectStructuredDataProps) {
   return (
