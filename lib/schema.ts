@@ -321,6 +321,5 @@ export const HotelSchema: WithContext<Hotel> = {
   keywords: "hotels in bumthang, dekyil guest house, chamkhar, bumthang, bhutan, guest house in bumthang",
   slogan: "Hospitality is our speciality",
   image: "https://www.dekyilguesthouse.com/images/drone.webp",
-  photo: "https://www.dekyilguesthouse.com/images/drone.webp",
   logo: "https://www.dekyilguesthouse.com/images/logo.webp"
 }
