@@ -56,6 +56,8 @@ export default function Deluxe() {
       <InjectStructuredData data={[DeluxeRoomSchema, DeluxeBreadCrumb]} />
       <main className="relative min-h-screen">
         <HeroSection
+          imageAlt="A shot of twin deluxe bed room with Jakar Dzong in the background"
+          imageTitle="Dekyil Deluxe"
           image={DeluxeMainImage}
           title="Deluxe Room"
           description="Our hotel rooms"

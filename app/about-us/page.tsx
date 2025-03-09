@@ -21,6 +21,8 @@ export default function AboutUsPage() {
       <InjectStructuredData data={AboutUsSchema} />
       <main className="relative min-h-screen">
         <HeroSection
+          imageAlt="Scenic shot of Chamkhar valley from Dekyil"
+          imageTitle="Chamkhar Valley"
           image={FrontImage}
           title="About Us"
           description="Get to know us"

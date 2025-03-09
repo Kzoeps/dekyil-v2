@@ -17,12 +17,14 @@ export const PIPE_DEKYIL = "| Dekyil Guest House"
 export const ROOMS = [
   {
     title: "Suite Room",
+    alt: "Picture of the suite room",
     price: "6500",
     image: Suite,
     href: "/rooms/suite",
   },
   {
     title: "Deluxe Room",
+    alt: "Picture of the deluxe room",
     price: "4500",
     image: Deluxe,
     href: "/rooms/deluxe",

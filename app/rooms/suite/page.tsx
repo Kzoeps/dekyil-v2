@@ -82,6 +82,8 @@ export default function SuitePage() {
       <InjectStructuredData data={[SuiteRoomSchema, SuiteBreadCrumb]} />
       <main className="relative min-h-screen">
         <HeroSection
+          imageAlt="A fish eye shot of the twin suite at Dekyil"
+          imageTitle="Dekyil Suites"
           image={SuiteRoomPano}
           title="Our Suite Room"
           description="Dekyil Rooms"

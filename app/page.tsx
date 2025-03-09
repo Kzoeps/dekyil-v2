@@ -30,6 +30,8 @@ export default function Home() {
       <main className="relative min-h-screen">
         <HeroSection
           image={DroneImage}
+          imageAlt="Drone shot of Dekyil Guest House"
+          imageTitle="Dekyil Guest House"
           title="Enjoy Bumthang"
           description="Live with a scenic view of the Bumthang valley"
         />
@@ -42,7 +44,8 @@ export default function Home() {
               </p>
               <Image
                 src={DrukAir}
-                alt="Drukair - Royal Bhutan Airlines"
+                title="Drukair - Royal Bhutan Airlines"
+                alt="Drukair - Royal Bhutan Airlines Logo"
                 width={160}
                 className="dark:brightness-200"
               />
@@ -59,6 +62,7 @@ export default function Home() {
             {ROOMS.map((room) => (
               <RoomCard
                 key={room.title}
+                alt={room.alt}
                 price={<PriceInfo price={room.price} />}
                 title={room.title}
                 image={room.image}

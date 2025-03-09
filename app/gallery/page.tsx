@@ -12,71 +12,73 @@ import { Metadata } from "next"
 import { PIPE_DEKYIL } from "@/lib/constants"
 
 const GALLERY_IMAGES = [
-    {
-        src: NightShot,
-        alt: "Night view of Dekyil Hotel",
-    },
-    {
-        src: FlowersShot,
-        alt: "Flowers in Dekyil Hotel",
-    },
-    {
-        src: ConfShot,
-        alt: "Conference room at Dekyil Hotel",
-    },
-    {
-        src: ViewShot,
-        alt: "View from Dekyil Hotel",
-    },
-    {
-        src: TeaCupShot,
-        alt: "Tea cup view from Dekyil Hotel",
-    },
-    {
-        src: SceneWithWireShot,
-        alt: "Scene with wire at Dekyil Hotel",
-    },
+  {
+    src: NightShot,
+    alt: "Night view of Dekyil Hotel",
+  },
+  {
+    src: FlowersShot,
+    alt: "Flowers in Dekyil Hotel",
+  },
+  {
+    src: ConfShot,
+    alt: "Conference room at Dekyil Hotel",
+  },
+  {
+    src: ViewShot,
+    alt: "View from Dekyil Hotel",
+  },
+  {
+    src: TeaCupShot,
+    alt: "Tea cup view from Dekyil Hotel",
+  },
+  {
+    src: SceneWithWireShot,
+    alt: "Scene with wire at Dekyil Hotel",
+  },
 ]
 
 enum GalleryMetadata {
-    Title = `Gallery ${PIPE_DEKYIL}`,
-    Description = "A picture collection of all things Dekyil, Chamkhar, Bumthang & Bhutan",
+  Title = `Gallery ${PIPE_DEKYIL}`,
+  Description = "A picture collection of all things Dekyil, Chamkhar, Bumthang & Bhutan",
 }
 
 export const metadata: Metadata = {
-    title: "Gallery",
-    description: GalleryMetadata.Description,
-    keywords:
-        "Dekyil Guest House, Gallery, Bumthang, Bhutan, Bumthang Pictures, Chamkhar Valley",
-    alternates: {
-        canonical: "/gallery",
-    },
+  title: "Gallery",
+  description: GalleryMetadata.Description,
+  keywords:
+    "Dekyil Guest House, Gallery, Bumthang, Bhutan, Bumthang Pictures, Chamkhar Valley",
+  alternates: {
+    canonical: "/gallery",
+  },
 }
 
 export default function GalleryPage() {
-    return (
-        <main className="relative min-h-screen">
-            <HeroSection
-                image={SuiteShot}
-                title="The Gallery"
-                description="Food. rooms. scenes. dekyil."
-            />
-            <section className="pb-8">
-                <SectionTitle
-                    title="The Gallery"
-                    description={
-                        <p className="text-muted-foreground mt-6">
-                            The Gallery is a picture collection of all things{" "}
-                            <br />
-                            <span className="font-bold italic text-blue-400">
-                                Dekyil.
-                            </span>
-                        </p>
-                    }
-                    className="mb-6 py-8"
-                />
-                <ImageGrid images={GALLERY_IMAGES} />
-            </section>
-        </main>
-    )
+  return (
+    <main className="relative min-h-screen">
+      <HeroSection
+        image={SuiteShot}
+        imageAlt="A fisheye shot of the twin suite room"
+        imageTitle="Dekyil Suites"
+        title="The Gallery"
+        description="Food. rooms. scenes. dekyil."
+      />
+      <section className="pb-8">
+        <SectionTitle
+          title="The Gallery"
+          description={
+            <p className="text-muted-foreground mt-6">
+              The Gallery is a picture collection of all things{" "}
+              <br />
+              <span className="font-bold italic text-blue-400">
+                Dekyil.
+              </span>
+            </p>
+          }
+          className="mb-6 py-8"
+        />
+        <ImageGrid images={GALLERY_IMAGES} />
+      </section>
+    </main>
+  )
 }

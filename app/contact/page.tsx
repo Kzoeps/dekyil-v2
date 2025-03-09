@@ -24,6 +24,8 @@ export default function ContactPage() {
     <main className="relative min-h-screen">
       <HeroSection
         image={View}
+        imageAlt="A tea cup set in the foreground, with Chamkhar Valley in the background"
+        imageTitle="Views from Dekyil"
         title="Get In Touch"
         description="Chat with us"
       />
