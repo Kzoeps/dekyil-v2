@@ -134,7 +134,8 @@ export default function ContactPage() {
                 <div className="relative aspect-video overflow-hidden rounded-md">
                   <Image
                     src={CupFlowerView}
-                    alt="Scenic view from Dekyl Guest House"
+                    alt="Scenic view from Dekyil Guest House"
+                    title="Dekyil Views"
                     fill
                     className="object-cover"
                   />
