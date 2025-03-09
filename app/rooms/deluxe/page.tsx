@@ -3,7 +3,7 @@ import ImageGrid from "@/components/image-grid"
 import InjectStructuredData from "@/components/inject-structured-data"
 import PriceInfo from "@/components/price-info"
 import SectionTitle from "@/components/section-title"
-import { DeluxeRoomSchema } from "@/lib/constants"
+import { DeluxeRoomSchema } from "@/lib/schema"
 import DeluxeMainImage from "@/public/images/room-205/deluxe-205-main.webp"
 import { Metadata } from "next"
 

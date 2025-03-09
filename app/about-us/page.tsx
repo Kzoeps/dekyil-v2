@@ -1,5 +1,7 @@
 import AboutSection from "@/components/about-section"
 import HeroSection from "@/components/hero-section"
+import InjectStructuredData from "@/components/inject-structured-data"
+import { AboutUsSchema } from "@/lib/schema"
 import FrontImage from "@/public/images/sceneWire.webp"
 import { Metadata } from "next"
 
@@ -15,13 +17,16 @@ export const metadata: Metadata = {
 
 export default function AboutUsPage() {
   return (
-    <main className="relative min-h-screen">
-      <HeroSection
-        image={FrontImage}
-        title="About Us"
-        description="Get to know us"
-      />
-      <AboutSection />
-    </main>
+    <>
+      <InjectStructuredData data={AboutUsSchema} />
+      <main className="relative min-h-screen">
+        <HeroSection
+          image={FrontImage}
+          title="About Us"
+          description="Get to know us"
+        />
+        <AboutSection />
+      </main>
+    </>
   )
 }
