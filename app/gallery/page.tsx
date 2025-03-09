@@ -15,26 +15,32 @@ const GALLERY_IMAGES = [
   {
     src: NightShot,
     alt: "Night view of Dekyil Hotel",
+    title: "Dekyil"
   },
   {
     src: FlowersShot,
     alt: "Flowers in Dekyil Hotel",
+    title: "Dekyil Flowers"
   },
   {
     src: ConfShot,
     alt: "Conference room at Dekyil Hotel",
+    title: "Dekyil Conference"
   },
   {
     src: ViewShot,
     alt: "View from Dekyil Hotel",
+    title: "Dekyil"
   },
   {
     src: TeaCupShot,
     alt: "Tea cup view from Dekyil Hotel",
+    title: "Dekyil view"
   },
   {
     src: SceneWithWireShot,
     alt: "Scene with wire at Dekyil Hotel",
+    title: "Dekyil view"
   },
 ]
 

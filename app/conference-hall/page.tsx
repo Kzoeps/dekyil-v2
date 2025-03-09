@@ -15,26 +15,32 @@ const CONFERENCE_HALL_IMAGES = [
   {
     src: ConfereceFront,
     alt: "Conference Hall From Outside Night Shot",
+    title: "Dekyil Conference"
   },
   {
     src: ConferencePano,
     alt: "Conference Hall Panoramic Shot from the back",
+    title: "Dekyil Conference"
   },
   {
     src: ConferecePano2,
     alt: "Conference Hall Panoramic Shot from the front",
+    title: "Dekyil Conference"
   },
   {
     src: ConferenceSingle,
     alt: "Conference Hall View",
+    title: "Dekyil Conference"
   },
   {
     src: ConferenceSingle2,
     alt: "Conference Hall View",
+    title: "Dekyil Conference"
   },
   {
     src: ConferenceOutside2,
     alt: "Conference Hall and Hotel outside view night shot",
+    title: "Dekyil Conference"
   },
 ]
 

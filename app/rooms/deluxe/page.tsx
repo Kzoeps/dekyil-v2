@@ -10,30 +10,36 @@ import { Metadata } from "next"
 const ROOM_205_IMAGES = [
   {
     src: "/images/room-205/deluxe_205_corner_view.webp",
-    alt: "Room 205 view 1",
+    alt: "Dekyil Deluxe 205 corner view of the twin beds",
+    title: "Room 205"
   },
   {
     src: "/images/room-205/deluxe_205_jakar_view.webp",
-    alt: "Room 205 view 2",
+    alt: "Dekyil Deluxe 205 corner view of the twin beds with Jakar Dzong in the background",
+    title: "Room 205"
   },
   {
     src: "/images/room-205/deluxe_205.webp",
-    alt: "Room 205 view 3",
+    alt: "Dekyil Deluxe 205 upper shot of the twin beds",
+    title: "Room 205"
   },
   {
     src: "/images/room-205/deluxe-205-main.webp",
-    alt: "Room 205 view 4",
+    alt: "A sunny shot of room 205 with Jakar Dzong in the backdrop",
+    title: "Room 205"
   },
 ]
 
 const ROOM_207_IMAGES = [
   {
     src: "/images/room-207/room_207_bed.webp",
-    alt: "Room 207 view 1",
+    alt: "A shot of the double bed from the bottom of the bed frame",
+    title: "Room 207"
   },
   {
     src: "/images/room-207/room_207.webp",
-    alt: "Room 207 view 2",
+    alt: "A shot of room 207 with double bed in the foreground and Jakar Dzong in the background",
+    title: "Room 207"
   },
 ]
 

@@ -9,61 +9,74 @@ import { Metadata } from "next"
 const ROOM_203_IMAGES = [
   {
     src: "/images/room-203/suite_203_pano.webp",
-    alt: "Room 203 view 1",
+    alt: "A fish eye shot of Room 203 featuring the twin beds and the sofa lounge area",
+    title: "Room 203"
   },
   {
     src: "/images/room-203/suite_203_outside.webp",
-    alt: "Room 203 view 2",
+    alt: "A shot of the divider between the room and lounge area featuring drukpa windows",
+    title: "Room 203"
   },
   {
     src: "/images/room-203/suite_twin.webp",
-    alt: "Room 203 view 3",
+    alt: "A shot from the corner featuring the twin beds and the reading lamps",
+    title: "Room 203"
   },
   {
     src: "/images/room-203/twin_suite_203_overview.webp",
-    alt: "Room 203 view 4",
+    alt: "A fish eye shot of Room 203 featuring the twin beds and the sofa lounge area",
+    title: "Room 203"
   },
   {
     src: "/images/room-203/twin_suite_203.webp",
-    alt: "Room 203 view 5",
+    alt: "A fish eye shot of Room 203 from the front featuring the twin beds, wardrobe and luggage area",
+    title: "Room 203"
   },
 ]
 
 const ROOM_202_IMAGES = [
   {
     src: "/images/room-202/room_202_scenery.webp",
-    alt: "Room 202 view 1",
+    alt: "A shot of the view from the bed of room 202, featuring the chamkhar valley in the background",
+    title: "Room 202"
   },
   {
     src: "/images/room-202/room_202_view.webp",
-    alt: "Room 202 view 2",
+    alt: "Shot of the chamkhar valley from the lounge area in 203",
+    title: "Room 202"
   },
   {
     src: "/images/room-202/suite_202_corner_view.webp",
-    alt: "Room 202 view 3",
+    alt: "A shot of the queen sized bed and the lounge area in the background",
+    title: "Room 202"
   },
 ]
 
 const SUITE_BATHROOM_IMAGES = [
   {
     src: "/images/suite_bathroom/bathoroom_204.webp",
-    alt: "Bathroom view 1",
+    alt: "A shot of the bathtub and the sink",
+    title: "204 Bathroom"
   },
   {
     src: "/images/suite_bathroom/bathroom_202.webp",
-    alt: "Bathroom view 2",
+    alt: "Shower area and the sink along with the toilet pot",
+    title: "204 Bathroom"
   },
   {
     src: "/images/suite_bathroom/bathroom.webp",
-    alt: "Bathroom view 3",
+    alt: "A shot of the sink and the pot with toiletries",
+    title: "204 Bathroom"
   },
   {
     src: "/images/suite_bathroom/Bathtub.webp",
-    alt: "Bathroom view 4",
+    alt: "A shot of the bathtub and toilet pot",
+    title: "204 Bathroom"
   },
   {
     src: "/images/suite_bathroom/room_204_bathroom.webp",
-    alt: "Bathroom view 5",
+    alt: "A mirror shot of the sink and the bathroom tiles",
+    title: "204 Bathroom"
   },
 ]
 
