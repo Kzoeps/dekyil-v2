@@ -1,4 +1,4 @@
-import { LocalBusiness, WithContext } from "schema-dts";
+import { Hotel, HotelRoom, LocalBusiness, PostalAddress, WithContext } from "schema-dts";
 
 export const AboutUsSchema: WithContext<LocalBusiness> = {
   "@context": "https://schema.org",
@@ -190,18 +190,20 @@ export const DeluxeRoomSchema: WithContext<HotelRoom> = {
   }
 }
 
+const Addy: PostalAddress = {
+  '@type': "PostalAddress",
+  streetAddress: "Chamkhar",
+  addressLocality: "Chhokhor",
+  addressRegion: "Bumthang",
+  addressCountry: "BT",
+  postalCode: "32001"
+}
+
 export const HotelSchema: WithContext<Hotel> = {
   '@context': "https://schema.org",
   '@type': "Hotel",
   name: "Dekyil Guest House",
-  address: {
-    '@type': "PostalAddress",
-    streetAddress: "Chamkhar",
-    addressLocality: "Chhokhor",
-    addressRegion: "Bumthang",
-    addressCountry: "BT",
-    postalCode: "32001"
-  },
+  address: Addy,
   geo: {
     "@type": "GeoCoordinates",
     latitude: 27.546484,
@@ -222,10 +224,12 @@ export const HotelSchema: WithContext<Hotel> = {
   numberOfRooms: 13,
   checkinTime: "11:00",
   checkoutTime: "13:00",
+  availableLanguage: "en, dz, hi, ne",
   petsAllowed: false,
   currenciesAccepted: "EUR, USD, INR, BTN",
   paymentAccepted: "Cash, Credit Card",
   openingHours: "Mo, Tu, We, Th, Fr, Sa, Su 07:00-18:00",
+  priceRange: "$50 - $100",
   amenityFeature: [
     {
       "@type": "LocationFeatureSpecification",
@@ -307,6 +311,16 @@ export const HotelSchema: WithContext<Hotel> = {
       url: "https://www.tripadvisor.com/"
     }
   },
-  priceRange: "$50 - $100",
-  image: "https://www.dekyilguesthouse.com/images/drone.webp"
+  contactPoint: {
+    '@type': "ContactPoint",
+    name: "Kinley Gyem",
+    email: "dekyilguesthouse@gmail.com",
+    telephone: "+975-17554152"
+  },
+  location: Addy,
+  keywords: "hotels in bumthang, dekyil guest house, chamkhar, bumthang, bhutan, guest house in bumthang",
+  slogan: "Hospitality is our speciality",
+  image: "https://www.dekyilguesthouse.com/images/drone.webp",
+  photo: "https://www.dekyilguesthouse.com/images/drone.webp",
+  logo: "https://www.dekyilguesthouse.com/images/logo.webp"
 }
