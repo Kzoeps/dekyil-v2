@@ -1,7 +1,6 @@
 import Suite from "@/public/images/suite.webp"
 import Deluxe from "@/public/images/deluxe.webp"
 import { Metadata } from "next"
-import { Hotel, HotelRoom, Organization, WithContext } from "schema-dts"
 
 export enum DekyilInformation {
   PHONE_ACHI = "+975-17-55-41-52",
