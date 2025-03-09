@@ -3,7 +3,7 @@ import ImageGrid from "@/components/image-grid"
 import InjectStructuredData from "@/components/inject-structured-data"
 import PriceInfo from "@/components/price-info"
 import SectionTitle from "@/components/section-title"
-import { DeluxeRoomSchema } from "@/lib/schema"
+import { DeluxeBreadCrumb, DeluxeRoomSchema } from "@/lib/schema"
 import DeluxeMainImage from "@/public/images/room-205/deluxe-205-main.webp"
 import { Metadata } from "next"
 
@@ -53,7 +53,7 @@ export const metadata: Metadata = {
 export default function Deluxe() {
   return (
     <>
-      <InjectStructuredData data={DeluxeRoomSchema} />
+      <InjectStructuredData data={[DeluxeRoomSchema, DeluxeBreadCrumb]} />
       <main className="relative min-h-screen">
         <HeroSection
           image={DeluxeMainImage}

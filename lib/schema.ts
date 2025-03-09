@@ -1,4 +1,4 @@
-import { Hotel, HotelRoom, LocalBusiness, PostalAddress, WithContext } from "schema-dts";
+import { BreadcrumbList, Hotel, HotelRoom, LocalBusiness, PostalAddress, WithContext } from "schema-dts";
 
 export const AboutUsSchema: WithContext<LocalBusiness> = {
   "@context": "https://schema.org",
@@ -106,6 +106,44 @@ export const SuiteRoomSchema: WithContext<HotelRoom> = {
       longitude: 90.753263
     }
   }
+}
+
+export const DeluxeBreadCrumb: WithContext<BreadcrumbList> = {
+  '@context': "https://schema.org",
+  '@type': "BreadcrumbList",
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "Rooms",
+      item: "https://www.dekyilguesthouse.com/rooms"
+    },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "Deluxe Room",
+    }
+  ]
+
+}
+
+export const SuiteBreadCrumb: WithContext<BreadcrumbList> = {
+  '@context': "https://schema.org",
+  '@type': "BreadcrumbList",
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "Rooms",
+      item: "https://www.dekyilguesthouse.com/rooms"
+    },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "Suite Room",
+    }
+  ]
+
 }
 export const DeluxeRoomSchema: WithContext<HotelRoom> = {
   '@context': "https://schema.org",

@@ -3,7 +3,7 @@ import ImageGrid from "@/components/image-grid"
 import InjectStructuredData from "@/components/inject-structured-data"
 import PriceInfo from "@/components/price-info"
 import SectionTitle from "@/components/section-title"
-import { SuiteRoomSchema } from "@/lib/schema"
+import { SuiteBreadCrumb, SuiteRoomSchema } from "@/lib/schema"
 import SuiteRoomPano from "@/public/images/room-203/suite_203_pano.webp"
 import { Metadata } from "next"
 const ROOM_203_IMAGES = [
@@ -79,7 +79,7 @@ export const metadata: Metadata = {
 export default function SuitePage() {
   return (
     <>
-      <InjectStructuredData data={SuiteRoomSchema} />
+      <InjectStructuredData data={[SuiteRoomSchema, SuiteBreadCrumb]} />
       <main className="relative min-h-screen">
         <HeroSection
           image={SuiteRoomPano}
