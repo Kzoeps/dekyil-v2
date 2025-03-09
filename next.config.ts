@@ -46,6 +46,11 @@ module.exports = {
         source: '/gallery.html',
         destination: '/gallery',
         permanent: true
+      },
+      {
+        source: '/about',
+        destination: '/about-us',
+        permanent: true
       }
     ]
   }
