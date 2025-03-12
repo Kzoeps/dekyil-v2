@@ -42,12 +42,15 @@ export default function AboutSection() {
 
           <div className="space-y-4 text-muted-foreground">
             <p>
-              Dekyil Guest House is a family owned and run hotel
+              Dekyil Guest House is a family owned and women-run hotel
               located in the heart of Bumthang and features a
               scenic view of the Bumthang valley and the Jakar
               Dzong. It is ideally located within walking distance
               of Chamkhar downtown area to indulge in souvenir
               shopping or a stroll around town.
+            </p>
+            <p>
+              A mother & daughter duo own and run the hotel, and make sure all guests feel at home while being away from home
             </p>
             <p>
               The rooms are equipped with modern amenities

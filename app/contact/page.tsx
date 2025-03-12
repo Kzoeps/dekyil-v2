@@ -105,7 +105,7 @@ export default function ContactPage() {
               </CardHeader>
               <CardContent>
                 <p className="mb-4 ">
-                  Dekyl Guest House is nestled in the heart of
+                  Dekyil Guest House is nestled in the heart of
                   Chamkhar Town, Bumthang offering a perfect
                   blend of traditional Bhutanese hospitality
                   and modern comfort. Our location provides
