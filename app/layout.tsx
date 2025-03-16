@@ -4,6 +4,7 @@ import type { Metadata } from "next"
 import { Playfair_Display, Work_Sans } from "next/font/google"
 import "./globals.css"
 import { DEFAULT_METADATA } from "@/lib/constants"
+import Script from "next/script"
 
 const playfair = Playfair_Display({
   variable: "--font-playfair-display",
@@ -52,6 +53,7 @@ export default function RootLayout({
         <MainNav />
         {children}
         <Footer />
+        <Script strategy="lazyOnload" src="https://cloud.umami.is/script.js" data-website-id="8ae11a5f-9215-4721-94c6-4c4b86a88394" />
       </body>
     </html>
   )
