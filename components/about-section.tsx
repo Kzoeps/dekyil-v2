@@ -1,5 +1,5 @@
-import DeluxeImage from "@/public/images/deluxe.webp"
 import FlowersImage from "@/public/images/flowers.webp"
+import MotherDaughterImage from "@/public/images/mother-daughter-duo.webp"
 import Image from "next/image"
 
 export default function AboutSection() {
@@ -10,21 +10,20 @@ export default function AboutSection() {
           {/* Main larger image */}
           <div className="absolute left-0 top-0 w-[85%] h-full">
             <Image
-              src={DeluxeImage}
-              alt="Hotel room interior with wooden walls and pendant lighting and jakar dzong in the background"
+              src={FlowersImage}
+              alt="Pink flowers at dekyil"
+              title="Dekyil Flowers"
               className="shadow-lg object-cover"
-              title="Dekyil Deluxe"
               fill
               sizes="(max-width: 768px) 100vw, 50vw"
-              priority
             />
           </div>
           {/* Smaller overlapping image */}
           <div className="absolute right-0 border-white border-4 -bottom-1/4 md:-bottom-8 w-[50%] h-[50%] md:h-[65%]">
             <Image
-              src={FlowersImage}
-              alt="Pink flowers at dekyil"
-              title="Dekyil Flowers"
+              src={MotherDaughterImage}
+              alt="An image of karma (mother) & kinley(daughter) with guests "
+              title="Mother daughter duo"
               className="shadow-lg object-cover"
               fill
               sizes="(max-width: 768px) 33vw, 20vw"

@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   },
   description: DESCRIPTION,
   keywords:
-    "Dekyil Guest House, family-run hotel, Bumthang accommodations, Chakhar valley views, Bhutanese cuisine",
+    "Dekyil Guest House, family-run hotel, women-led hotel, Bumthang accommodations, Chakhar valley views, Bhutanese cuisine",
   openGraph: {
     title: "Dekyil Guest House",
     description: DESCRIPTION,
