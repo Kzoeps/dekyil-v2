@@ -52,6 +52,24 @@ const ROOM_202_IMAGES = [
   },
 ]
 
+const ROOM_204_IMAGES = [
+  {
+    src: "/images/room-204/room_204_bed.webp",
+    alt: "A shot of the queen sized bed and the carpet in the foreground",
+    title: "Room 204"
+  },
+  {
+    src: "/images/room-204/room_204_lounge.webp",
+    alt: "A shot of the lounge area in 204 with the sofa in the foreground",
+    title: "Room 204"
+  },
+  {
+    src: "/images/room-204/room_204_bathroom_fishey.webp",
+    alt: "A fish eye shot of the bathroom featuring the bathtub and the sink",
+    title: "Room 204"
+  }
+]
+
 const SUITE_BATHROOM_IMAGES = [
   {
     src: "/images/suite_bathroom/bathoroom_204.webp",
@@ -78,6 +96,11 @@ const SUITE_BATHROOM_IMAGES = [
     alt: "A mirror shot of the sink and the bathroom tiles",
     title: "204 Bathroom"
   },
+  {
+    src: "/images/suite_bathroom/room_204_bathroom_faucet.webp",
+    alt: "A shot of the faucet and the bathtub",
+    title: "204 Bathroom"
+  }
 ]
 
 export const metadata: Metadata = {
@@ -115,6 +138,7 @@ export default function SuitePage() {
             bathroom also make for a delightful surprise in the freezing
             winters of Bumthang.
           </p>
+          <ImageGrid images={ROOM_204_IMAGES} title="Room 204" />
           <ImageGrid images={ROOM_203_IMAGES} title="Room 203" />
           <ImageGrid images={ROOM_202_IMAGES} title="Room 202" />
           <ImageGrid images={SUITE_BATHROOM_IMAGES} title="Bathroom" />
