@@ -3,106 +3,10 @@ import ImageGrid from "@/components/image-grid"
 import InjectStructuredData from "@/components/inject-structured-data"
 import PriceInfo from "@/components/price-info"
 import SectionTitle from "@/components/section-title"
+import { ROOM_204_IMAGES, ROOM_203_IMAGES, ROOM_202_IMAGES, SUITE_BATHROOM_IMAGES } from "@/lib/image_constants"
 import { SuiteBreadCrumb, SuiteRoomSchema } from "@/lib/schema"
 import SuiteRoomPano from "@/public/images/room-203/suite_203_pano.webp"
 import { Metadata } from "next"
-const ROOM_203_IMAGES = [
-  {
-    src: "/images/room-203/suite_203_pano.webp",
-    alt: "A fish eye shot of Room 203 featuring the twin beds and the sofa lounge area",
-    title: "Room 203"
-  },
-  {
-    src: "/images/room-203/suite_203_outside.webp",
-    alt: "A shot of the divider between the room and lounge area featuring drukpa windows",
-    title: "Room 203"
-  },
-  {
-    src: "/images/room-203/suite_twin.webp",
-    alt: "A shot from the corner featuring the twin beds and the reading lamps",
-    title: "Room 203"
-  },
-  {
-    src: "/images/room-203/twin_suite_203_overview.webp",
-    alt: "A fish eye shot of Room 203 featuring the twin beds and the sofa lounge area",
-    title: "Room 203"
-  },
-  {
-    src: "/images/room-203/twin_suite_203.webp",
-    alt: "A fish eye shot of Room 203 from the front featuring the twin beds, wardrobe and luggage area",
-    title: "Room 203"
-  },
-]
-
-const ROOM_202_IMAGES = [
-  {
-    src: "/images/room-202/room_202_scenery.webp",
-    alt: "A shot of the view from the bed of room 202, featuring the chamkhar valley in the background",
-    title: "Room 202"
-  },
-  {
-    src: "/images/room-202/room_202_view.webp",
-    alt: "Shot of the chamkhar valley from the lounge area in 203",
-    title: "Room 202"
-  },
-  {
-    src: "/images/room-202/suite_202_corner_view.webp",
-    alt: "A shot of the queen sized bed and the lounge area in the background",
-    title: "Room 202"
-  },
-]
-
-const ROOM_204_IMAGES = [
-  {
-    src: "/images/room-204/room_204_bed.webp",
-    alt: "A shot of the queen sized bed and the carpet in the foreground",
-    title: "Room 204"
-  },
-  {
-    src: "/images/room-204/room_204_lounge.webp",
-    alt: "A shot of the lounge area in 204 with the sofa in the foreground",
-    title: "Room 204"
-  },
-  {
-    src: "/images/room-204/room_204_bathroom_fishey.webp",
-    alt: "A fish eye shot of the bathroom featuring the bathtub and the sink",
-    title: "Room 204"
-  }
-]
-
-const SUITE_BATHROOM_IMAGES = [
-  {
-    src: "/images/suite_bathroom/bathoroom_204.webp",
-    alt: "A shot of the bathtub and the sink",
-    title: "204 Bathroom"
-  },
-  {
-    src: "/images/suite_bathroom/bathroom_202.webp",
-    alt: "Shower area and the sink along with the toilet pot",
-    title: "204 Bathroom"
-  },
-  {
-    src: "/images/suite_bathroom/bathroom.webp",
-    alt: "A shot of the sink and the pot with toiletries",
-    title: "204 Bathroom"
-  },
-  {
-    src: "/images/suite_bathroom/Bathtub.webp",
-    alt: "A shot of the bathtub and toilet pot",
-    title: "204 Bathroom"
-  },
-  {
-    src: "/images/suite_bathroom/room_204_bathroom.webp",
-    alt: "A mirror shot of the sink and the bathroom tiles",
-    title: "204 Bathroom"
-  },
-  {
-    src: "/images/suite_bathroom/room_204_bathroom_faucet.webp",
-    alt: "A shot of the faucet and the bathtub",
-    title: "204 Bathroom"
-  }
-]
-
 export const metadata: Metadata = {
   title: "Suite Room",
   description: "Stay in our Suite Rooms at Dekyil Guest House, a family-run, women-led hotel in Bumthang. Enjoy modern comforts, under-floor heated bathrooms, and stunning valley views—all within walking distance of Chamkhar town. Book your stay today!",
