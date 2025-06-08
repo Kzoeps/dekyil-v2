@@ -6,42 +6,7 @@ import SectionTitle from "@/components/section-title"
 import { DeluxeBreadCrumb, DeluxeRoomSchema } from "@/lib/schema"
 import DeluxeMainImage from "@/public/images/room-205/deluxe-205-main.webp"
 import { Metadata } from "next"
-
-const ROOM_205_IMAGES = [
-  {
-    src: "/images/room-205/deluxe_205_corner_view.webp",
-    alt: "Dekyil Deluxe 205 corner view of the twin beds",
-    title: "Room 205"
-  },
-  {
-    src: "/images/room-205/deluxe_205_jakar_view.webp",
-    alt: "Dekyil Deluxe 205 corner view of the twin beds with Jakar Dzong in the background",
-    title: "Room 205"
-  },
-  {
-    src: "/images/room-205/deluxe_205.webp",
-    alt: "Dekyil Deluxe 205 upper shot of the twin beds",
-    title: "Room 205"
-  },
-  {
-    src: "/images/room-205/deluxe-205-main.webp",
-    alt: "A sunny shot of room 205 with Jakar Dzong in the backdrop",
-    title: "Room 205"
-  },
-]
-
-const ROOM_207_IMAGES = [
-  {
-    src: "/images/room-207/room_207_bed.webp",
-    alt: "A shot of the double bed from the bottom of the bed frame",
-    title: "Room 207"
-  },
-  {
-    src: "/images/room-207/room_207.webp",
-    alt: "A shot of room 207 with double bed in the foreground and Jakar Dzong in the background",
-    title: "Room 207"
-  },
-]
+import { ROOM_205_IMAGES, ROOM_207_IMAGES } from "@/lib/image_constants"
 
 const DELUXE_DESC =
   "The deluxe room at Dekyil offers a comfortable and cosy experience. The rooms feature a backdrop of the Jakar Dzong and also modern amenities such as floor heating in the bathroom, double glazed windows and more to make sure your stay at Dekyil feels just like home."
