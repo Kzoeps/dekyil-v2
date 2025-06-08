@@ -15,12 +15,12 @@ import { PIPE_DEKYIL } from "@/lib/constants"
 const GALLERY_IMAGES = [
   {
     src: NightShot,
-    alt: "Night view of Dekyil Hotel",
+    alt: "Night view of Dekyil Guest House",
     title: "Dekyil"
   },
   {
     src: FlowersShot,
-    alt: "Flowers in Dekyil Hotel",
+    alt: "Flowers from Dekyil",
     title: "Dekyil Flowers"
   },
   {
@@ -35,7 +35,7 @@ const GALLERY_IMAGES = [
   },
   {
     src: TeaCupShot,
-    alt: "Tea cup view from Dekyil Hotel",
+    alt: "View of paddy fields from dekyil guest house with tea cups in the foreground",
     title: "Dekyil view"
   },
   {
