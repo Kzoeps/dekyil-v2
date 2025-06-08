@@ -6,7 +6,7 @@ import SectionTitle from "@/components/section-title"
 import { DeluxeBreadCrumb, DeluxeRoomSchema } from "@/lib/schema"
 import DeluxeMainImage from "@/public/images/room-205/deluxe-205-main.webp"
 import { Metadata } from "next"
-import { ROOM_205_IMAGES, ROOM_207_IMAGES } from "@/lib/image_constants"
+import { ROOM_205_IMAGES, ROOM_206_IMAGES, ROOM_207_IMAGES } from "@/lib/image_constants"
 
 const DELUXE_DESC =
   "The deluxe room at Dekyil offers a comfortable and cosy experience. The rooms feature a backdrop of the Jakar Dzong and also modern amenities such as floor heating in the bathroom, double glazed windows and more to make sure your stay at Dekyil feels just like home."
@@ -47,6 +47,14 @@ export default function Deluxe() {
             className="mb-12 flex flex-col gap-4"
           />
           <ImageGrid images={ROOM_205_IMAGES} />
+        </section>
+        <section className="mx-auto py-16 max-w-[1440px]">
+          <SectionTitle
+            title="Room 206"
+            className="mb-12 flex flex-col gap-4"
+            description={<PriceInfo price="4500" />}
+          />
+          <ImageGrid images={ROOM_206_IMAGES} />
         </section>
         <section className="mx-auto py-16 max-w-[1440px]">
           <SectionTitle

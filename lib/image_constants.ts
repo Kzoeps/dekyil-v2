@@ -21,6 +21,25 @@ export const ROOM_205_IMAGES = [
     },
 ]
 
+export const ROOM_206_IMAGES = [
+
+    {
+        src: "/images/room-206/room_206_bedroom_view.webp",
+        alt: "Bedroom view in Room 206",
+        title: "Room 206"
+    },
+    {
+        src: "/images/room-206/room_206_jakar_backdrop.webp",
+        alt: "Room 206 with Jakar Dzong in the backdrop",
+        title: "Room 206"
+    },
+    {
+        src: "/images/room-206/room_206_bathroom.webp",
+        alt: "Bathroom in Room 206",
+        title: "Room 206"
+    },
+]
+
 export const ROOM_207_IMAGES = [
     {
         src: "/images/room-207/room_207_bed.webp",
@@ -52,5 +71,4 @@ export const ROOM_207_IMAGES = [
         alt: "View of the shower area in Room 207 bathroom",
         title: "Room 207"
     },
-
 ]

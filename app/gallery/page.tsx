@@ -8,6 +8,7 @@ import ConfShot from "@/public/images/conf.webp"
 import ViewShot from "@/public/images/view.webp"
 import TeaCupShot from "@/public/images/cupView.webp"
 import SceneWithWireShot from "@/public/images/sceneWire.webp"
+import JakarDzong from "@/public/images/jakar_dzong_from_206.webp"
 import { Metadata } from "next"
 import { PIPE_DEKYIL } from "@/lib/constants"
 
@@ -39,9 +40,14 @@ const GALLERY_IMAGES = [
   },
   {
     src: SceneWithWireShot,
-    alt: "Scene with wire at Dekyil Hotel",
+    alt: "Front view from Dekyil Compounds of the paddy fields",
     title: "Dekyil view"
   },
+  {
+    src: JakarDzong,
+    alt: "Jakar Dzong view from Room 206",
+    title: "Dekyil view"
+  }
 ]
 
 enum GalleryMetadata {
