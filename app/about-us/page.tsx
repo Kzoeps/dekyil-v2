@@ -7,9 +7,9 @@ import { Metadata } from "next"
 
 export const metadata: Metadata = {
   title: "About Us",
-  description: "A women-owned, operated, family-run hotel in Bumthang",
+  description: "Discover the story of Dekyil Guest House, a family-owned, women-led hotel in Bumthang. Run by a mother and daughter, we offer warm Bhutanese hospitality, scenic valley views, and modern comforts for a memorable stay.",
   keywords:
-    "Discover the story of Dekyil Guest House, a family-owned, women-led hotel in Bumthang. Run by a mother and daughter, we offer warm Bhutanese hospitality, scenic valley views, and modern comforts for a memorable stay.",
+    "women-owned, operated, family-run hotel in Bumthang, Chamkhar, Bumthang, Bhutan, Dekyil Guest House",
   alternates: {
     canonical: "/about-us",
   },

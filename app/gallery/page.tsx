@@ -9,6 +9,7 @@ import ViewShot from "@/public/images/view.webp"
 import TeaCupShot from "@/public/images/cupView.webp"
 import SceneWithWireShot from "@/public/images/sceneWire.webp"
 import JakarDzong from "@/public/images/jakar_dzong_from_206.webp"
+import GlassHouseView from "@/public/images/glass_house.webp"
 import { Metadata } from "next"
 import { PIPE_DEKYIL } from "@/lib/constants"
 
@@ -46,6 +47,11 @@ const GALLERY_IMAGES = [
   {
     src: JakarDzong,
     alt: "Jakar Dzong view from Room 206",
+    title: "Dekyil view"
+  },
+  {
+    src: GlassHouseView,
+    alt: "Sitting area in the glass house and the view from the room",
     title: "Dekyil view"
   }
 ]
