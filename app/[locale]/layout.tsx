@@ -1,12 +1,13 @@
 import { Footer } from "@/components/footer"
 import { MainNav } from "@/components/main-nav"
 import { isValidLocale, type Locale } from "@/lib/i18n/config"
+import { getDictionary } from "@/lib/i18n/dictionaries/get-dictionary"
+import { DEFAULT_METADATA } from "@/lib/constants"
 import type { Metadata } from "next"
 import { Playfair_Display, Work_Sans } from "next/font/google"
 import { notFound } from "next/navigation"
 import Script from "next/script"
 import "../globals.css"
-import { DEFAULT_METADATA } from "@/lib/constants"
 
 const playfair = Playfair_Display({
     variable: "--font-playfair-display",
@@ -18,35 +19,46 @@ const workSans = Work_Sans({
     subsets: ["latin"],
 })
 
-const DESCRIPTION =
-    "Experience warm Bhutanese hospitality at Dekyil Guest House, a family-owned, women-led hotel in Bumthang. Enjoy scenic valley views, modern amenities, and a prime location near Chamkhar town. Book your stay for a cozy and memorable retreat!"
-
-export const metadata: Metadata = {
-    title: {
-        template: "%s | Dekyil Guest House",
-        default: "Dekyil Guest House",
-    },
-    description: DESCRIPTION,
-    keywords:
-        "Dekyil Guest House, family-run hotel, women-led hotel, Bumthang accommodations, Chakhar valley views, Bhutanese cuisine",
-    openGraph: {
-        title: "Dekyil Guest House",
-        description: DESCRIPTION,
-        type: "website",
-        siteName: "Dekyil Guest House",
-    },
-    twitter: {
-        title: "Dekyil Guest House",
-        description: DESCRIPTION,
-        creator: "@kzoeps",
-        card: "summary_large_image",
-    },
-    ...DEFAULT_METADATA,
-}
-
 interface LocaleLayoutProps {
     children: React.ReactNode
     params: Promise<{ locale: string }>
+}
+
+export async function generateMetadata({
+    params,
+}: {
+    params: Promise<{ locale: string }>
+}): Promise<Metadata> {
+    const { locale } = await params
+
+    if (!isValidLocale(locale)) {
+        return {}
+    }
+
+    const dict = await getDictionary(locale as Locale)
+    const { title, description, keywords } = dict.home.meta
+
+    return {
+        title: {
+            template: `%s | Dekyil Guest House`,
+            default: title,
+        },
+        description,
+        keywords,
+        openGraph: {
+            title: "Dekyil Guest House",
+            description,
+            type: "website",
+            siteName: "Dekyil Guest House",
+        },
+        twitter: {
+            title: "Dekyil Guest House",
+            description,
+            creator: "@kzoeps",
+            card: "summary_large_image",
+        },
+        ...DEFAULT_METADATA,
+    }
 }
 
 export default async function LocaleLayout({
@@ -60,15 +72,16 @@ export default async function LocaleLayout({
     }
 
     const validLocale = locale as Locale
+    const dict = await getDictionary(validLocale)
 
     return (
         <html lang={validLocale}>
             <body
                 className={`${playfair.variable} ${workSans.variable} antialiased`}
             >
-                <MainNav />
+                <MainNav dict={dict.nav} locale={validLocale} />
                 {children}
-                <Footer />
+                <Footer dict={dict.footer} locale={validLocale} />
                 <Script
                     strategy="lazyOnload"
                     src="https://cloud.umami.is/script.js"

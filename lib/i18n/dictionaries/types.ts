@@ -278,6 +278,13 @@ export interface RoomCardDictionary {
 }
 
 // ---------------------------------------------------------------------------
+// TripAdvisor widget
+// ---------------------------------------------------------------------------
+export interface TripAdvisorDictionary {
+    guestReviews: string
+}
+
+// ---------------------------------------------------------------------------
 // Top-level Dictionary contract
 // ---------------------------------------------------------------------------
 export interface Dictionary {
@@ -294,4 +301,5 @@ export interface Dictionary {
     contact: ContactDictionary
     price: PriceDictionary
     roomCard: RoomCardDictionary
+    tripAdvisor: TripAdvisorDictionary
 }

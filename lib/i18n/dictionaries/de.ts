@@ -333,4 +333,11 @@ export const de: Dictionary = {
     roomCard: {
         exploreCta: "Entdecken",
     },
+
+    // -----------------------------------------------------------------------
+    // TripAdvisor widget
+    // -----------------------------------------------------------------------
+    tripAdvisor: {
+        guestReviews: "Gästebewertungen",
+    },
 }

@@ -1,129 +1,154 @@
 import { DekyilInformation } from "@/lib/constants"
+import type { FooterDictionary } from "@/lib/i18n/dictionaries/types"
 import { Facebook, Instagram } from "lucide-react"
 import Link from "next/link"
 
-const MENU_LINKS = [
-  {
-    title: "Home",
-    href: "/",
-  },
-  {
-    title: "Rooms",
-    href: "/rooms",
-  },
-  {
-    title: "Contact",
-    href: "/contact",
-  },
-  {
-    title: "About Us",
-    href: "/about-us",
-  },
-  {
-    title: "Gallery",
-    href: "/gallery",
-  },
-]
+interface FooterProps {
+    dict?: FooterDictionary
+    locale?: string
+}
 
-export function Footer() {
-  return (
-    <footer className="bg-gray-100 dark:bg-gray-900">
-      <div className="container mx-auto px-4 py-16">
-        <div className="grid gap-8 sm:grid-cols-2 md:grid-cols-4">
-          {/* About Column */}
-          <div className="space-y-4">
-            <h3 className="text-lg font-playfair font-semibold">
-              About Us
-            </h3>
-            <p className="text-sm tracking-tight ">
-              Experience luxury and comfort in the heart of
-              Bumthang valley. Our guest house offers a perfect
-              blend of traditional charm and modern amenities.
-            </p>
-          </div>
+const DEFAULT_DICT: FooterDictionary = {
+    aboutUs: {
+        heading: "About Us",
+        body: "Experience luxury and comfort in the heart of Bumthang valley. Our guest house offers a perfect blend of traditional charm and modern amenities.",
+    },
+    quickMenu: {
+        heading: "Quick Menu",
+        links: {
+            home: "Home",
+            rooms: "Rooms",
+            contact: "Contact",
+            aboutUs: "About Us",
+            gallery: "Gallery",
+        },
+    },
+    contactUs: {
+        heading: "Contact Us",
+        phoneLabel: "Phone",
+        emailLabel: "Email",
+    },
+    followUs: {
+        heading: "Follow Us",
+        facebookSrOnly: "Facebook",
+        instagramSrOnly: "Instagram",
+    },
+    copyright: "All rights reserved.",
+}
 
-          {/* Quick Menu Column */}
-          <div className="space-y-4">
-            <h3 className="text-lg font-playfair font-semibold">
-              Quick Menu
-            </h3>
+export function Footer({ dict = DEFAULT_DICT, locale }: FooterProps) {
+    const prefix = locale ? `/${locale}` : ""
 
-            <ul className="space-y-2 text-sm font-worksans tracking-tight ">
-              {MENU_LINKS.map((link) => (
-                <li key={link.title}>
-                  <Link
-                    href={link.href}
-                    title={link.title}
-                    className="hover:underline transition-all duration-500 ease-in-out"
-                  >
-                    {link.title}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+    const MENU_LINKS = [
+        { title: dict.quickMenu.links.home, href: `${prefix}/` },
+        { title: dict.quickMenu.links.rooms, href: `${prefix}/rooms` },
+        { title: dict.quickMenu.links.contact, href: `${prefix}/contact` },
+        { title: dict.quickMenu.links.aboutUs, href: `${prefix}/about-us` },
+        { title: dict.quickMenu.links.gallery, href: `${prefix}/gallery` },
+    ]
 
-          {/* Contact Information Column */}
-          <div className="space-y-4">
-            <h3 className="text-lg font-semibold font-playfair">
-              Contact Us
-            </h3>
-            <ul className="space-y-2 text-sm  font-worksans tracking-tight">
-              <li>{DekyilInformation.DEKYIL}</li>
-              <li>
-                Phone: {DekyilInformation.PHONE_ACHI}/
-                {DekyilInformation.PHONE_AMA}
-              </li>
-              <li>
-                <Link
-                  title="Email Dekyil"
-                  className="hover:text-red-400 transition-all duration-300 ease-in-out"
-                  href={`mailto:${DekyilInformation.EMAIL}`}
-                >
-                  Email: {DekyilInformation.EMAIL}
-                </Link>
-              </li>
-              <li>{DekyilInformation.ADDRESS}</li>
-            </ul>
-          </div>
+    return (
+        <footer className="bg-gray-100 dark:bg-gray-900">
+            <div className="container mx-auto px-4 py-16">
+                <div className="grid gap-8 sm:grid-cols-2 md:grid-cols-4">
+                    {/* About Column */}
+                    <div className="space-y-4">
+                        <h3 className="text-lg font-playfair font-semibold">
+                            {dict.aboutUs.heading}
+                        </h3>
+                        <p className="text-sm tracking-tight ">
+                            {dict.aboutUs.body}
+                        </p>
+                    </div>
 
-          {/* Social Media Column */}
-          <div className="space-y-4">
-            <h3 className="text-lg font-semibold font-playfair">
-              Follow Us
-            </h3>
-            <div className="flex space-x-4 ">
-              <Link
-                href={DekyilInformation.FACEBOOK}
-                target="_blank"
-                title="Dekyil on Facebook"
-                rel="noopener noreferrer"
-                className=" hover:text-red-400 transition-all duration-300 ease-in-out "
-              >
-                <Facebook className="h-6 w-6" />
-                <span className="sr-only">Facebook</span>
-              </Link>
-              <Link
-                href={DekyilInformation.INSTAGRAM}
-                target="_blank"
-                title="Dekyil on Instragram"
-                rel="noopener noreferrer"
-                className=" hover:text-red-400 transition-all duration-300 ease-in-out "
-              >
-                <Instagram className="h-6 w-6" />
-                <span className="sr-only">Instagram</span>
-              </Link>
+                    {/* Quick Menu Column */}
+                    <div className="space-y-4">
+                        <h3 className="text-lg font-playfair font-semibold">
+                            {dict.quickMenu.heading}
+                        </h3>
+
+                        <ul className="space-y-2 text-sm font-worksans tracking-tight ">
+                            {MENU_LINKS.map((link) => (
+                                <li key={link.href}>
+                                    <Link
+                                        href={link.href}
+                                        title={link.title}
+                                        className="hover:underline transition-all duration-500 ease-in-out"
+                                    >
+                                        {link.title}
+                                    </Link>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+
+                    {/* Contact Information Column */}
+                    <div className="space-y-4">
+                        <h3 className="text-lg font-semibold font-playfair">
+                            {dict.contactUs.heading}
+                        </h3>
+                        <ul className="space-y-2 text-sm  font-worksans tracking-tight">
+                            <li>{DekyilInformation.DEKYIL}</li>
+                            <li>
+                                {dict.contactUs.phoneLabel}:{" "}
+                                {DekyilInformation.PHONE_ACHI}/
+                                {DekyilInformation.PHONE_AMA}
+                            </li>
+                            <li>
+                                <Link
+                                    title="Email Dekyil"
+                                    className="hover:text-red-400 transition-all duration-300 ease-in-out"
+                                    href={`mailto:${DekyilInformation.EMAIL}`}
+                                >
+                                    {dict.contactUs.emailLabel}:{" "}
+                                    {DekyilInformation.EMAIL}
+                                </Link>
+                            </li>
+                            <li>{DekyilInformation.ADDRESS}</li>
+                        </ul>
+                    </div>
+
+                    {/* Social Media Column */}
+                    <div className="space-y-4">
+                        <h3 className="text-lg font-semibold font-playfair">
+                            {dict.followUs.heading}
+                        </h3>
+                        <div className="flex space-x-4 ">
+                            <Link
+                                href={DekyilInformation.FACEBOOK}
+                                target="_blank"
+                                title="Dekyil on Facebook"
+                                rel="noopener noreferrer"
+                                className=" hover:text-red-400 transition-all duration-300 ease-in-out "
+                            >
+                                <Facebook className="h-6 w-6" />
+                                <span className="sr-only">
+                                    {dict.followUs.facebookSrOnly}
+                                </span>
+                            </Link>
+                            <Link
+                                href={DekyilInformation.INSTAGRAM}
+                                target="_blank"
+                                title="Dekyil on Instragram"
+                                rel="noopener noreferrer"
+                                className=" hover:text-red-400 transition-all duration-300 ease-in-out "
+                            >
+                                <Instagram className="h-6 w-6" />
+                                <span className="sr-only">
+                                    {dict.followUs.instagramSrOnly}
+                                </span>
+                            </Link>
+                        </div>
+                    </div>
+                </div>
+
+                <div className="mt-8 border-t border-gray-200 dark:border-gray-800 pt-8 text-center text-sm ">
+                    <p>
+                        &copy; {new Date().getFullYear()} Dekyil Guest House.{" "}
+                        {dict.copyright}
+                    </p>
+                </div>
             </div>
-          </div>
-        </div>
-
-        <div className="mt-8 border-t border-gray-200 dark:border-gray-800 pt-8 text-center text-sm ">
-          <p>
-            &copy; {new Date().getFullYear()} Dekyil Guest House. All
-            rights reserved.
-          </p>
-        </div>
-      </div>
-    </footer>
-  )
+        </footer>
+    )
 }
