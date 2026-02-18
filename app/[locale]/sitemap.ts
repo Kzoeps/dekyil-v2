@@ -1,4 +1,4 @@
-import { locales } from "@/lib/i18n/config"
+import { isValidLocale, locales, type Locale } from "@/lib/i18n/config"
 import { MetadataRoute } from "next"
 
 const BASE_URL = "https://dekyilguesthouse.com"
@@ -26,19 +26,17 @@ const PUBLIC_ROUTES = [
     },
 ]
 
-export default function sitemap(): MetadataRoute.Sitemap {
-    const entries: MetadataRoute.Sitemap = []
+export function generateSitemaps() {
+    return locales.map((locale) => ({ id: locale }))
+}
 
-    for (const locale of locales) {
-        for (const route of PUBLIC_ROUTES) {
-            entries.push({
-                url: `${BASE_URL}/${locale}${route.path}`,
-                lastModified: new Date(),
-                changeFrequency: route.changeFrequency,
-                priority: route.priority,
-            })
-        }
-    }
+export default function sitemap({ id }: { id: string }): MetadataRoute.Sitemap {
+    const locale: Locale = isValidLocale(id) ? id : "en"
 
-    return entries
+    return PUBLIC_ROUTES.map((route) => ({
+        url: `${BASE_URL}/${locale}${route.path}`,
+        lastModified: new Date(),
+        changeFrequency: route.changeFrequency,
+        priority: route.priority,
+    }))
 }

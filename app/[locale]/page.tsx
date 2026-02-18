@@ -6,28 +6,39 @@ import SectionTitle from "@/components/section-title"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import LiteYoutube from "@/components/ui/lite-youtube"
 import { ROOMS } from "@/lib/constants"
-import { isValidLocale } from "@/lib/i18n/config"
+import { isValidLocale, type Locale } from "@/lib/i18n/config"
 import { getDictionary } from "@/lib/i18n/dictionaries/get-dictionary"
-import { HotelSchema } from "@/lib/schema"
+import { buildHotelSchema } from "@/lib/schema"
 import DroneImage from "@/public/images/drone.webp"
 import DrukAir from "@/public/images/drukair_logo.webp"
 import { Metadata } from "next"
 import Image from "next/image"
 import { notFound } from "next/navigation"
 
-export const metadata: Metadata = {
-    title: "Dekyil Guest House | A Family-Run Hotel in Bumthang",
-    description:
-        "Experience warm Bhutanese hospitality at Dekyil Guest House, a family-owned, women-led hotel in Bumthang. Enjoy scenic valley views, modern amenities, and a prime location near Chamkhar town. Book your stay for a cozy and memorable retreat!",
-    keywords:
-        "Dekyil Guest House, Hotels in Bumthang, family-run, women-owned, Chamkhar, Bhutan",
-    alternates: {
-        canonical: "https://www.dekyilguesthouse.com/",
-    },
-}
-
 interface LocalePageProps {
     params: Promise<{ locale: string }>
+}
+
+export async function generateMetadata({
+    params,
+}: LocalePageProps): Promise<Metadata> {
+    const { locale } = await params
+
+    if (!isValidLocale(locale)) {
+        return {}
+    }
+
+    const dict = await getDictionary(locale as Locale)
+    const { title, description, keywords } = dict.home.meta
+
+    return {
+        title,
+        description,
+        keywords,
+        alternates: {
+            canonical: `https://www.dekyilguesthouse.com/${locale}`,
+        },
+    }
 }
 
 export default async function LocaleHome({ params }: LocalePageProps) {
@@ -37,31 +48,32 @@ export default async function LocaleHome({ params }: LocalePageProps) {
         notFound()
     }
 
-    // Load dictionary for future use when translation text is added
-    await getDictionary(locale)
+    const validLocale = locale as Locale
+    const dict = await getDictionary(validLocale)
+    const hotelSchema = buildHotelSchema(validLocale)
 
     return (
         <>
-            <InjectStructuredData data={HotelSchema} />
+            <InjectStructuredData data={hotelSchema} />
             <main className="relative min-h-screen">
                 <HeroSection
                     image={DroneImage}
-                    imageAlt="Drone shot of Dekyil Guest House"
-                    imageTitle="Dekyil Guest House"
-                    title="Enjoy Bumthang"
-                    description="Live with a scenic view of the Bumthang valley"
+                    imageAlt={dict.home.hero.imageAlt}
+                    imageTitle={dict.home.hero.imageTitle}
+                    title={dict.home.hero.title}
+                    description={dict.home.hero.description}
                 />
 
                 <section className="w-full pt-2 pb-4 bg-gray-50">
                     <Card className="border-none shadow-none bg-gray-50">
                         <CardContent className="flex flex-col items-center space-y-4 p-6">
                             <p className="text-sm font-normal tracking-tight text-muted-foreground">
-                                Official hotel partner of
+                                {dict.home.partnerBadge.label}
                             </p>
                             <Image
                                 src={DrukAir}
-                                title="Drukair - Royal Bhutan Airlines"
-                                alt="Drukair - Royal Bhutan Airlines Logo"
+                                title={dict.home.partnerBadge.drukairTitle}
+                                alt={dict.home.partnerBadge.drukairAlt}
                                 width={160}
                                 className="dark:brightness-200"
                             />
@@ -71,8 +83,8 @@ export default async function LocaleHome({ params }: LocalePageProps) {
                 <section className="container mx-auto px-4 py-16">
                     <SectionTitle
                         className="mb-12"
-                        title="Our Rooms"
-                        description="Choose from our carefully designed rooms"
+                        title={dict.home.rooms.sectionTitle}
+                        description={dict.home.rooms.sectionDescription}
                     />
                     <div className="flex flex-col sm:flex-row w-full justify-center items-center gap-8 sm:gap-12">
                         {ROOMS.map((room) => (
@@ -92,14 +104,14 @@ export default async function LocaleHome({ params }: LocalePageProps) {
                     <Card className="rounded-none">
                         <CardHeader className="py-2 md:p-6">
                             <CardTitle className="text-center font-playfair text-2xl font-bold">
-                                How to Find Us
+                                {dict.home.howToFindUs.heading}
                             </CardTitle>
                         </CardHeader>
                         <CardContent className="p-2 md:p-6">
                             <div className="aspect-video overflow-hidden rounded-lg bg-muted">
                                 <LiteYoutube
                                     videoId="3KrwGtUJSm8"
-                                    title="Video for directions to dekyil"
+                                    title={dict.home.howToFindUs.videoTitle}
                                 />
                             </div>
                         </CardContent>
