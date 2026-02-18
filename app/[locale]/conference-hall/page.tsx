@@ -51,39 +51,39 @@ export default async function LocaleConferenceHallPage({
 
     const validLocale = locale as Locale
     const dict = await getDictionary(validLocale)
-    const { hero, sectionTitle, sectionDescription, videoTitle } =
+    const { hero, sectionTitle, sectionDescription, videoTitle, images } =
         dict.conferenceHall
 
     const CONFERENCE_HALL_IMAGES = [
         {
             src: ConferenceFront,
-            alt: "Conference Hall From Outside Night Shot",
-            title: "Dekyil Conference",
+            alt: images.outsideNight.alt,
+            title: images.outsideNight.title,
         },
         {
             src: ConferencePano,
-            alt: "Conference Hall Panoramic Shot from the back",
-            title: "Dekyil Conference",
+            alt: images.panoramicBack.alt,
+            title: images.panoramicBack.title,
         },
         {
             src: ConferencePano2,
-            alt: "Conference Hall Panoramic Shot from the front",
-            title: "Dekyil Conference",
+            alt: images.panoramicFront.alt,
+            title: images.panoramicFront.title,
         },
         {
             src: ConferenceSingle,
-            alt: "Conference Hall View",
-            title: "Dekyil Conference",
+            alt: images.singleView1.alt,
+            title: images.singleView1.title,
         },
         {
             src: ConferenceSingle2,
-            alt: "Conference Hall View",
-            title: "Dekyil Conference",
+            alt: images.singleView2.alt,
+            title: images.singleView2.title,
         },
         {
             src: ConferenceOutside2,
-            alt: "Conference Hall and Hotel outside view night shot",
-            title: "Dekyil Conference",
+            alt: images.outsideNight2.alt,
+            title: images.outsideNight2.title,
         },
     ]
 

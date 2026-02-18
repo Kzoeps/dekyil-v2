@@ -215,6 +215,32 @@ export const en: Dictionary = {
         sectionDescription:
             "The conference hall at Dekyil is of comfortable and peaceful atmosphere that is perfect for meeting of any size and kind. We offer projector together with a pointer and a refreshment station for snacking up during your long arduous meet.",
         videoTitle: "Play video for dekyil conference hall",
+        images: {
+            outsideNight: {
+                alt: "Conference Hall From Outside Night Shot",
+                title: "Dekyil Conference",
+            },
+            panoramicBack: {
+                alt: "Conference Hall Panoramic Shot from the back",
+                title: "Dekyil Conference",
+            },
+            panoramicFront: {
+                alt: "Conference Hall Panoramic Shot from the front",
+                title: "Dekyil Conference",
+            },
+            singleView1: {
+                alt: "Conference Hall View",
+                title: "Dekyil Conference",
+            },
+            singleView2: {
+                alt: "Conference Hall View",
+                title: "Dekyil Conference",
+            },
+            outsideNight2: {
+                alt: "Conference Hall and Hotel outside view night shot",
+                title: "Dekyil Conference",
+            },
+        },
     },
 
     // -----------------------------------------------------------------------
@@ -327,6 +353,8 @@ export const en: Dictionary = {
     // -----------------------------------------------------------------------
     roomCard: {
         exploreCta: "Explore",
+        suiteAlt: "Picture of the suite room",
+        deluxeAlt: "Picture of the deluxe room",
     },
 
     // -----------------------------------------------------------------------

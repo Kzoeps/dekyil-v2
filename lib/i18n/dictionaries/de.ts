@@ -220,6 +220,32 @@ export const de: Dictionary = {
         sectionDescription:
             "Der Konferenzsaal im Dekyil bietet eine komfortable und ruhige Atmosphäre, die sich perfekt für Meetings jeder Größe und Art eignet. Wir bieten einen Projektor mit Laserpointer und eine Erfrischungsstation für Snacks während Ihrer langen und anspruchsvollen Besprechungen.",
         videoTitle: "Video für den Dekyil-Konferenzsaal abspielen",
+        images: {
+            outsideNight: {
+                alt: "Konferenzsaal von außen bei Nacht",
+                title: "Dekyil Konferenz",
+            },
+            panoramicBack: {
+                alt: "Panoramaaufnahme des Konferenzsaals von hinten",
+                title: "Dekyil Konferenz",
+            },
+            panoramicFront: {
+                alt: "Panoramaaufnahme des Konferenzsaals von vorne",
+                title: "Dekyil Konferenz",
+            },
+            singleView1: {
+                alt: "Ansicht des Konferenzsaals",
+                title: "Dekyil Konferenz",
+            },
+            singleView2: {
+                alt: "Ansicht des Konferenzsaals",
+                title: "Dekyil Konferenz",
+            },
+            outsideNight2: {
+                alt: "Außenansicht des Konferenzsaals und Hotels bei Nacht",
+                title: "Dekyil Konferenz",
+            },
+        },
     },
 
     // -----------------------------------------------------------------------
@@ -332,6 +358,8 @@ export const de: Dictionary = {
     // -----------------------------------------------------------------------
     roomCard: {
         exploreCta: "Entdecken",
+        suiteAlt: "Bild des Suite-Zimmers",
+        deluxeAlt: "Bild des Deluxe-Zimmers",
     },
 
     // -----------------------------------------------------------------------

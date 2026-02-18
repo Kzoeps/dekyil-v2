@@ -193,6 +193,14 @@ export interface ConferenceHallDictionary {
     sectionTitle: string
     sectionDescription: string
     videoTitle: string
+    images: {
+        outsideNight: { alt: string; title: string }
+        panoramicBack: { alt: string; title: string }
+        panoramicFront: { alt: string; title: string }
+        singleView1: { alt: string; title: string }
+        singleView2: { alt: string; title: string }
+        outsideNight2: { alt: string; title: string }
+    }
 }
 
 // ---------------------------------------------------------------------------
@@ -275,6 +283,8 @@ export interface PriceDictionary {
 // ---------------------------------------------------------------------------
 export interface RoomCardDictionary {
     exploreCta: string
+    suiteAlt: string
+    deluxeAlt: string
 }
 
 // ---------------------------------------------------------------------------
