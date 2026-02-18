@@ -3,7 +3,7 @@ import HeroSection from "@/components/hero-section"
 import InjectStructuredData from "@/components/inject-structured-data"
 import { isValidLocale, type Locale } from "@/lib/i18n/config"
 import { getDictionary } from "@/lib/i18n/dictionaries/get-dictionary"
-import { AboutUsSchema } from "@/lib/schema"
+import { buildAboutUsSchema } from "@/lib/schema"
 import FrontImage from "@/public/images/sceneWire.webp"
 import type { Metadata } from "next"
 import { notFound } from "next/navigation"
@@ -46,9 +46,11 @@ export default async function LocaleAboutUsPage({
     const validLocale = locale as Locale
     const dict = await getDictionary(validLocale)
 
+    const aboutUsSchema = buildAboutUsSchema()
+
     return (
         <>
-            <InjectStructuredData data={AboutUsSchema} />
+            <InjectStructuredData data={aboutUsSchema} />
             <main className="relative min-h-screen">
                 <HeroSection
                     imageAlt={dict.aboutUs.hero.imageAlt}
