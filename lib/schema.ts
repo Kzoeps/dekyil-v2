@@ -67,8 +67,8 @@ const STAR_RATING_EXPLANATIONS: Record<Locale, string> = {
 }
 
 const AMENITY_NAMES: Record<string, Record<Locale, string>> = {
-    "Underfloor Bathroom Heating": {
-        en: "Underfloor Bathroom Heating",
+    "Bathroom Floor Heating": {
+        en: "Bathroom Floor Heating",
         de: "Fußbodenheizung im Badezimmer",
     },
     "Free WiFi": {
@@ -98,10 +98,6 @@ const AMENITY_NAMES: Record<string, Record<Locale, string>> = {
     "Laundry Service": {
         en: "Laundry Service",
         de: "Wäscheservice",
-    },
-    "Bathroom Floor Heating": {
-        en: "Bathroom Floor Heating",
-        de: "Fußbodenheizung im Badezimmer",
     },
 }
 
@@ -172,7 +168,7 @@ export function buildSuiteRoomSchema(
         amenityFeature: [
             {
                 "@type": "LocationFeatureSpecification",
-                name: AMENITY_NAMES["Underfloor Bathroom Heating"][locale],
+                name: AMENITY_NAMES["Bathroom Floor Heating"][locale],
                 value: true,
             },
             {
@@ -237,7 +233,7 @@ export function buildDeluxeRoomSchema(
         amenityFeature: [
             {
                 "@type": "LocationFeatureSpecification",
-                name: AMENITY_NAMES["Underfloor Bathroom Heating"][locale],
+                name: AMENITY_NAMES["Bathroom Floor Heating"][locale],
                 value: true,
             },
             {
