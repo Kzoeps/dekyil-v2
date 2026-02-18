@@ -89,12 +89,18 @@ export default async function LocaleHome({ params }: LocalePageProps) {
                     <div className="flex flex-col sm:flex-row w-full justify-center items-center gap-8 sm:gap-12">
                         {ROOMS.map((room) => (
                             <RoomCard
-                                key={room.title}
+                                key={room.roomKey}
                                 alt={room.alt}
-                                price={<PriceInfo price={room.price} />}
-                                title={room.title}
+                                price={
+                                    <PriceInfo
+                                        price={room.price}
+                                        dict={dict.price}
+                                    />
+                                }
+                                title={dict.nav.roomItems[room.roomKey].title}
                                 image={room.image}
-                                href={room.href}
+                                href={`/${validLocale}${room.href}`}
+                                exploreCta={dict.roomCard.exploreCta}
                             />
                         ))}
                     </div>
