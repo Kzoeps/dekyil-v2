@@ -1,6 +1,7 @@
 import AboutSection from "@/components/about-section"
 import HeroSection from "@/components/hero-section"
 import InjectStructuredData from "@/components/inject-structured-data"
+import { buildAlternateLanguages } from "@/lib/i18n/alternates"
 import { isValidLocale, type Locale } from "@/lib/i18n/config"
 import { getDictionary } from "@/lib/i18n/dictionaries/get-dictionary"
 import { buildAboutUsSchema } from "@/lib/schema"
@@ -30,6 +31,7 @@ export async function generateMetadata({
         keywords,
         alternates: {
             canonical: `https://www.dekyilguesthouse.com/${locale}/about-us`,
+            languages: buildAlternateLanguages("/about-us"),
         },
     }
 }

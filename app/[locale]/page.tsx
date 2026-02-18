@@ -6,6 +6,7 @@ import SectionTitle from "@/components/section-title"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import LiteYoutube from "@/components/ui/lite-youtube"
 import { ROOMS } from "@/lib/constants"
+import { buildAlternateLanguages } from "@/lib/i18n/alternates"
 import { isValidLocale, type Locale } from "@/lib/i18n/config"
 import { getDictionary } from "@/lib/i18n/dictionaries/get-dictionary"
 import { buildHotelSchema } from "@/lib/schema"
@@ -37,6 +38,7 @@ export async function generateMetadata({
         keywords,
         alternates: {
             canonical: `https://www.dekyilguesthouse.com/${locale}`,
+            languages: buildAlternateLanguages(""),
         },
     }
 }
@@ -90,7 +92,11 @@ export default async function LocaleHome({ params }: LocalePageProps) {
                         {ROOMS.map((room) => (
                             <RoomCard
                                 key={room.roomKey}
-                                alt={room.alt}
+                                alt={
+                                    room.roomKey === "suite"
+                                        ? dict.roomCard.suiteAlt
+                                        : dict.roomCard.deluxeAlt
+                                }
                                 price={
                                     <PriceInfo
                                         price={room.price}

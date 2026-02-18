@@ -3,6 +3,7 @@ import ImageGrid from "@/components/image-grid"
 import InjectStructuredData from "@/components/inject-structured-data"
 import PriceInfo from "@/components/price-info"
 import SectionTitle from "@/components/section-title"
+import { buildAlternateLanguages } from "@/lib/i18n/alternates"
 import { isValidLocale, type Locale } from "@/lib/i18n/config"
 import { getDictionary } from "@/lib/i18n/dictionaries/get-dictionary"
 import {
@@ -37,6 +38,7 @@ export async function generateMetadata({
         keywords,
         alternates: {
             canonical: `https://www.dekyilguesthouse.com/${locale}/rooms/deluxe`,
+            languages: buildAlternateLanguages("/rooms/deluxe"),
         },
     }
 }

@@ -6,6 +6,7 @@ import View from "@/public/images/view.webp"
 import { DekyilInformation } from "@/lib/constants"
 import Link from "next/link"
 import CupFlowerView from "@/public/images/cupFlowerView.webp"
+import { buildAlternateLanguages } from "@/lib/i18n/alternates"
 import { isValidLocale, type Locale } from "@/lib/i18n/config"
 import { getDictionary } from "@/lib/i18n/dictionaries/get-dictionary"
 import type { Metadata } from "next"
@@ -34,6 +35,7 @@ export async function generateMetadata({
         keywords,
         alternates: {
             canonical: `https://www.dekyilguesthouse.com/${locale}/contact`,
+            languages: buildAlternateLanguages("/contact"),
         },
     }
 }

@@ -10,6 +10,7 @@ import TeaCupShot from "@/public/images/cupView.webp"
 import SceneWithWireShot from "@/public/images/sceneWire.webp"
 import JakarDzong from "@/public/images/jakar_dzong_from_206.webp"
 import GlassHouseView from "@/public/images/glass_house.webp"
+import { buildAlternateLanguages } from "@/lib/i18n/alternates"
 import { isValidLocale, type Locale } from "@/lib/i18n/config"
 import { getDictionary } from "@/lib/i18n/dictionaries/get-dictionary"
 import { type Metadata } from "next"
@@ -37,6 +38,7 @@ export async function generateMetadata({
         keywords,
         alternates: {
             canonical: `https://www.dekyilguesthouse.com/${locale}/gallery`,
+            languages: buildAlternateLanguages("/gallery"),
         },
     }
 }

@@ -3,6 +3,7 @@ import PriceInfo from "@/components/price-info"
 import { RoomCard } from "@/components/room-card"
 import SectionTitle from "@/components/section-title"
 import { ROOMS } from "@/lib/constants"
+import { buildAlternateLanguages } from "@/lib/i18n/alternates"
 import { isValidLocale, type Locale } from "@/lib/i18n/config"
 import { getDictionary } from "@/lib/i18n/dictionaries/get-dictionary"
 import RoomImage from "@/public/images/deluxe.webp"
@@ -31,6 +32,7 @@ export async function generateMetadata({
         keywords,
         alternates: {
             canonical: `https://www.dekyilguesthouse.com/${locale}/rooms`,
+            languages: buildAlternateLanguages("/rooms"),
         },
     }
 }
@@ -67,7 +69,11 @@ export default async function LocaleRoomsPage({
                         {ROOMS.map((room) => (
                             <RoomCard
                                 key={room.roomKey}
-                                alt={room.alt}
+                                alt={
+                                    room.roomKey === "suite"
+                                        ? dict.roomCard.suiteAlt
+                                        : dict.roomCard.deluxeAlt
+                                }
                                 price={
                                     <PriceInfo
                                         price={room.price}
