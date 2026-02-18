@@ -37,7 +37,7 @@ export async function generateMetadata({
         description,
         keywords,
         alternates: {
-            canonical: `/${locale}/rooms/suite`,
+            canonical: `https://www.dekyilguesthouse.com/${locale}/rooms/suite`,
         },
     }
 }
