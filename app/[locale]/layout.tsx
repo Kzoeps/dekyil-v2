@@ -1,6 +1,6 @@
 import { Footer } from "@/components/footer"
 import { MainNav } from "@/components/main-nav"
-import { isValidLocale, type Locale } from "@/lib/i18n/config"
+import { isValidLocale, locales, type Locale } from "@/lib/i18n/config"
 import { getDictionary } from "@/lib/i18n/dictionaries/get-dictionary"
 import { DEFAULT_METADATA } from "@/lib/constants"
 import type { Metadata } from "next"
@@ -18,6 +18,10 @@ const workSans = Work_Sans({
     variable: "--font-work-sans",
     subsets: ["latin"],
 })
+
+export function generateStaticParams() {
+    return locales.map((locale) => ({ locale }))
+}
 
 interface LocaleLayoutProps {
     children: React.ReactNode
