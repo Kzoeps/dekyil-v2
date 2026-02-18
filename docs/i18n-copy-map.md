@@ -230,3 +230,41 @@ The following strings must remain unchanged in all locales:
 - URLs / canonical paths
 - Numeric literals in room names (Room 202, Room 203, etc.)
 - Check-in/check-out times (`11:00 AM`, `01:00 PM`)
+
+---
+
+## German Translation Review Checklist
+
+Use this checklist when reviewing or updating `lib/i18n/dictionaries/de.ts`.
+
+### Formal Tone Consistency
+
+- [ ] All German copy uses the formal **Sie** form (not the informal **du** form)
+- [ ] Imperative forms are formal (e.g., "Buchen Sie" not "Buche")
+- [ ] Headings and CTAs maintain a professional, welcoming register
+
+### Brand and Proper Noun Preservation
+
+Verify the following are **unchanged** in `de.ts` (identical to `en.ts`):
+
+- [ ] **Dekyil Guest House** — not translated
+- [ ] **Bumthang** — not translated
+- [ ] **Chamkhar** — not translated
+- [ ] **Bhutan** / **Bhutanese** — not translated
+- [ ] **Jakar Dzong** — not translated
+- [ ] **Drukair** / **Drukair - Royal Bhutan Airlines** — not translated
+- [ ] Room numbers (Room 202, Room 203, Room 204, Room 205, Room 206, Room 207) — numeric literals preserved
+
+### Numeric, Date, and Time Literals
+
+- [ ] Check-in/check-out times are preserved exactly: `11:00 AM`, `01:00 PM`
+- [ ] Phone numbers are unchanged
+- [ ] Email addresses are unchanged
+- [ ] URLs and canonical paths are unchanged
+
+### Key Parity
+
+- [ ] Every key present in `en.ts` exists in `de.ts` with the same path
+- [ ] No extra keys exist in `de.ts` that are absent from `en.ts`
+- [ ] No key in `de.ts` retains an English value (except approved proper nouns above)
+- [ ] TypeScript build passes without errors (`npx tsc --noEmit`)
