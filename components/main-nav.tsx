@@ -47,7 +47,7 @@ const DEFAULT_DICT: NavDictionary = {
 export function MainNav({ dict = DEFAULT_DICT, locale }: MainNavProps) {
     const [isOpen, setIsOpen] = React.useState(false)
     const prefix = locale ? `/${locale}` : ""
-    const isOpenRef = React.useRef(isOpen)
+    const isOpenRef = React.useRef(false)
 
     const ROOMS = [
         {
