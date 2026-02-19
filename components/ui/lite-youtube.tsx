@@ -1,8 +1,14 @@
 "use client"
-import dynamic from "next/dynamic"
 import "lite-youtube-embed/src/lite-yt-embed.css"
 import { useEffect, useRef, useState } from "react"
-function LiteYoutube({ videoId, title }: { videoId: string; title?: string }) {
+
+export default function LiteYoutube({
+    videoId,
+    title,
+}: {
+    videoId: string
+    title?: string
+}) {
     const rootRef = useRef<HTMLDivElement | null>(null)
     const [shouldInitialize, setShouldInitialize] = useState(false)
     const intersectionRootMargin = "200px"
@@ -67,5 +73,3 @@ function LiteYoutube({ videoId, title }: { videoId: string; title?: string }) {
         </div>
     )
 }
-
-export default dynamic(() => Promise.resolve(LiteYoutube), { ssr: false })
