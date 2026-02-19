@@ -1,5 +1,4 @@
 import HeroSection from "@/components/hero-section"
-import ImageGrid from "@/components/image-grid"
 import SectionTitle from "@/components/section-title"
 import SuiteShot from "@/public/images/suite.webp"
 import NightShot from "@/public/images/night-shot.webp"
@@ -14,7 +13,28 @@ import { buildAlternateLanguages } from "@/lib/i18n/alternates"
 import { isValidLocale, type Locale } from "@/lib/i18n/config"
 import { getDictionary } from "@/lib/i18n/dictionaries/get-dictionary"
 import { type Metadata } from "next"
+import dynamic from "next/dynamic"
 import { notFound } from "next/navigation"
+
+function ImageGridFallback({ count }: { count: number }) {
+    return (
+        <div className="container mx-auto px-4 pt-8" aria-hidden="true">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                {Array.from({ length: count }).map((_, index) => (
+                    <div
+                        key={index}
+                        className="relative w-full aspect-video overflow-hidden rounded-md bg-muted animate-pulse"
+                    />
+                ))}
+            </div>
+        </div>
+    )
+}
+
+const ImageGrid = dynamic(() => import("@/components/image-grid"), {
+    ssr: false,
+    loading: () => <ImageGridFallback count={8} />,
+})
 
 interface GalleryPageProps {
     params: Promise<{ locale: string }>
