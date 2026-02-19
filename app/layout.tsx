@@ -63,7 +63,7 @@ export default function RootLayout({
                     strategy="lazyOnload"
                     src="https://www.googletagmanager.com/gtag/js?id=AW-734334045"
                 />
-                <Script strategy="lazyOnload" src="/scrips/google-tag.js" />
+                <Script strategy="lazyOnload" src="/scripts/google-tag.js" />
             </body>
         </html>
     )
