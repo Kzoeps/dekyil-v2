@@ -19,6 +19,17 @@ export interface NavDictionary {
     gallery: string
     aboutUs: string
     contact: string
+    languageSwitcher: {
+        label: string
+        optionLabels: {
+            en: string
+            de: string
+        }
+        switchTo: {
+            en: string
+            de: string
+        }
+    }
     openMenu: string
     closeMenu: string
 }

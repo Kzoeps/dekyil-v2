@@ -24,6 +24,17 @@ export const en: Dictionary = {
         gallery: "Gallery",
         aboutUs: "About us",
         contact: "Contact",
+        languageSwitcher: {
+            label: "Language",
+            optionLabels: {
+                en: "English",
+                de: "German",
+            },
+            switchTo: {
+                en: "Switch language to English",
+                de: "Switch language to German",
+            },
+        },
         openMenu: "Open menu",
         closeMenu: "Close menu",
     },
