@@ -1,5 +1,4 @@
 import HeroSection from "@/components/hero-section"
-import ImageGrid from "@/components/image-grid"
 import SectionTitle from "@/components/section-title"
 import ConferenceImage from "@/public/images/conference/conf-cover.webp"
 import ConferenceFront from "@/public/images/conference/conf-outside.webp"
@@ -14,7 +13,15 @@ import { isValidLocale, type Locale } from "@/lib/i18n/config"
 import { getDictionary } from "@/lib/i18n/dictionaries/get-dictionary"
 import { buildLocalizedUrl } from "@/lib/seo/site"
 import { type Metadata } from "next"
+import dynamic from "next/dynamic"
 import { notFound } from "next/navigation"
+
+const CONFERENCE_IMAGE_COUNT = 6
+
+const ImageGrid = dynamic(() => import("@/components/image-grid"), {
+    ssr: false,
+    loading: () => <ImageGridFallback count={CONFERENCE_IMAGE_COUNT} />,
+})
 
 interface ConferenceHallPageProps {
     params: Promise<{ locale: string }>
@@ -41,6 +48,21 @@ export async function generateMetadata({
             languages: buildAlternateLanguages("/conference-hall"),
         },
     }
+}
+
+function ImageGridFallback({ count }: { count: number }) {
+    return (
+        <div className="container mx-auto px-4 pt-8">
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+                {Array.from({ length: count }).map((_, index) => (
+                    <div
+                        key={index}
+                        className="relative aspect-video w-full overflow-hidden rounded-md bg-muted"
+                    />
+                ))}
+            </div>
+        </div>
+    )
 }
 
 export default async function LocaleConferenceHallPage({
