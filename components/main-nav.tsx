@@ -47,6 +47,7 @@ const DEFAULT_DICT: NavDictionary = {
 export function MainNav({ dict = DEFAULT_DICT, locale }: MainNavProps) {
     const [isOpen, setIsOpen] = React.useState(false)
     const prefix = locale ? `/${locale}` : ""
+    const isOpenRef = React.useRef(isOpen)
 
     const ROOMS = [
         {
@@ -68,17 +69,23 @@ export function MainNav({ dict = DEFAULT_DICT, locale }: MainNavProps) {
         { title: dict.contact, href: `${prefix}/contact` },
     ]
 
+    React.useEffect(() => {
+        isOpenRef.current = isOpen
+    }, [isOpen])
+
     // Close mobile menu when window is resized to desktop view
     React.useEffect(() => {
         const handleResize = () => {
-            if (window.innerWidth >= 768 && isOpen) {
+            if (window.innerWidth >= 768 && isOpenRef.current) {
                 setIsOpen(false)
             }
         }
 
-        window.addEventListener("resize", handleResize)
-        return () => window.removeEventListener("resize", handleResize)
-    }, [isOpen])
+        const resizeOptions: AddEventListenerOptions = { passive: true }
+        window.addEventListener("resize", handleResize, resizeOptions)
+        return () =>
+            window.removeEventListener("resize", handleResize, resizeOptions)
+    }, [])
 
     return (
         <header className="fixed top-0 z-50 w-full bg-black/20 backdrop-blur-sm">
