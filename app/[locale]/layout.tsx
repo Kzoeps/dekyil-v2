@@ -2,7 +2,11 @@ import { Footer } from "@/components/footer"
 import { MainNav } from "@/components/main-nav"
 import { isValidLocale, locales, type Locale } from "@/lib/i18n/config"
 import { getDictionary } from "@/lib/i18n/dictionaries/get-dictionary"
-import { DEFAULT_METADATA } from "@/lib/constants"
+import {
+    DEFAULT_METADATA,
+    DEFAULT_OPENGRAPH_IMAGE,
+    DEFAULT_TWITTER_IMAGE,
+} from "@/lib/constants"
 import { SITE_ORIGIN } from "@/lib/seo/site"
 import type { Metadata } from "next"
 import { Playfair_Display, Work_Sans } from "next/font/google"
@@ -55,12 +59,15 @@ export async function generateMetadata({
             description,
             type: "website",
             siteName: "Dekyil Guest House",
+            url: new URL(`/${locale}`, SITE_ORIGIN).toString(),
+            images: [DEFAULT_OPENGRAPH_IMAGE],
         },
         twitter: {
             title: "Dekyil Guest House",
             description,
             creator: "@kzoeps",
             card: "summary_large_image",
+            images: [DEFAULT_TWITTER_IMAGE],
         },
         ...DEFAULT_METADATA,
     }

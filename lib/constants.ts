@@ -14,6 +14,15 @@ export enum DekyilInformation {
 
 export const PIPE_DEKYIL = "| Dekyil Guest House"
 
+export const DEFAULT_OPENGRAPH_IMAGE = {
+    url: "/opengraph-image.jpg",
+    width: 1200,
+    height: 630,
+    alt: "Dekyil Guest House",
+}
+
+export const DEFAULT_TWITTER_IMAGE = "/twitter-image.jpg"
+
 export const ROOMS = [
     {
         roomKey: "suite" as const,
