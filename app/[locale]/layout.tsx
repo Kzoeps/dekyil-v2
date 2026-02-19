@@ -6,7 +6,6 @@ import { DEFAULT_METADATA } from "@/lib/constants"
 import type { Metadata } from "next"
 import { Playfair_Display, Work_Sans } from "next/font/google"
 import { notFound } from "next/navigation"
-import Script from "next/script"
 import "../globals.css"
 
 const playfair = Playfair_Display({
@@ -86,16 +85,6 @@ export default async function LocaleLayout({
                 <MainNav dict={dict.nav} locale={validLocale} />
                 {children}
                 <Footer dict={dict.footer} locale={validLocale} />
-                <Script
-                    strategy="lazyOnload"
-                    src="https://cloud.umami.is/script.js"
-                    data-website-id="8ae11a5f-9215-4721-94c6-4c4b86a88394"
-                />
-                <Script
-                    strategy="lazyOnload"
-                    src="https://www.googletagmanager.com/gtag/js?id=AW-734334045"
-                />
-                <Script strategy="lazyOnload" src="/scripts/google-tag.js" />
             </body>
         </html>
     )
