@@ -6,6 +6,7 @@ import { ROOMS } from "@/lib/constants"
 import { buildAlternateLanguages } from "@/lib/i18n/alternates"
 import { isValidLocale, type Locale } from "@/lib/i18n/config"
 import { getDictionary } from "@/lib/i18n/dictionaries/get-dictionary"
+import { buildLocalizedUrl } from "@/lib/seo/site"
 import RoomImage from "@/public/images/deluxe.webp"
 import { Metadata } from "next"
 import { notFound } from "next/navigation"
@@ -31,7 +32,7 @@ export async function generateMetadata({
         description,
         keywords,
         alternates: {
-            canonical: `https://www.dekyilguesthouse.com/${locale}/rooms`,
+            canonical: buildLocalizedUrl(locale, "/rooms"),
             languages: buildAlternateLanguages("/rooms"),
         },
     }

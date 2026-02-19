@@ -5,6 +5,7 @@ import { buildAlternateLanguages } from "@/lib/i18n/alternates"
 import { isValidLocale, type Locale } from "@/lib/i18n/config"
 import { getDictionary } from "@/lib/i18n/dictionaries/get-dictionary"
 import { buildAboutUsSchema } from "@/lib/schema"
+import { buildLocalizedUrl } from "@/lib/seo/site"
 import FrontImage from "@/public/images/sceneWire.webp"
 import type { Metadata } from "next"
 import { notFound } from "next/navigation"
@@ -30,7 +31,7 @@ export async function generateMetadata({
         description,
         keywords,
         alternates: {
-            canonical: `https://www.dekyilguesthouse.com/${locale}/about-us`,
+            canonical: buildLocalizedUrl(locale, "/about-us"),
             languages: buildAlternateLanguages("/about-us"),
         },
     }

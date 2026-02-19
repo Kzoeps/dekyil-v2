@@ -6,6 +6,7 @@ import View from "@/public/images/view.webp"
 import { DekyilInformation } from "@/lib/constants"
 import Link from "next/link"
 import CupFlowerView from "@/public/images/cupFlowerView.webp"
+import { buildAbsoluteUrl } from "@/lib/seo/site"
 import { Metadata } from "next"
 import Script from "next/script"
 
@@ -16,7 +17,7 @@ export const metadata: Metadata = {
     keywords:
         "Dekyil Guest House, contact, inquiries, bookings, hotel bookings, Bumthang",
     alternates: {
-        canonical: "/contact",
+        canonical: buildAbsoluteUrl("/contact"),
     },
 }
 

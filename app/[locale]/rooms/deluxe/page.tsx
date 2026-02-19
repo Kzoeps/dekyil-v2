@@ -6,6 +6,7 @@ import SectionTitle from "@/components/section-title"
 import { buildAlternateLanguages } from "@/lib/i18n/alternates"
 import { isValidLocale, type Locale } from "@/lib/i18n/config"
 import { getDictionary } from "@/lib/i18n/dictionaries/get-dictionary"
+import { buildLocalizedUrl } from "@/lib/seo/site"
 import {
     getRoom205Images,
     getRoom206Images,
@@ -14,19 +15,7 @@ import {
 import { buildDeluxeBreadCrumb, buildDeluxeRoomSchema } from "@/lib/schema"
 import DeluxeMainImage from "@/public/images/room-205/deluxe-205-main.webp"
 import type { Metadata } from "next"
-import dynamic from "next/dynamic"
 import { notFound } from "next/navigation"
-import { Suspense } from "react"
-
-const DeferredImageGrid = dynamic(() => import("@/components/image-grid"), {
-    ssr: false,
-})
-
-const ImageGridFallback = () => (
-    <div className="container mx-auto px-4 pt-8">
-        <div className="h-48 w-full rounded-lg bg-muted/40 animate-pulse" />
-    </div>
-)
 
 interface DeluxePageProps {
     params: Promise<{ locale: string }>
@@ -49,7 +38,7 @@ export async function generateMetadata({
         description,
         keywords,
         alternates: {
-            canonical: `https://www.dekyilguesthouse.com/${locale}/rooms/deluxe`,
+            canonical: buildLocalizedUrl(locale, "/rooms/deluxe"),
             languages: buildAlternateLanguages("/rooms/deluxe"),
         },
     }
@@ -107,9 +96,7 @@ export default async function LocaleDeluxePage({ params }: DeluxePageProps) {
                             <PriceInfo price="4500" dict={dict.price} />
                         }
                     />
-                    <Suspense fallback={<ImageGridFallback />}>
-                        <DeferredImageGrid images={room206Images} />
-                    </Suspense>
+                    <ImageGrid images={room206Images} />
                 </section>
                 <section className="mx-auto py-16 max-w-[1440px]">
                     <SectionTitle
@@ -119,9 +106,7 @@ export default async function LocaleDeluxePage({ params }: DeluxePageProps) {
                             <PriceInfo price="4500" dict={dict.price} />
                         }
                     />
-                    <Suspense fallback={<ImageGridFallback />}>
-                        <DeferredImageGrid images={room207Images} />
-                    </Suspense>
+                    <ImageGrid images={room207Images} />
                 </section>
             </main>
         </>

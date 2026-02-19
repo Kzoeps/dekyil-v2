@@ -192,10 +192,12 @@ export function MainNav({ dict = DEFAULT_DICT, locale }: MainNavProps) {
                             </NavigationMenuList>
                         </NavigationMenu>
                         {locale && (
-                            <LanguageSwitcher
-                                currentLocale={locale}
-                                labels={dict.languageSwitcher}
-                            />
+                            <React.Suspense fallback={null}>
+                                <LanguageSwitcher
+                                    currentLocale={locale}
+                                    labels={dict.languageSwitcher}
+                                />
+                            </React.Suspense>
                         )}
                     </div>
                 </nav>
@@ -248,10 +250,12 @@ export function MainNav({ dict = DEFAULT_DICT, locale }: MainNavProps) {
 
                             {locale && (
                                 <div className="pt-2 pb-1 px-3">
-                                    <LanguageSwitcher
-                                        currentLocale={locale}
-                                        labels={dict.languageSwitcher}
-                                    />
+                                    <React.Suspense fallback={null}>
+                                        <LanguageSwitcher
+                                            currentLocale={locale}
+                                            labels={dict.languageSwitcher}
+                                        />
+                                    </React.Suspense>
                                 </div>
                             )}
                         </div>

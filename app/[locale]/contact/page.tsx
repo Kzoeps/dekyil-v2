@@ -9,6 +9,7 @@ import CupFlowerView from "@/public/images/cupFlowerView.webp"
 import { buildAlternateLanguages } from "@/lib/i18n/alternates"
 import { isValidLocale, type Locale } from "@/lib/i18n/config"
 import { getDictionary } from "@/lib/i18n/dictionaries/get-dictionary"
+import { buildLocalizedUrl } from "@/lib/seo/site"
 import type { Metadata } from "next"
 import Script from "next/script"
 import { notFound } from "next/navigation"
@@ -34,7 +35,7 @@ export async function generateMetadata({
         description,
         keywords,
         alternates: {
-            canonical: `https://www.dekyilguesthouse.com/${locale}/contact`,
+            canonical: buildLocalizedUrl(locale, "/contact"),
             languages: buildAlternateLanguages("/contact"),
         },
     }

@@ -3,6 +3,7 @@ import HeroSection from "@/components/hero-section"
 import InjectStructuredData from "@/components/inject-structured-data"
 import { AboutUsSchema } from "@/lib/schema"
 import { getDictionary } from "@/lib/i18n/dictionaries/get-dictionary"
+import { buildAbsoluteUrl } from "@/lib/seo/site"
 import FrontImage from "@/public/images/sceneWire.webp"
 import { Metadata } from "next"
 
@@ -13,7 +14,7 @@ export const metadata: Metadata = {
     keywords:
         "women-owned, operated, family-run hotel in Bumthang, Chamkhar, Bumthang, Bhutan, Dekyil Guest House",
     alternates: {
-        canonical: "/about-us",
+        canonical: buildAbsoluteUrl("/about-us"),
     },
 }
 

@@ -1,4 +1,5 @@
 import HeroSection from "@/components/hero-section"
+import ImageGrid from "@/components/image-grid"
 import SectionTitle from "@/components/section-title"
 import SuiteShot from "@/public/images/suite.webp"
 import NightShot from "@/public/images/night-shot.webp"
@@ -10,23 +11,8 @@ import SceneWithWireShot from "@/public/images/sceneWire.webp"
 import JakarDzong from "@/public/images/jakar_dzong_from_206.webp"
 import GlassHouseView from "@/public/images/glass_house.webp"
 import { Metadata } from "next"
-import dynamic from "next/dynamic"
 import { PIPE_DEKYIL } from "@/lib/constants"
-
-function ImageGridFallback({ count }: { count: number }) {
-    return (
-        <div className="container mx-auto px-4 pt-8" aria-hidden="true">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                {Array.from({ length: count }).map((_, index) => (
-                    <div
-                        key={index}
-                        className="relative w-full aspect-video overflow-hidden rounded-md bg-muted animate-pulse"
-                    />
-                ))}
-            </div>
-        </div>
-    )
-}
+import { buildAbsoluteUrl } from "@/lib/seo/site"
 
 const GALLERY_IMAGES = [
     {
@@ -71,11 +57,6 @@ const GALLERY_IMAGES = [
     },
 ]
 
-const ImageGrid = dynamic(() => import("@/components/image-grid"), {
-    ssr: false,
-    loading: () => <ImageGridFallback count={GALLERY_IMAGES.length} />,
-})
-
 enum GalleryMetadata {
     Title = `Gallery ${PIPE_DEKYIL}`,
     Description = "A picture collection of all things Dekyil, Chamkhar, Bumthang & Bhutan",
@@ -87,7 +68,7 @@ export const metadata: Metadata = {
     keywords:
         "Dekyil Guest House, Gallery, Bumthang, Bhutan, Bumthang Pictures, Chamkhar Valley",
     alternates: {
-        canonical: "/gallery",
+        canonical: buildAbsoluteUrl("/gallery"),
     },
 }
 

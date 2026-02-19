@@ -1,4 +1,5 @@
 import HeroSection from "@/components/hero-section"
+import ImageGrid from "@/components/image-grid"
 import SectionTitle from "@/components/section-title"
 import ConferenceImage from "@/public/images/conference/conf-cover.webp"
 import ConfereceFront from "@/public/images/conference/conf-outside.webp"
@@ -8,23 +9,8 @@ import ConferenceSingle from "@/public/images/conference/conf-single.webp"
 import ConferenceSingle2 from "@/public/images/conference/conf-single-2.webp"
 import ConferenceOutside2 from "@/public/images/conference/outside-2.webp"
 import LiteYoutube from "@/components/ui/lite-youtube"
+import { buildAbsoluteUrl } from "@/lib/seo/site"
 import { Metadata } from "next"
-import dynamic from "next/dynamic"
-
-function ImageGridFallback({ count }: { count: number }) {
-    return (
-        <div className="container mx-auto px-4 pt-8" aria-hidden="true">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                {Array.from({ length: count }).map((_, index) => (
-                    <div
-                        key={index}
-                        className="relative w-full aspect-video overflow-hidden rounded-md bg-muted animate-pulse"
-                    />
-                ))}
-            </div>
-        </div>
-    )
-}
 
 const CONFERENCE_HALL_IMAGES = [
     {
@@ -59,11 +45,6 @@ const CONFERENCE_HALL_IMAGES = [
     },
 ]
 
-const ImageGrid = dynamic(() => import("@/components/image-grid"), {
-    ssr: false,
-    loading: () => <ImageGridFallback count={CONFERENCE_HALL_IMAGES.length} />,
-})
-
 export const metadata: Metadata = {
     title: "Conference Hall",
     description:
@@ -71,7 +52,7 @@ export const metadata: Metadata = {
     keywords:
         "Conference Hall, Dekyil Guest House, Bumthang, Bhutan, meeting space, projector, refreshment station",
     alternates: {
-        canonical: "/conference-hall",
+        canonical: buildAbsoluteUrl("/conference-hall"),
     },
 }
 

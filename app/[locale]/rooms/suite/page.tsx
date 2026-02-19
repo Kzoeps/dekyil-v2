@@ -6,6 +6,7 @@ import SectionTitle from "@/components/section-title"
 import { buildAlternateLanguages } from "@/lib/i18n/alternates"
 import { isValidLocale, type Locale } from "@/lib/i18n/config"
 import { getDictionary } from "@/lib/i18n/dictionaries/get-dictionary"
+import { buildLocalizedUrl } from "@/lib/seo/site"
 import {
     getRoom202Images,
     getRoom203Images,
@@ -15,19 +16,7 @@ import {
 import { buildSuiteBreadCrumb, buildSuiteRoomSchema } from "@/lib/schema"
 import SuiteRoomPano from "@/public/images/room-203/suite_203_pano.webp"
 import type { Metadata } from "next"
-import dynamic from "next/dynamic"
 import { notFound } from "next/navigation"
-import { Suspense } from "react"
-
-const DeferredImageGrid = dynamic(() => import("@/components/image-grid"), {
-    ssr: false,
-})
-
-const ImageGridFallback = () => (
-    <div className="container mx-auto px-4 pt-8">
-        <div className="h-48 w-full rounded-lg bg-muted/40 animate-pulse" />
-    </div>
-)
 
 interface SuitePageProps {
     params: Promise<{ locale: string }>
@@ -50,7 +39,7 @@ export async function generateMetadata({
         description,
         keywords,
         alternates: {
-            canonical: `https://www.dekyilguesthouse.com/${locale}/rooms/suite`,
+            canonical: buildLocalizedUrl(locale, "/rooms/suite"),
             languages: buildAlternateLanguages("/rooms/suite"),
         },
     }
@@ -103,24 +92,18 @@ export default async function LocaleSuitePage({ params }: SuitePageProps) {
                         images={room204Images}
                         title={dict.suiteRoom.room204Title}
                     />
-                    <Suspense fallback={<ImageGridFallback />}>
-                        <DeferredImageGrid
-                            images={room203Images}
-                            title={dict.suiteRoom.room203Title}
-                        />
-                    </Suspense>
-                    <Suspense fallback={<ImageGridFallback />}>
-                        <DeferredImageGrid
-                            images={room202Images}
-                            title={dict.suiteRoom.room202Title}
-                        />
-                    </Suspense>
-                    <Suspense fallback={<ImageGridFallback />}>
-                        <DeferredImageGrid
-                            images={suiteBathroomImages}
-                            title={dict.suiteRoom.bathroomTitle}
-                        />
-                    </Suspense>
+                    <ImageGrid
+                        images={room203Images}
+                        title={dict.suiteRoom.room203Title}
+                    />
+                    <ImageGrid
+                        images={room202Images}
+                        title={dict.suiteRoom.room202Title}
+                    />
+                    <ImageGrid
+                        images={suiteBathroomImages}
+                        title={dict.suiteRoom.bathroomTitle}
+                    />
                 </section>
             </main>
         </>
