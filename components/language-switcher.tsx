@@ -55,7 +55,7 @@ export function LanguageSwitcher({
                                 : "text-white/70 hover:text-white hover:bg-white/20"
                         )}
                     >
-                        {optionLabel}
+                        {locale}
                     </Link>
                 )
             })}
