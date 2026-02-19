@@ -355,8 +355,30 @@ function img(key: string, src: string, locale: Locale): ImageGridImage {
     return { src, alt: t.alt, title: t.title }
 }
 
+function freezeImages(images: ImageGridImage[]): ImageGridImage[] {
+    for (const image of images) {
+        Object.freeze(image) as ImageGridImage
+    }
+    return Object.freeze(images) as ImageGridImage[]
+}
+
+const ROOM_205_IMAGES_BY_LOCALE: Partial<Record<Locale, ImageGridImage[]>> = {}
+const ROOM_206_IMAGES_BY_LOCALE: Partial<Record<Locale, ImageGridImage[]>> = {}
+const ROOM_207_IMAGES_BY_LOCALE: Partial<Record<Locale, ImageGridImage[]>> = {}
+const ROOM_203_IMAGES_BY_LOCALE: Partial<Record<Locale, ImageGridImage[]>> = {}
+const ROOM_202_IMAGES_BY_LOCALE: Partial<Record<Locale, ImageGridImage[]>> = {}
+const ROOM_204_IMAGES_BY_LOCALE: Partial<Record<Locale, ImageGridImage[]>> = {}
+const SUITE_BATHROOM_IMAGES_BY_LOCALE: Partial<
+    Record<Locale, ImageGridImage[]>
+> = {}
+
 export function getRoom205Images(locale: Locale = "en"): ImageGridImage[] {
-    return [
+    const cached = ROOM_205_IMAGES_BY_LOCALE[locale]
+    if (cached) {
+        return cached
+    }
+
+    const images = freezeImages([
         img(
             "room205_corner",
             "/images/room-205/deluxe_205_corner_view.webp",
@@ -369,11 +391,19 @@ export function getRoom205Images(locale: Locale = "en"): ImageGridImage[] {
         ),
         img("room205_upper", "/images/room-205/deluxe_205.webp", locale),
         img("room205_main", "/images/room-205/deluxe-205-main.webp", locale),
-    ]
+    ])
+
+    ROOM_205_IMAGES_BY_LOCALE[locale] = images
+    return images
 }
 
 export function getRoom206Images(locale: Locale = "en"): ImageGridImage[] {
-    return [
+    const cached = ROOM_206_IMAGES_BY_LOCALE[locale]
+    if (cached) {
+        return cached
+    }
+
+    const images = freezeImages([
         img(
             "room206_bedroom",
             "/images/room-206/room_206_bedroom_view.webp",
@@ -389,11 +419,19 @@ export function getRoom206Images(locale: Locale = "en"): ImageGridImage[] {
             "/images/room-206/room_206_bathroom.webp",
             locale
         ),
-    ]
+    ])
+
+    ROOM_206_IMAGES_BY_LOCALE[locale] = images
+    return images
 }
 
 export function getRoom207Images(locale: Locale = "en"): ImageGridImage[] {
-    return [
+    const cached = ROOM_207_IMAGES_BY_LOCALE[locale]
+    if (cached) {
+        return cached
+    }
+
+    const images = freezeImages([
         img("room207_bed", "/images/room-207/room_207_bed.webp", locale),
         img("room207_main", "/images/room-207/room_207.webp", locale),
         img(
@@ -416,11 +454,19 @@ export function getRoom207Images(locale: Locale = "en"): ImageGridImage[] {
             "/images/room-207/room_207_bathroom_shower.webp",
             locale
         ),
-    ]
+    ])
+
+    ROOM_207_IMAGES_BY_LOCALE[locale] = images
+    return images
 }
 
 export function getRoom203Images(locale: Locale = "en"): ImageGridImage[] {
-    return [
+    const cached = ROOM_203_IMAGES_BY_LOCALE[locale]
+    if (cached) {
+        return cached
+    }
+
+    const images = freezeImages([
         img("room203_pano", "/images/room-203/suite_203_pano.webp", locale),
         img(
             "room203_outside",
@@ -449,11 +495,19 @@ export function getRoom203Images(locale: Locale = "en"): ImageGridImage[] {
             "/images/room-203/room_203_bathroom_shot.webp",
             locale
         ),
-    ]
+    ])
+
+    ROOM_203_IMAGES_BY_LOCALE[locale] = images
+    return images
 }
 
 export function getRoom202Images(locale: Locale = "en"): ImageGridImage[] {
-    return [
+    const cached = ROOM_202_IMAGES_BY_LOCALE[locale]
+    if (cached) {
+        return cached
+    }
+
+    const images = freezeImages([
         img(
             "room202_scenery",
             "/images/room-202/room_202_scenery.webp",
@@ -475,11 +529,19 @@ export function getRoom202Images(locale: Locale = "en"): ImageGridImage[] {
             "/images/room-202/room_202_bedroom_carpet.webp",
             locale
         ),
-    ]
+    ])
+
+    ROOM_202_IMAGES_BY_LOCALE[locale] = images
+    return images
 }
 
 export function getRoom204Images(locale: Locale = "en"): ImageGridImage[] {
-    return [
+    const cached = ROOM_204_IMAGES_BY_LOCALE[locale]
+    if (cached) {
+        return cached
+    }
+
+    const images = freezeImages([
         img("room204_bed", "/images/room-204/room_204_bed.webp", locale),
         img("room204_lounge", "/images/room-204/room_204_lounge.webp", locale),
         img(
@@ -487,13 +549,21 @@ export function getRoom204Images(locale: Locale = "en"): ImageGridImage[] {
             "/images/room-204/room_204_bathroom_fishey.webp",
             locale
         ),
-    ]
+    ])
+
+    ROOM_204_IMAGES_BY_LOCALE[locale] = images
+    return images
 }
 
 export function getSuiteBathroomImages(
     locale: Locale = "en"
 ): ImageGridImage[] {
-    return [
+    const cached = SUITE_BATHROOM_IMAGES_BY_LOCALE[locale]
+    if (cached) {
+        return cached
+    }
+
+    const images = freezeImages([
         img("suite_bath1", "/images/suite_bathroom/bathoroom_204.webp", locale),
         img("suite_bath2", "/images/suite_bathroom/bathroom_202.webp", locale),
         img("suite_bath3", "/images/suite_bathroom/bathroom.webp", locale),
@@ -508,7 +578,10 @@ export function getSuiteBathroomImages(
             "/images/suite_bathroom/room_204_bathroom_faucet.webp",
             locale
         ),
-    ]
+    ])
+
+    SUITE_BATHROOM_IMAGES_BY_LOCALE[locale] = images
+    return images
 }
 
 // ---------------------------------------------------------------------------
