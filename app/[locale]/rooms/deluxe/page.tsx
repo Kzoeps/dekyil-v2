@@ -15,7 +15,18 @@ import {
 import { buildDeluxeBreadCrumb, buildDeluxeRoomSchema } from "@/lib/schema"
 import DeluxeMainImage from "@/public/images/room-205/deluxe-205-main.webp"
 import type { Metadata } from "next"
+import dynamic from "next/dynamic"
 import { notFound } from "next/navigation"
+
+const DeferredImageGrid = dynamic(() => import("@/components/image-grid"), {
+    loading: () => <ImageGridFallback />,
+})
+
+const ImageGridFallback = () => (
+    <div className="container mx-auto px-4 pt-8">
+        <div className="h-48 w-full rounded-lg bg-muted/40 animate-pulse" />
+    </div>
+)
 
 interface DeluxePageProps {
     params: Promise<{ locale: string }>
@@ -96,7 +107,7 @@ export default async function LocaleDeluxePage({ params }: DeluxePageProps) {
                             <PriceInfo price="4500" dict={dict.price} />
                         }
                     />
-                    <ImageGrid images={room206Images} />
+                    <DeferredImageGrid images={room206Images} />
                 </section>
                 <section className="mx-auto py-16 max-w-[1440px]">
                     <SectionTitle
@@ -106,7 +117,7 @@ export default async function LocaleDeluxePage({ params }: DeluxePageProps) {
                             <PriceInfo price="4500" dict={dict.price} />
                         }
                     />
-                    <ImageGrid images={room207Images} />
+                    <DeferredImageGrid images={room207Images} />
                 </section>
             </main>
         </>
