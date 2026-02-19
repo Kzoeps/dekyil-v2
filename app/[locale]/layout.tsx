@@ -23,6 +23,11 @@ const workSans = Work_Sans({
     subsets: ["latin"],
 })
 
+const DEFAULT_DESCRIPTION =
+    "Experience warm Bhutanese hospitality at Dekyil Guest House, a family-owned, women-led hotel in Bumthang. Enjoy scenic valley views, modern amenities, and a prime location near Chamkhar town. Book your stay for a cozy and memorable retreat!"
+const DEFAULT_KEYWORDS =
+    "Dekyil Guest House, family-run hotel, women-led hotel, Bumthang accommodations, Chakhar valley views, Bhutanese cuisine"
+
 export function generateStaticParams() {
     return locales.map((locale) => ({ locale }))
 }
@@ -43,20 +48,17 @@ export async function generateMetadata({
         return {}
     }
 
-    const dict = await getDictionary(locale as Locale)
-    const { title, description, keywords } = dict.home.meta
-
     return {
         metadataBase: new URL(SITE_ORIGIN),
         title: {
             template: `%s | Dekyil Guest House`,
-            default: title,
+            default: "Dekyil Guest House",
         },
-        description,
-        keywords,
+        description: DEFAULT_DESCRIPTION,
+        keywords: DEFAULT_KEYWORDS,
         openGraph: {
             title: "Dekyil Guest House",
-            description,
+            description: DEFAULT_DESCRIPTION,
             type: "website",
             siteName: "Dekyil Guest House",
             url: new URL(`/${locale}`, SITE_ORIGIN).toString(),
@@ -64,7 +66,7 @@ export async function generateMetadata({
         },
         twitter: {
             title: "Dekyil Guest House",
-            description,
+            description: DEFAULT_DESCRIPTION,
             creator: "@kzoeps",
             card: "summary_large_image",
             images: [DEFAULT_TWITTER_IMAGE],
