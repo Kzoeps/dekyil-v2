@@ -336,7 +336,7 @@ export const de: Dictionary = {
         pageHeading: "Kontaktieren Sie uns",
         contactInfo: {
             heading: "Kontaktinformationen",
-            checkInOut: "Check-in: 11:00 AM, Check-out: 01:00 PM",
+            checkInOut: "Check-in: 11:00 Uhr, Check-out: 13:00 Uhr",
         },
         location: {
             heading: "Lage",
