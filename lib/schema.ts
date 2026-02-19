@@ -1,5 +1,7 @@
 import type { Locale } from "@/lib/i18n/config"
 import { SITE_ORIGIN } from "@/lib/seo/site"
+import DroneImage from "@/public/images/drone.webp"
+import LogoImage from "@/public/images/logo.webp"
 import {
     BreadcrumbList,
     Hotel,
@@ -138,14 +140,15 @@ const SUITE_BREADCRUMB_NAMES: Record<Locale, string> = {
 
 export function buildAboutUsSchema(
     locale: Locale = "en",
-    urlPath: string = buildLocalePath(locale, "/about-us")
+    urlPath?: string
 ): WithContext<LocalBusiness> {
+    const resolvedPath = urlPath ?? buildLocalePath(locale, "/about-us")
     return {
         "@context": "https://schema.org",
         "@type": "LocalBusiness",
         currenciesAccepted: "EUR, USD, BTN, INR",
         name: "Dekyil Guest House",
-        url: buildAbsoluteUrl(urlPath),
+        url: buildAbsoluteUrl(resolvedPath),
         address: HOTEL_ADDRESS,
         contactPoint: {
             "@type": "ContactPoint",
@@ -156,7 +159,7 @@ export function buildAboutUsSchema(
             "@type": "Person",
             name: "Karma",
         },
-        logo: "https://www.dekyilguesthouse.com/images/logo.webp",
+        logo: buildAbsoluteUrl(LogoImage.src),
     }
 }
 
@@ -459,8 +462,8 @@ export function buildHotelSchema(locale: Locale = "en"): WithContext<Hotel> {
         location: HOTEL_ADDRESS,
         keywords: HOTEL_KEYWORDS[locale],
         slogan: HOTEL_SLOGANS[locale],
-        image: "https://www.dekyilguesthouse.com/images/drone.webp",
-        logo: "https://www.dekyilguesthouse.com/images/logo.webp",
+        image: buildAbsoluteUrl(DroneImage.src),
+        logo: buildAbsoluteUrl(LogoImage.src),
     }
 }
 
