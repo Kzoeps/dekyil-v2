@@ -59,7 +59,8 @@ const ImageGrid = ({ images, title }: ImageGridProps) => {
                                     fill
                                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                                     className="object-cover hover:scale-105 hover:opacity-30 transition-[transform,opacity] ease-in-out duration-300 cursor-pointer"
-                                    loading="lazy"
+                                    loading={index === 0 ? "eager" : "lazy"}
+                                    priority={index === 0}
                                     quality={85}
                                 />
                             </div>
