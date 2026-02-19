@@ -1,39 +1,19 @@
 import { locales } from "@/lib/i18n/config"
+import {
+    buildLocalizedUrl,
+    PUBLIC_SITEMAP_ROUTES,
+    SITEMAP_LAST_MODIFIED,
+} from "@/lib/seo/site"
 import { MetadataRoute } from "next"
-
-const BASE_URL = "https://dekyilguesthouse.com"
-
-const PUBLIC_ROUTES = [
-    { path: "", changeFrequency: "weekly" as const, priority: 1.0 },
-    { path: "/about-us", changeFrequency: "weekly" as const, priority: 0.8 },
-    { path: "/rooms", changeFrequency: "monthly" as const, priority: 0.7 },
-    {
-        path: "/rooms/suite",
-        changeFrequency: "monthly" as const,
-        priority: 0.8,
-    },
-    {
-        path: "/rooms/deluxe",
-        changeFrequency: "weekly" as const,
-        priority: 0.8,
-    },
-    { path: "/contact", changeFrequency: "weekly" as const, priority: 0.8 },
-    { path: "/gallery", changeFrequency: "monthly" as const, priority: 0.7 },
-    {
-        path: "/conference-hall",
-        changeFrequency: "monthly" as const,
-        priority: 0.7,
-    },
-]
 
 export default function sitemap(): MetadataRoute.Sitemap {
     const entries: MetadataRoute.Sitemap = []
 
     for (const locale of locales) {
-        for (const route of PUBLIC_ROUTES) {
+        for (const route of PUBLIC_SITEMAP_ROUTES) {
             entries.push({
-                url: `${BASE_URL}/${locale}${route.path}`,
-                lastModified: new Date(),
+                url: buildLocalizedUrl(locale, route.path),
+                lastModified: SITEMAP_LAST_MODIFIED,
                 changeFrequency: route.changeFrequency,
                 priority: route.priority,
             })
