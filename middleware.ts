@@ -41,7 +41,7 @@ export function middleware(request: NextRequest) {
     // Redirect to the default locale prefix, preserving query params
     const localizedPath = withLocale(defaultLocale, pathname)
     const redirectUrl = new URL(localizedPath + search, request.url)
-    return NextResponse.redirect(redirectUrl)
+    return NextResponse.redirect(redirectUrl, 308)
 }
 
 export const config = {
