@@ -77,6 +77,7 @@ export default async function LocaleLayout({
     const validLocale = locale as Locale
     const dict = await getDictionary(validLocale)
 
+    // Analytics scripts are centralized in app/layout.tsx to avoid duplicates.
     return (
         <html lang={validLocale}>
             <body
