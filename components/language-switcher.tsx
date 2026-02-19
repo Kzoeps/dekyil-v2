@@ -44,8 +44,10 @@ export function LanguageSwitcher({
                         key={locale}
                         href={href}
                         aria-current={isActive ? "page" : undefined}
+                        aria-disabled={isActive || undefined}
                         aria-label={actionLabel}
                         title={actionLabel}
+                        tabIndex={isActive ? -1 : undefined}
                         className={cn(
                             "px-2 py-1 text-sm font-medium uppercase rounded transition-colors",
                             isActive
