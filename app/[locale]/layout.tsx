@@ -3,6 +3,7 @@ import { MainNav } from "@/components/main-nav"
 import { isValidLocale, locales, type Locale } from "@/lib/i18n/config"
 import { getDictionary } from "@/lib/i18n/dictionaries/get-dictionary"
 import { DEFAULT_METADATA } from "@/lib/constants"
+import { SITE_ORIGIN } from "@/lib/seo/site"
 import type { Metadata } from "next"
 import { Playfair_Display, Work_Sans } from "next/font/google"
 import { notFound } from "next/navigation"
@@ -42,6 +43,7 @@ export async function generateMetadata({
     const { title, description, keywords } = dict.home.meta
 
     return {
+        metadataBase: new URL(SITE_ORIGIN),
         title: {
             template: `%s | Dekyil Guest House`,
             default: title,

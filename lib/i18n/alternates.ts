@@ -1,4 +1,4 @@
-const BASE_URL = "https://www.dekyilguesthouse.com"
+import { buildHreflangAlternates } from "@/lib/seo/site"
 
 /**
  * Builds the `alternates.languages` object for Next.js Metadata.
@@ -17,10 +17,5 @@ const BASE_URL = "https://www.dekyilguesthouse.com"
  * buildAlternateLanguages("/about-us")
  */
 export function buildAlternateLanguages(path: string): Record<string, string> {
-    const normalizedPath = path.startsWith("/") ? path : path ? `/${path}` : ""
-    return {
-        en: `${BASE_URL}/en${normalizedPath}`,
-        de: `${BASE_URL}/de${normalizedPath}`,
-        "x-default": `${BASE_URL}/en${normalizedPath}`,
-    }
+    return buildHreflangAlternates(path)
 }
