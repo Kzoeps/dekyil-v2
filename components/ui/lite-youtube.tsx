@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from "react"
 function LiteYoutube({ videoId, title }: { videoId: string; title?: string }) {
     const rootRef = useRef<HTMLDivElement | null>(null)
     const [shouldInitialize, setShouldInitialize] = useState(false)
+    const intersectionRootMargin = "200px"
 
     useEffect(() => {
         if (shouldInitialize) {
@@ -28,7 +29,7 @@ function LiteYoutube({ videoId, title }: { videoId: string; title?: string }) {
                     observer.disconnect()
                 }
             },
-            { rootMargin: "200px" }
+            { rootMargin: intersectionRootMargin }
         )
 
         observer.observe(node)
