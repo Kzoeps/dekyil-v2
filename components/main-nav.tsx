@@ -40,6 +40,17 @@ const DEFAULT_DICT: NavDictionary = {
     gallery: "Gallery",
     aboutUs: "About us",
     contact: "Contact",
+    languageSwitcher: {
+        label: "Language",
+        optionLabels: {
+            en: "English",
+            de: "German",
+        },
+        switchTo: {
+            en: "Switch language to English",
+            de: "Switch language to German",
+        },
+    },
     openMenu: "Open menu",
     closeMenu: "Close menu",
 }
@@ -180,7 +191,12 @@ export function MainNav({ dict = DEFAULT_DICT, locale }: MainNavProps) {
                                 ))}
                             </NavigationMenuList>
                         </NavigationMenu>
-                        {locale && <LanguageSwitcher currentLocale={locale} />}
+                        {locale && (
+                            <LanguageSwitcher
+                                currentLocale={locale}
+                                labels={dict.languageSwitcher}
+                            />
+                        )}
                     </div>
                 </nav>
 
@@ -232,7 +248,10 @@ export function MainNav({ dict = DEFAULT_DICT, locale }: MainNavProps) {
 
                             {locale && (
                                 <div className="pt-2 pb-1 px-3">
-                                    <LanguageSwitcher currentLocale={locale} />
+                                    <LanguageSwitcher
+                                        currentLocale={locale}
+                                        labels={dict.languageSwitcher}
+                                    />
                                 </div>
                             )}
                         </div>
