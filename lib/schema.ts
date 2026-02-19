@@ -27,6 +27,23 @@ const GEO_COORDINATES = {
     longitude: 90.753263,
 }
 
+const BASE_URL = "https://www.dekyilguesthouse.com"
+
+const buildAbsoluteUrl = (path: string) => `${BASE_URL}${path}`
+
+const buildLocalePath = (locale: Locale, path: string) => {
+    if (!path || path === "/") {
+        return `/${locale}`
+    }
+
+    const normalizedPath = path.startsWith("/") ? path : `/${path}`
+
+    return `/${locale}${normalizedPath}`
+}
+
+const buildLocaleUrl = (locale: Locale, path: string) =>
+    buildAbsoluteUrl(buildLocalePath(locale, path))
+
 // ---------------------------------------------------------------------------
 // Locale-aware text maps
 // ---------------------------------------------------------------------------
@@ -120,12 +137,16 @@ const SUITE_BREADCRUMB_NAMES: Record<Locale, string> = {
 // Schema builders
 // ---------------------------------------------------------------------------
 
-export function buildAboutUsSchema(): WithContext<LocalBusiness> {
+export function buildAboutUsSchema(
+    locale: Locale = "en",
+    urlPath: string = buildLocalePath(locale, "/about-us")
+): WithContext<LocalBusiness> {
     return {
         "@context": "https://schema.org",
         "@type": "LocalBusiness",
         currenciesAccepted: "EUR, USD, BTN, INR",
         name: "Dekyil Guest House",
+        url: buildAbsoluteUrl(urlPath),
         address: HOTEL_ADDRESS,
         contactPoint: {
             "@type": "ContactPoint",
@@ -148,6 +169,7 @@ export function buildSuiteRoomSchema(
         "@type": "HotelRoom",
         name: SUITE_ROOM_NAMES[locale],
         description: SUITE_ROOM_DESCRIPTIONS[locale],
+        url: buildLocaleUrl(locale, "/rooms/suite"),
         bed: [
             {
                 "@type": "BedDetails",
@@ -213,6 +235,7 @@ export function buildDeluxeRoomSchema(
         "@type": "HotelRoom",
         name: DELUXE_ROOM_NAMES[locale],
         description: DELUXE_ROOM_DESCRIPTIONS[locale],
+        url: buildLocaleUrl(locale, "/rooms/deluxe"),
         bed: [
             {
                 "@type": "BedDetails",
@@ -281,12 +304,13 @@ export function buildDeluxeBreadCrumb(
                 "@type": "ListItem",
                 position: 1,
                 name: ROOMS_BREADCRUMB_NAMES[locale],
-                item: `https://www.dekyilguesthouse.com/${locale}/rooms`,
+                item: buildLocaleUrl(locale, "/rooms"),
             },
             {
                 "@type": "ListItem",
                 position: 2,
                 name: DELUXE_BREADCRUMB_NAMES[locale],
+                item: buildLocaleUrl(locale, "/rooms/deluxe"),
             },
         ],
     }
@@ -303,12 +327,13 @@ export function buildSuiteBreadCrumb(
                 "@type": "ListItem",
                 position: 1,
                 name: ROOMS_BREADCRUMB_NAMES[locale],
-                item: `https://www.dekyilguesthouse.com/${locale}/rooms`,
+                item: buildLocaleUrl(locale, "/rooms"),
             },
             {
                 "@type": "ListItem",
                 position: 2,
                 name: SUITE_BREADCRUMB_NAMES[locale],
+                item: buildLocaleUrl(locale, "/rooms/suite"),
             },
         ],
     }
@@ -319,6 +344,7 @@ export function buildHotelSchema(locale: Locale = "en"): WithContext<Hotel> {
         "@context": "https://schema.org",
         "@type": "Hotel",
         name: "Dekyil Guest House",
+        url: buildLocaleUrl(locale, ""),
         address: HOTEL_ADDRESS,
         geo: GEO_COORDINATES,
         telephone: "+975-17554152",
@@ -330,7 +356,7 @@ export function buildHotelSchema(locale: Locale = "en"): WithContext<Hotel> {
             author: {
                 "@type": "Organization",
                 name: "Tourism Council Of Bhutan",
-                url: "tourism.gov.bt",
+                url: "https://tourism.gov.bt",
             },
         },
         numberOfRooms: 13,
@@ -443,7 +469,7 @@ export function buildHotelSchema(locale: Locale = "en"): WithContext<Hotel> {
 // Backwards-compatible English-default exports (for non-locale pages)
 // ---------------------------------------------------------------------------
 
-export const AboutUsSchema = buildAboutUsSchema()
+export const AboutUsSchema = buildAboutUsSchema("en", "/about-us")
 export const SuiteRoomSchema = buildSuiteRoomSchema("en")
 export const DeluxeRoomSchema = buildDeluxeRoomSchema("en")
 export const DeluxeBreadCrumb = buildDeluxeBreadCrumb("en")

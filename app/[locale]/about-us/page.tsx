@@ -48,7 +48,7 @@ export default async function LocaleAboutUsPage({
     const validLocale = locale as Locale
     const dict = await getDictionary(validLocale)
 
-    const aboutUsSchema = buildAboutUsSchema()
+    const aboutUsSchema = buildAboutUsSchema(validLocale)
 
     return (
         <>
