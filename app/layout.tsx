@@ -19,6 +19,7 @@ const workSans = Work_Sans({
 
 const DESCRIPTION =
     "Experience warm Bhutanese hospitality at Dekyil Guest House, a family-owned, women-led hotel in Bumthang. Enjoy scenic valley views, modern amenities, and a prime location near Chamkhar town. Book your stay for a cozy and memorable retreat!"
+const GOOGLE_TAG_HELPER_SRC = "/scripts/google-tag.js"
 export const metadata: Metadata = {
     metadataBase: new URL(SITE_ORIGIN),
     title: {
@@ -70,7 +71,7 @@ export default function RootLayout({
                 <Script
                     id="google-tag-helper"
                     strategy="lazyOnload"
-                    src="/scripts/google-tag.js"
+                    src={GOOGLE_TAG_HELPER_SRC}
                 />
             </body>
         </html>
