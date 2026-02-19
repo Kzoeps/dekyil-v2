@@ -1,4 +1,5 @@
 import type { Locale } from "@/lib/i18n/config"
+import { SITE_ORIGIN } from "@/lib/seo/site"
 import {
     BreadcrumbList,
     Hotel,
@@ -27,9 +28,7 @@ const GEO_COORDINATES = {
     longitude: 90.753263,
 }
 
-const BASE_URL = "https://www.dekyilguesthouse.com"
-
-const buildAbsoluteUrl = (path: string) => `${BASE_URL}${path}`
+const buildAbsoluteUrl = (path: string) => `${SITE_ORIGIN}${path}`
 
 const buildLocalePath = (locale: Locale, path: string) => {
     if (!path || path === "/") {
