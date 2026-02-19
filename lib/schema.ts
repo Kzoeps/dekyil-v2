@@ -1,5 +1,5 @@
 import type { Locale } from "@/lib/i18n/config"
-import { SITE_ORIGIN } from "@/lib/seo/site"
+import { buildAbsoluteUrl, buildLocalizedUrl } from "@/lib/seo/site"
 import DroneImage from "@/public/images/drone.webp"
 import LogoImage from "@/public/images/logo.webp"
 import {
@@ -29,21 +29,6 @@ const GEO_COORDINATES = {
     latitude: 27.546484,
     longitude: 90.753263,
 }
-
-const buildAbsoluteUrl = (path: string) => `${SITE_ORIGIN}${path}`
-
-const buildLocalePath = (locale: Locale, path: string) => {
-    if (!path || path === "/") {
-        return `/${locale}`
-    }
-
-    const normalizedPath = path.startsWith("/") ? path : `/${path}`
-
-    return `/${locale}${normalizedPath}`
-}
-
-const buildLocaleUrl = (locale: Locale, path: string) =>
-    buildAbsoluteUrl(buildLocalePath(locale, path))
 
 // ---------------------------------------------------------------------------
 // Locale-aware text maps
@@ -142,13 +127,15 @@ export function buildAboutUsSchema(
     locale: Locale = "en",
     urlPath?: string
 ): WithContext<LocalBusiness> {
-    const resolvedPath = urlPath ?? buildLocalePath(locale, "/about-us")
+    const url = urlPath
+        ? buildAbsoluteUrl(urlPath)
+        : buildLocalizedUrl(locale, "/about-us")
     return {
         "@context": "https://schema.org",
         "@type": "LocalBusiness",
         currenciesAccepted: "EUR, USD, BTN, INR",
         name: "Dekyil Guest House",
-        url: buildAbsoluteUrl(resolvedPath),
+        url,
         address: HOTEL_ADDRESS,
         contactPoint: {
             "@type": "ContactPoint",
@@ -171,7 +158,7 @@ export function buildSuiteRoomSchema(
         "@type": "HotelRoom",
         name: SUITE_ROOM_NAMES[locale],
         description: SUITE_ROOM_DESCRIPTIONS[locale],
-        url: buildLocaleUrl(locale, "/rooms/suite"),
+        url: buildLocalizedUrl(locale, "/rooms/suite"),
         bed: [
             {
                 "@type": "BedDetails",
@@ -237,7 +224,7 @@ export function buildDeluxeRoomSchema(
         "@type": "HotelRoom",
         name: DELUXE_ROOM_NAMES[locale],
         description: DELUXE_ROOM_DESCRIPTIONS[locale],
-        url: buildLocaleUrl(locale, "/rooms/deluxe"),
+        url: buildLocalizedUrl(locale, "/rooms/deluxe"),
         bed: [
             {
                 "@type": "BedDetails",
@@ -306,13 +293,13 @@ export function buildDeluxeBreadCrumb(
                 "@type": "ListItem",
                 position: 1,
                 name: ROOMS_BREADCRUMB_NAMES[locale],
-                item: buildLocaleUrl(locale, "/rooms"),
+                item: buildLocalizedUrl(locale, "/rooms"),
             },
             {
                 "@type": "ListItem",
                 position: 2,
                 name: DELUXE_BREADCRUMB_NAMES[locale],
-                item: buildLocaleUrl(locale, "/rooms/deluxe"),
+                item: buildLocalizedUrl(locale, "/rooms/deluxe"),
             },
         ],
     }
@@ -329,13 +316,13 @@ export function buildSuiteBreadCrumb(
                 "@type": "ListItem",
                 position: 1,
                 name: ROOMS_BREADCRUMB_NAMES[locale],
-                item: buildLocaleUrl(locale, "/rooms"),
+                item: buildLocalizedUrl(locale, "/rooms"),
             },
             {
                 "@type": "ListItem",
                 position: 2,
                 name: SUITE_BREADCRUMB_NAMES[locale],
-                item: buildLocaleUrl(locale, "/rooms/suite"),
+                item: buildLocalizedUrl(locale, "/rooms/suite"),
             },
         ],
     }
@@ -346,7 +333,7 @@ export function buildHotelSchema(locale: Locale = "en"): WithContext<Hotel> {
         "@context": "https://schema.org",
         "@type": "Hotel",
         name: "Dekyil Guest House",
-        url: buildLocaleUrl(locale, ""),
+        url: buildLocalizedUrl(locale, ""),
         address: HOTEL_ADDRESS,
         geo: GEO_COORDINATES,
         telephone: "+975-17554152",
