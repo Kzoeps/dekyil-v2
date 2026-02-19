@@ -19,7 +19,6 @@ import { notFound } from "next/navigation"
 const CONFERENCE_IMAGE_COUNT = 6
 
 const ImageGrid = dynamic(() => import("@/components/image-grid"), {
-    ssr: false,
     loading: () => <ImageGridFallback count={CONFERENCE_IMAGE_COUNT} />,
 })
 
@@ -58,6 +57,10 @@ function ImageGridFallback({ count }: { count: number }) {
                     <div
                         key={index}
                         className="relative aspect-video w-full overflow-hidden rounded-md bg-muted"
+                        style={{
+                            contentVisibility: "auto",
+                            containIntrinsicSize: "400px 225px",
+                        }}
                     />
                 ))}
             </div>
