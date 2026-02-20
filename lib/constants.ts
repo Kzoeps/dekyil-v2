@@ -26,8 +26,6 @@ export const DEFAULT_TWITTER_IMAGE = "/twitter-image.jpg"
 export const ROOMS = [
     {
         roomKey: "suite" as const,
-        title: "Suite Room",
-        alt: "Picture of the suite room",
         price: "6500",
         image: Suite,
         /** Base path — locale pages must prepend the active locale, e.g. `/${locale}${room.href}` */
@@ -35,8 +33,6 @@ export const ROOMS = [
     },
     {
         roomKey: "deluxe" as const,
-        title: "Deluxe Room",
-        alt: "Picture of the deluxe room",
         price: "4500",
         image: Deluxe,
         /** Base path — locale pages must prepend the active locale, e.g. `/${locale}${room.href}` */
