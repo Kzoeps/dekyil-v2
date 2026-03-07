@@ -446,7 +446,6 @@ export function buildHotelSchema(locale: Locale = "en"): WithContext<Hotel> {
             email: "dekyilguesthouse@gmail.com",
             telephone: "+975-17554152",
         },
-        location: HOTEL_ADDRESS,
         keywords: HOTEL_KEYWORDS[locale],
         slogan: HOTEL_SLOGANS[locale],
         image: buildAbsoluteUrl(DroneImage.src),
