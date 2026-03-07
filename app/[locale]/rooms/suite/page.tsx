@@ -18,14 +18,47 @@ import type { Metadata } from "next"
 import dynamic from "next/dynamic"
 import { notFound } from "next/navigation"
 
-const DeferredImageGrid = dynamic(() => import("@/components/image-grid"), {
-    loading: () => <ImageGridFallback />,
+function ImageGridFallback({ count }: { count: number }) {
+    return (
+        <div className="container mx-auto px-4 pt-8">
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+                {Array.from({ length: count }).map((_, index) => (
+                    <div
+                        key={index}
+                        className="relative aspect-video w-full overflow-hidden rounded-md bg-muted"
+                        style={{
+                            contentVisibility: "auto",
+                            containIntrinsicSize: "400px 225px",
+                        }}
+                    />
+                ))}
+            </div>
+        </div>
+    )
+}
+
+const ROOM_204_IMAGE_COUNT = 3
+const ROOM_203_IMAGE_COUNT = 8
+const ROOM_202_IMAGE_COUNT = 5
+const SUITE_BATHROOM_IMAGE_COUNT = 6
+
+const DeferredRoom204Grid = dynamic(() => import("@/components/image-grid"), {
+    loading: () => <ImageGridFallback count={ROOM_204_IMAGE_COUNT} />,
 })
 
-const ImageGridFallback = () => (
-    <div className="container mx-auto px-4 pt-8">
-        <div className="h-48 w-full rounded-lg bg-muted/40 animate-pulse" />
-    </div>
+const DeferredRoom203Grid = dynamic(() => import("@/components/image-grid"), {
+    loading: () => <ImageGridFallback count={ROOM_203_IMAGE_COUNT} />,
+})
+
+const DeferredRoom202Grid = dynamic(() => import("@/components/image-grid"), {
+    loading: () => <ImageGridFallback count={ROOM_202_IMAGE_COUNT} />,
+})
+
+const DeferredSuiteBathroomGrid = dynamic(
+    () => import("@/components/image-grid"),
+    {
+        loading: () => <ImageGridFallback count={SUITE_BATHROOM_IMAGE_COUNT} />,
+    }
 )
 
 interface SuitePageProps {
@@ -98,19 +131,19 @@ export default async function LocaleSuitePage({ params }: SuitePageProps) {
                     <p className="px-4 text-center text-muted-foreground">
                         {dict.suiteRoom.sectionDescription}
                     </p>
-                    <DeferredImageGrid
+                    <DeferredRoom204Grid
                         images={room204Images}
                         title={dict.suiteRoom.room204Title}
                     />
-                    <DeferredImageGrid
+                    <DeferredRoom203Grid
                         images={room203Images}
                         title={dict.suiteRoom.room203Title}
                     />
-                    <DeferredImageGrid
+                    <DeferredRoom202Grid
                         images={room202Images}
                         title={dict.suiteRoom.room202Title}
                     />
-                    <DeferredImageGrid
+                    <DeferredSuiteBathroomGrid
                         images={suiteBathroomImages}
                         title={dict.suiteRoom.bathroomTitle}
                     />
