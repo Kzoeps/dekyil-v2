@@ -1,5 +1,4 @@
 import HeroSection from "@/components/hero-section"
-import ImageGrid from "@/components/image-grid"
 import InjectStructuredData from "@/components/inject-structured-data"
 import PriceInfo from "@/components/price-info"
 import SectionTitle from "@/components/section-title"
@@ -99,7 +98,7 @@ export default async function LocaleSuitePage({ params }: SuitePageProps) {
                     <p className="px-4 text-center text-muted-foreground">
                         {dict.suiteRoom.sectionDescription}
                     </p>
-                    <ImageGrid
+                    <DeferredImageGrid
                         images={room204Images}
                         title={dict.suiteRoom.room204Title}
                     />

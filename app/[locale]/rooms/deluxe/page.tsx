@@ -1,5 +1,4 @@
 import HeroSection from "@/components/hero-section"
-import ImageGrid from "@/components/image-grid"
 import InjectStructuredData from "@/components/inject-structured-data"
 import PriceInfo from "@/components/price-info"
 import SectionTitle from "@/components/section-title"
@@ -97,7 +96,7 @@ export default async function LocaleDeluxePage({ params }: DeluxePageProps) {
                         }
                         className="mb-12 flex flex-col gap-4"
                     />
-                    <ImageGrid images={room205Images} />
+                    <DeferredImageGrid images={room205Images} />
                 </section>
                 <section className="mx-auto py-16 max-w-[1440px]">
                     <SectionTitle
