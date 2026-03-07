@@ -46,10 +46,15 @@ const ImageGrid = ({ images, title }: ImageGridProps) => {
                             <div
                                 key={index}
                                 className="relative w-full aspect-video overflow-hidden"
-                                style={{
-                                    contentVisibility: "auto",
-                                    containIntrinsicSize: "400px 225px",
-                                }}
+                                style={
+                                    index > 0
+                                        ? {
+                                              contentVisibility: "auto",
+                                              containIntrinsicSize:
+                                                  "400px 225px",
+                                          }
+                                        : undefined
+                                }
                                 onClick={() => setSelectedImage(image)}
                             >
                                 <Image
