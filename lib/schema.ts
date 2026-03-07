@@ -355,7 +355,7 @@ export function buildHotelSchema(locale: Locale = "en"): WithContext<Hotel> {
         petsAllowed: false,
         currenciesAccepted: "EUR, USD, INR, BTN",
         paymentAccepted: "Cash, Credit Card",
-        openingHours: "Mo, Tu, We, Th, Fr, Sa, Su 07:00-18:00",
+        openingHours: "Mo Tu We Th Fr Sa Su 07:00-18:00",
         priceRange: "$50 - $100",
         amenityFeature: [
             {
