@@ -64,7 +64,7 @@ export default function LiteYoutube({
                 }}
             >
                 <a
-                    href="https://youtube.com/watch?v=goiWrNiaT0I"
+                    href={`https://youtube.com/watch?v=${videoId}`}
                     className="lyt-playbtn"
                     title={title || "Play Youtube Video"}
                 ></a>
