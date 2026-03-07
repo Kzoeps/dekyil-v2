@@ -18,9 +18,21 @@ import type { Metadata } from "next"
 import dynamic from "next/dynamic"
 import { notFound } from "next/navigation"
 
-function ImageGridFallback({ count }: { count: number }) {
+function ImageGridFallback({
+    count,
+    hasTitle,
+}: {
+    count: number
+    hasTitle?: boolean
+}) {
     return (
         <div className="container mx-auto px-4 pt-8">
+            {hasTitle && (
+                <div className="mb-12 mt-5 text-center">
+                    <div className="h-10 w-48 rounded bg-muted mx-auto" />
+                    <div className="mt-3 mx-auto w-1/3 h-px bg-muted" />
+                </div>
+            )}
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
                 {Array.from({ length: count }).map((_, index) => (
                     <div
@@ -43,21 +55,23 @@ const ROOM_202_IMAGE_COUNT = 5
 const SUITE_BATHROOM_IMAGE_COUNT = 6
 
 const DeferredRoom204Grid = dynamic(() => import("@/components/image-grid"), {
-    loading: () => <ImageGridFallback count={ROOM_204_IMAGE_COUNT} />,
+    loading: () => <ImageGridFallback count={ROOM_204_IMAGE_COUNT} hasTitle />,
 })
 
 const DeferredRoom203Grid = dynamic(() => import("@/components/image-grid"), {
-    loading: () => <ImageGridFallback count={ROOM_203_IMAGE_COUNT} />,
+    loading: () => <ImageGridFallback count={ROOM_203_IMAGE_COUNT} hasTitle />,
 })
 
 const DeferredRoom202Grid = dynamic(() => import("@/components/image-grid"), {
-    loading: () => <ImageGridFallback count={ROOM_202_IMAGE_COUNT} />,
+    loading: () => <ImageGridFallback count={ROOM_202_IMAGE_COUNT} hasTitle />,
 })
 
 const DeferredSuiteBathroomGrid = dynamic(
     () => import("@/components/image-grid"),
     {
-        loading: () => <ImageGridFallback count={SUITE_BATHROOM_IMAGE_COUNT} />,
+        loading: () => (
+            <ImageGridFallback count={SUITE_BATHROOM_IMAGE_COUNT} hasTitle />
+        ),
     }
 )
 
