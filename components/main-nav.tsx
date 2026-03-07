@@ -60,25 +60,31 @@ export function MainNav({ dict = DEFAULT_DICT, locale }: MainNavProps) {
     const prefix = locale ? `/${locale}` : ""
     const isOpenRef = React.useRef(false)
 
-    const ROOMS = [
-        {
-            title: dict.roomItems.deluxe.title,
-            href: `${prefix}/rooms/deluxe`,
-            description: dict.roomItems.deluxe.description,
-        },
-        {
-            title: dict.roomItems.suite.title,
-            href: `${prefix}/rooms/suite`,
-            description: dict.roomItems.suite.description,
-        },
-    ]
+    const ROOMS = React.useMemo(
+        () => [
+            {
+                title: dict.roomItems.deluxe.title,
+                href: `${prefix}/rooms/deluxe`,
+                description: dict.roomItems.deluxe.description,
+            },
+            {
+                title: dict.roomItems.suite.title,
+                href: `${prefix}/rooms/suite`,
+                description: dict.roomItems.suite.description,
+            },
+        ],
+        [dict, prefix]
+    )
 
-    const OTHER_LINKS = [
-        { title: dict.conferenceHall, href: `${prefix}/conference-hall` },
-        { title: dict.gallery, href: `${prefix}/gallery` },
-        { title: dict.aboutUs, href: `${prefix}/about-us` },
-        { title: dict.contact, href: `${prefix}/contact` },
-    ]
+    const OTHER_LINKS = React.useMemo(
+        () => [
+            { title: dict.conferenceHall, href: `${prefix}/conference-hall` },
+            { title: dict.gallery, href: `${prefix}/gallery` },
+            { title: dict.aboutUs, href: `${prefix}/about-us` },
+            { title: dict.contact, href: `${prefix}/contact` },
+        ],
+        [dict, prefix]
+    )
 
     React.useEffect(() => {
         isOpenRef.current = isOpen
