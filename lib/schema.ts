@@ -452,14 +452,3 @@ export function buildHotelSchema(locale: Locale = "en"): WithContext<Hotel> {
         logo: buildAbsoluteUrl(LogoImage.src),
     }
 }
-
-// ---------------------------------------------------------------------------
-// Backwards-compatible English-default exports (for non-locale pages)
-// ---------------------------------------------------------------------------
-
-export const AboutUsSchema = buildAboutUsSchema("en", "/about-us")
-export const SuiteRoomSchema = buildSuiteRoomSchema("en")
-export const DeluxeRoomSchema = buildDeluxeRoomSchema("en")
-export const DeluxeBreadCrumb = buildDeluxeBreadCrumb("en")
-export const SuiteBreadCrumb = buildSuiteBreadCrumb("en")
-export const HotelSchema = buildHotelSchema("en")
