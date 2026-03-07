@@ -42,7 +42,7 @@ export const ROOMS = [
 
 export const DEFAULT_METADATA: Metadata = {
     authors: [{ name: "Karma Yoezer", url: "https://www.kzoeps.com" }],
-    publisher: "dekyilguesthouse.com",
+    publisher: "Dekyil Guest House",
     robots: {
         index: true,
         follow: true,
