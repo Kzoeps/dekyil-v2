@@ -142,6 +142,7 @@ export function MainNav({ dict = DEFAULT_DICT, locale }: MainNavProps) {
                         title="Home"
                         href={`${prefix}/`}
                         className="text-xl md:text-base lg:text-xl text-nowrap font-playfair font-semibold text-white"
+                        onClick={() => setIsOpen(false)}
                     >
                         Dekyil Guest House
                     </Link>
@@ -236,18 +237,18 @@ export function MainNav({ dict = DEFAULT_DICT, locale }: MainNavProps) {
                         id="mobile-menu"
                         className="md:hidden font-worksans font-normal"
                     >
-                        <div className="space-y-1 px-2 pb-3 pt-2">
+                        <div className="mt-3 max-h-[calc(100vh-6rem)] overflow-y-auto rounded-2xl border border-white/10 bg-black/75 px-3 pb-4 pt-3 shadow-lg shadow-black/30 backdrop-blur-md">
                             <Link
                                 title={dict.home}
                                 href={`${prefix}/`}
-                                className="block rounded-md px-3 py-2 text-base text-white hover:bg-white/20"
+                                className="flex min-h-[44px] items-center rounded-xl px-4 py-3 text-base text-white transition-colors hover:bg-white/15"
                                 onClick={() => setIsOpen(false)}
                             >
                                 {dict.home}
                             </Link>
 
-                            <div className="pt-2 pb-1">
-                                <p className="px-3 text-sm font-medium text-gray-300">
+                            <div className="pt-3">
+                                <p className="px-4 text-xs font-semibold uppercase tracking-[0.18em] text-white/60">
                                     {dict.rooms}
                                 </p>
                             </div>
@@ -257,7 +258,7 @@ export function MainNav({ dict = DEFAULT_DICT, locale }: MainNavProps) {
                                     title={room.title}
                                     key={room.title}
                                     href={room.href}
-                                    className="block rounded-md px-3 py-2 text-base text-white hover:bg-white/20 pl-6"
+                                    className="flex min-h-[44px] items-center rounded-xl px-4 py-3 pl-7 text-base text-white transition-colors hover:bg-white/15"
                                     onClick={() => setIsOpen(false)}
                                 >
                                     {room.title}
@@ -269,7 +270,7 @@ export function MainNav({ dict = DEFAULT_DICT, locale }: MainNavProps) {
                                     title={item.title}
                                     key={item.title}
                                     href={item.href}
-                                    className="block rounded-md px-3 py-2 text-base text-white hover:bg-white/20"
+                                    className="flex min-h-[44px] items-center rounded-xl px-4 py-3 text-base text-white transition-colors hover:bg-white/15"
                                     onClick={() => setIsOpen(false)}
                                 >
                                     {item.title}
