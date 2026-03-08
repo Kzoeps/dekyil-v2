@@ -15,7 +15,6 @@ import {
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 import type { NavDictionary } from "@/lib/i18n/dictionaries/types"
-import { LanguageSwitcher } from "@/components/language-switcher"
 import type { Locale } from "@/lib/i18n/config"
 
 interface MainNavProps {
@@ -57,6 +56,7 @@ const DEFAULT_DICT: NavDictionary = {
 
 export function MainNav({ dict = DEFAULT_DICT, locale }: MainNavProps) {
     const [isOpen, setIsOpen] = React.useState(false)
+    const [isScrolled, setIsScrolled] = React.useState(false)
     const prefix = locale ? `/${locale}` : ""
     const isOpenRef = React.useRef(false)
 
@@ -90,6 +90,29 @@ export function MainNav({ dict = DEFAULT_DICT, locale }: MainNavProps) {
         isOpenRef.current = isOpen
     }, [isOpen])
 
+    React.useEffect(() => {
+        const threshold = 24
+        let ticking = false
+
+        const updateScrollState = () => {
+            setIsScrolled(window.scrollY > threshold)
+            ticking = false
+        }
+
+        const handleScroll = () => {
+            if (!ticking) {
+                ticking = true
+                window.requestAnimationFrame(updateScrollState)
+            }
+        }
+
+        updateScrollState()
+
+        const scrollOptions: AddEventListenerOptions = { passive: true }
+        window.addEventListener("scroll", handleScroll, scrollOptions)
+        return () => window.removeEventListener("scroll", handleScroll)
+    }, [])
+
     // Close mobile menu when window is resized to desktop view
     React.useEffect(() => {
         const handleResize = () => {
@@ -105,7 +128,14 @@ export function MainNav({ dict = DEFAULT_DICT, locale }: MainNavProps) {
     }, [])
 
     return (
-        <header className="fixed top-0 z-50 w-full bg-black/20 backdrop-blur-sm">
+        <header
+            className={cn(
+                "fixed top-0 z-50 w-full transition-colors transition-shadow duration-300 ease-out",
+                isScrolled
+                    ? "bg-black/70 shadow-lg shadow-black/20 backdrop-blur-md"
+                    : "bg-black/15 backdrop-blur-sm"
+            )}
+        >
             <div className="container mx-auto px-4">
                 <nav className="flex h-16 items-center justify-between">
                     <Link
@@ -197,14 +227,6 @@ export function MainNav({ dict = DEFAULT_DICT, locale }: MainNavProps) {
                                 ))}
                             </NavigationMenuList>
                         </NavigationMenu>
-                        {locale && (
-                            <React.Suspense fallback={null}>
-                                <LanguageSwitcher
-                                    currentLocale={locale}
-                                    labels={dict.languageSwitcher}
-                                />
-                            </React.Suspense>
-                        )}
                     </div>
                 </nav>
 
@@ -253,17 +275,6 @@ export function MainNav({ dict = DEFAULT_DICT, locale }: MainNavProps) {
                                     {item.title}
                                 </Link>
                             ))}
-
-                            {locale && (
-                                <div className="pt-2 pb-1 px-3">
-                                    <React.Suspense fallback={null}>
-                                        <LanguageSwitcher
-                                            currentLocale={locale}
-                                            labels={dict.languageSwitcher}
-                                        />
-                                    </React.Suspense>
-                                </div>
-                            )}
                         </div>
                     </div>
                 )}
