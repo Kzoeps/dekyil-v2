@@ -2,6 +2,7 @@
 
 import * as React from "react"
 import Link from "next/link"
+import { usePathname } from "next/navigation"
 import { Menu, X } from "lucide-react"
 
 import {
@@ -57,6 +58,7 @@ const DEFAULT_DICT: NavDictionary = {
 export function MainNav({ dict = DEFAULT_DICT, locale }: MainNavProps) {
     const [isOpen, setIsOpen] = React.useState(false)
     const [isScrolled, setIsScrolled] = React.useState(false)
+    const pathname = usePathname() ?? ""
     const prefix = locale ? `/${locale}` : ""
     const isOpenRef = React.useRef(false)
 
@@ -65,11 +67,13 @@ export function MainNav({ dict = DEFAULT_DICT, locale }: MainNavProps) {
             {
                 title: dict.roomItems.deluxe.title,
                 href: `${prefix}/rooms/deluxe`,
+                path: "/rooms/deluxe",
                 description: dict.roomItems.deluxe.description,
             },
             {
                 title: dict.roomItems.suite.title,
                 href: `${prefix}/rooms/suite`,
+                path: "/rooms/suite",
                 description: dict.roomItems.suite.description,
             },
         ],
@@ -78,13 +82,62 @@ export function MainNav({ dict = DEFAULT_DICT, locale }: MainNavProps) {
 
     const OTHER_LINKS = React.useMemo(
         () => [
-            { title: dict.conferenceHall, href: `${prefix}/conference-hall` },
-            { title: dict.gallery, href: `${prefix}/gallery` },
-            { title: dict.aboutUs, href: `${prefix}/about-us` },
-            { title: dict.contact, href: `${prefix}/contact` },
+            {
+                title: dict.conferenceHall,
+                href: `${prefix}/conference-hall`,
+                path: "/conference-hall",
+            },
+            {
+                title: dict.gallery,
+                href: `${prefix}/gallery`,
+                path: "/gallery",
+            },
+            {
+                title: dict.aboutUs,
+                href: `${prefix}/about-us`,
+                path: "/about-us",
+            },
+            {
+                title: dict.contact,
+                href: `${prefix}/contact`,
+                path: "/contact",
+            },
         ],
         [dict, prefix]
     )
+
+    const normalizedPath = React.useMemo(() => {
+        if (!pathname) return "/"
+        if (prefix && pathname.startsWith(prefix)) {
+            const stripped = pathname.slice(prefix.length)
+            return stripped === "" ? "/" : stripped
+        }
+        return pathname
+    }, [pathname, prefix])
+
+    const isRoomsPath =
+        normalizedPath === "/rooms" || normalizedPath.startsWith("/rooms/")
+    const isHomePath = normalizedPath === "/"
+    const isLinkActive = (path: string) => normalizedPath === path
+
+    const desktopLinkBaseClassName =
+        "group inline-flex h-9 w-max items-center justify-center rounded-md border border-white/10 bg-white/5 px-4 py-2 text-white/90 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40 disabled:pointer-events-none disabled:opacity-50"
+    const desktopLinkActiveClassName = "bg-white/20 text-white border-white/30"
+    const desktopLinkInactiveClassName = "hover:bg-white/12 hover:text-white"
+    const desktopTriggerBaseClassName =
+        "h-9 border border-white/10 bg-white/5 text-base text-white/90 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40 data-[state=open]:bg-white/15"
+    const desktopTriggerActiveClassName =
+        "bg-white/20 text-white border-white/30"
+    const desktopTriggerInactiveClassName = "hover:bg-white/12 hover:text-white"
+    const desktopSubLinkBaseClassName =
+        "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors"
+    const desktopSubLinkActiveClassName = "bg-accent text-accent-foreground"
+    const desktopSubLinkInactiveClassName =
+        "hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+    const mobileLinkBaseClassName =
+        "flex min-h-[44px] items-center rounded-xl px-4 py-3 text-base transition-colors"
+    const mobileLinkActiveClassName = "bg-white/20 text-white"
+    const mobileLinkInactiveClassName = "text-white hover:bg-white/15"
 
     React.useEffect(() => {
         isOpenRef.current = isOpen
@@ -173,8 +226,14 @@ export function MainNav({ dict = DEFAULT_DICT, locale }: MainNavProps) {
                                             title={dict.home}
                                             href={`${prefix}/`}
                                             className={cn(
-                                                "group inline-flex h-9 w-max items-center justify-center rounded-md border border-white/10 bg-white/5 px-4 py-2 text-white/90 transition-colors hover:bg-white/12 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40 disabled:pointer-events-none disabled:opacity-50"
+                                                desktopLinkBaseClassName,
+                                                isHomePath
+                                                    ? desktopLinkActiveClassName
+                                                    : desktopLinkInactiveClassName
                                             )}
+                                            aria-current={
+                                                isHomePath ? "page" : undefined
+                                            }
                                         >
                                             {dict.home}
                                         </Link>
@@ -182,50 +241,87 @@ export function MainNav({ dict = DEFAULT_DICT, locale }: MainNavProps) {
                                 </NavigationMenuItem>
 
                                 <NavigationMenuItem>
-                                    <NavigationMenuTrigger className="h-9 border border-white/10 bg-white/5 text-base text-white/90 hover:bg-white/12 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40 data-[state=open]:bg-white/15">
+                                    <NavigationMenuTrigger
+                                        className={cn(
+                                            desktopTriggerBaseClassName,
+                                            isRoomsPath
+                                                ? desktopTriggerActiveClassName
+                                                : desktopTriggerInactiveClassName
+                                        )}
+                                    >
                                         {dict.rooms}
                                     </NavigationMenuTrigger>
                                     <NavigationMenuContent>
                                         <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2">
-                                            {ROOMS.map((room) => (
-                                                <li key={room.title}>
-                                                    <NavigationMenuLink asChild>
-                                                        <Link
-                                                            title={room.title}
-                                                            href={room.href}
-                                                            className="block select-none space-y-1 rounded-md border border-transparent p-3 leading-none no-underline outline-none transition-colors hover:border-black/5 hover:bg-black/5 focus:border-black/10 focus:bg-black/5"
+                                            {ROOMS.map((room) => {
+                                                const isActive = isLinkActive(
+                                                    room.path
+                                                )
+                                                return (
+                                                    <li key={room.title}>
+                                                        <NavigationMenuLink
+                                                            asChild
                                                         >
-                                                            <div className="text-base font-semibold leading-none text-foreground">
-                                                                {room.title}
-                                                            </div>
-                                                            <p className="line-clamp-2 mt-1 text-sm leading-snug text-foreground/70">
-                                                                {
-                                                                    room.description
+                                                            <Link
+                                                                title={
+                                                                    room.title
                                                                 }
-                                                            </p>
-                                                        </Link>
-                                                    </NavigationMenuLink>
-                                                </li>
-                                            ))}
+                                                                href={room.href}
+                                                                className={cn(
+                                                                    desktopSubLinkBaseClassName,
+                                                                    isActive
+                                                                        ? desktopSubLinkActiveClassName
+                                                                        : desktopSubLinkInactiveClassName
+                                                                )}
+                                                                aria-current={
+                                                                    isActive
+                                                                        ? "page"
+                                                                        : undefined
+                                                                }
+                                                            >
+                                                                <div className="text-base font-semibold leading-none text-foreground">
+                                                                    {room.title}
+                                                                </div>
+                                                                <p className="line-clamp-2 mt-1 text-sm leading-snug text-foreground/70">
+                                                                    {
+                                                                        room.description
+                                                                    }
+                                                                </p>
+                                                            </Link>
+                                                        </NavigationMenuLink>
+                                                    </li>
+                                                )
+                                            })}
                                         </ul>
                                     </NavigationMenuContent>
                                 </NavigationMenuItem>
 
-                                {OTHER_LINKS.map((item) => (
-                                    <NavigationMenuItem key={item.title}>
-                                        <NavigationMenuLink asChild>
-                                            <Link
-                                                title={item.title}
-                                                href={item.href}
-                                                className={cn(
-                                                    "group inline-flex h-9 w-max items-center justify-center rounded-md border border-white/10 bg-white/5 px-4 py-2 text-white/90 transition-colors hover:bg-white/12 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40 disabled:pointer-events-none disabled:opacity-50"
-                                                )}
-                                            >
-                                                {item.title}
-                                            </Link>
-                                        </NavigationMenuLink>
-                                    </NavigationMenuItem>
-                                ))}
+                                {OTHER_LINKS.map((item) => {
+                                    const isActive = isLinkActive(item.path)
+                                    return (
+                                        <NavigationMenuItem key={item.title}>
+                                            <NavigationMenuLink asChild>
+                                                <Link
+                                                    title={item.title}
+                                                    href={item.href}
+                                                    className={cn(
+                                                        desktopLinkBaseClassName,
+                                                        isActive
+                                                            ? desktopLinkActiveClassName
+                                                            : desktopLinkInactiveClassName
+                                                    )}
+                                                    aria-current={
+                                                        isActive
+                                                            ? "page"
+                                                            : undefined
+                                                    }
+                                                >
+                                                    {item.title}
+                                                </Link>
+                                            </NavigationMenuLink>
+                                        </NavigationMenuItem>
+                                    )
+                                })}
                             </NavigationMenuList>
                         </NavigationMenu>
                     </div>
@@ -241,41 +337,77 @@ export function MainNav({ dict = DEFAULT_DICT, locale }: MainNavProps) {
                             <Link
                                 title={dict.home}
                                 href={`${prefix}/`}
-                                className="flex min-h-[44px] items-center rounded-xl px-4 py-3 text-base text-white transition-colors hover:bg-white/15"
+                                className={cn(
+                                    mobileLinkBaseClassName,
+                                    isHomePath
+                                        ? mobileLinkActiveClassName
+                                        : mobileLinkInactiveClassName
+                                )}
+                                aria-current={isHomePath ? "page" : undefined}
                                 onClick={() => setIsOpen(false)}
                             >
                                 {dict.home}
                             </Link>
 
                             <div className="pt-3">
-                                <p className="px-4 text-xs font-semibold uppercase tracking-[0.18em] text-white/60">
+                                <p
+                                    className={cn(
+                                        "px-4 text-xs font-semibold uppercase tracking-[0.18em]",
+                                        isRoomsPath
+                                            ? "text-white/85"
+                                            : "text-white/60"
+                                    )}
+                                >
                                     {dict.rooms}
                                 </p>
                             </div>
 
-                            {ROOMS.map((room) => (
-                                <Link
-                                    title={room.title}
-                                    key={room.title}
-                                    href={room.href}
-                                    className="flex min-h-[44px] items-center rounded-xl px-4 py-3 pl-7 text-base text-white transition-colors hover:bg-white/15"
-                                    onClick={() => setIsOpen(false)}
-                                >
-                                    {room.title}
-                                </Link>
-                            ))}
+                            {ROOMS.map((room) => {
+                                const isActive = isLinkActive(room.path)
+                                return (
+                                    <Link
+                                        title={room.title}
+                                        key={room.title}
+                                        href={room.href}
+                                        className={cn(
+                                            mobileLinkBaseClassName,
+                                            "pl-7",
+                                            isActive
+                                                ? mobileLinkActiveClassName
+                                                : mobileLinkInactiveClassName
+                                        )}
+                                        aria-current={
+                                            isActive ? "page" : undefined
+                                        }
+                                        onClick={() => setIsOpen(false)}
+                                    >
+                                        {room.title}
+                                    </Link>
+                                )
+                            })}
 
-                            {OTHER_LINKS.map((item) => (
-                                <Link
-                                    title={item.title}
-                                    key={item.title}
-                                    href={item.href}
-                                    className="flex min-h-[44px] items-center rounded-xl px-4 py-3 text-base text-white transition-colors hover:bg-white/15"
-                                    onClick={() => setIsOpen(false)}
-                                >
-                                    {item.title}
-                                </Link>
-                            ))}
+                            {OTHER_LINKS.map((item) => {
+                                const isActive = isLinkActive(item.path)
+                                return (
+                                    <Link
+                                        title={item.title}
+                                        key={item.title}
+                                        href={item.href}
+                                        className={cn(
+                                            mobileLinkBaseClassName,
+                                            isActive
+                                                ? mobileLinkActiveClassName
+                                                : mobileLinkInactiveClassName
+                                        )}
+                                        aria-current={
+                                            isActive ? "page" : undefined
+                                        }
+                                        onClick={() => setIsOpen(false)}
+                                    >
+                                        {item.title}
+                                    </Link>
+                                )
+                            })}
                         </div>
                     </div>
                 )}
