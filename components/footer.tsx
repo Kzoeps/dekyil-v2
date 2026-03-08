@@ -1,3 +1,4 @@
+import { Suspense } from "react"
 import { DekyilInformation } from "@/lib/constants"
 import type { Locale } from "@/lib/i18n/config"
 import type {
@@ -160,10 +161,22 @@ export function Footer({
                         </p>
                         <div className="flex items-center justify-center sm:justify-end">
                             <div className="rounded-full bg-gray-900/50 px-1 py-0.5 opacity-80 transition-opacity duration-300 hover:opacity-100">
-                                <LanguageSwitcher
-                                    currentLocale={locale}
-                                    labels={languageSwitcher}
-                                />
+                                <Suspense
+                                    fallback={
+                                        <span className="px-2 py-1 text-xs font-semibold uppercase tracking-wide text-white/60">
+                                            {
+                                                languageSwitcher.optionLabels[
+                                                    locale
+                                                ]
+                                            }
+                                        </span>
+                                    }
+                                >
+                                    <LanguageSwitcher
+                                        currentLocale={locale}
+                                        labels={languageSwitcher}
+                                    />
+                                </Suspense>
                             </div>
                         </div>
                     </div>
