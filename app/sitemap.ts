@@ -1,56 +1,24 @@
-import { MetadataRoute } from "next";
-
-const BASE_URL = "https://dekyilguesthouse.com";
+import { locales } from "@/lib/i18n/config"
+import {
+    buildLocalizedUrl,
+    PUBLIC_SITEMAP_ROUTES,
+    SITEMAP_LAST_MODIFIED,
+} from "@/lib/seo/site"
+import { MetadataRoute } from "next"
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  return [
-    {
-      url: BASE_URL,
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 1.0,
-    },
-    {
-      url: `${BASE_URL}/about-us`,
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 0.8,
-    },
-    {
-      url: `${BASE_URL}/rooms`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.7,
-    },
-    {
-      url: `${BASE_URL}/rooms/suite`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${BASE_URL}/rooms/deluxe`,
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 0.8,
-    },
-    {
-      url: `${BASE_URL}/contact`,
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 0.8,
-    },
-    {
-      url: `${BASE_URL}/gallery`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.7,
-    },
-    {
-      url: `${BASE_URL}/conference-hall`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.7,
+    const entries: MetadataRoute.Sitemap = []
+
+    for (const locale of locales) {
+        for (const route of PUBLIC_SITEMAP_ROUTES) {
+            entries.push({
+                url: buildLocalizedUrl(locale, route.path),
+                lastModified: SITEMAP_LAST_MODIFIED,
+                changeFrequency: route.changeFrequency,
+                priority: route.priority,
+            })
+        }
     }
-  ]
+
+    return entries
 }

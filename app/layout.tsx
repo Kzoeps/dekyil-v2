@@ -1,9 +1,12 @@
-import { Footer } from "@/components/footer"
-import { MainNav } from "@/components/main-nav"
 import type { Metadata } from "next"
 import { Playfair_Display, Work_Sans } from "next/font/google"
 import "./globals.css"
-import { DEFAULT_METADATA } from "@/lib/constants"
+import {
+    DEFAULT_METADATA,
+    DEFAULT_OPENGRAPH_IMAGE,
+    DEFAULT_TWITTER_IMAGE,
+} from "@/lib/constants"
+import { SITE_ORIGIN } from "@/lib/seo/site"
 import Script from "next/script"
 
 const playfair = Playfair_Display({
@@ -18,7 +21,9 @@ const workSans = Work_Sans({
 
 const DESCRIPTION =
     "Experience warm Bhutanese hospitality at Dekyil Guest House, a family-owned, women-led hotel in Bumthang. Enjoy scenic valley views, modern amenities, and a prime location near Chamkhar town. Book your stay for a cozy and memorable retreat!"
+const GOOGLE_TAG_HELPER_SRC = "/scripts/google-tag.js"
 export const metadata: Metadata = {
+    metadataBase: new URL(SITE_ORIGIN),
     title: {
         template: "%s | Dekyil Guest House",
         default: "Dekyil Guest House",
@@ -31,12 +36,15 @@ export const metadata: Metadata = {
         description: DESCRIPTION,
         type: "website",
         siteName: "Dekyil Guest House",
+        url: SITE_ORIGIN,
+        images: [DEFAULT_OPENGRAPH_IMAGE],
     },
     twitter: {
         title: "Dekyil Guest House",
         description: DESCRIPTION,
         creator: "@kzoeps",
         card: "summary_large_image",
+        images: [DEFAULT_TWITTER_IMAGE],
     },
     ...DEFAULT_METADATA,
 }
@@ -47,23 +55,27 @@ export default function RootLayout({
     children: React.ReactNode
 }>) {
     return (
-        <html lang="en">
+        <html lang="en" suppressHydrationWarning>
             <body
                 className={`${playfair.variable} ${workSans.variable} antialiased`}
             >
-                <MainNav />
                 {children}
-                <Footer />
                 <Script
+                    id="umami-script"
                     strategy="lazyOnload"
                     src="https://cloud.umami.is/script.js"
                     data-website-id="8ae11a5f-9215-4721-94c6-4c4b86a88394"
                 />
                 <Script
+                    id="google-tag-base"
                     strategy="lazyOnload"
                     src="https://www.googletagmanager.com/gtag/js?id=AW-734334045"
                 />
-                <Script strategy="lazyOnload" src="/scrips/google-tag.js" />
+                <Script
+                    id="google-tag-helper"
+                    strategy="lazyOnload"
+                    src={GOOGLE_TAG_HELPER_SRC}
+                />
             </body>
         </html>
     )

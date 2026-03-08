@@ -1,0 +1,76 @@
+"use client"
+
+import { useEffect, useState } from "react"
+import { usePathname, useSearchParams } from "next/navigation"
+import Link from "next/link"
+import { locales, type Locale } from "@/lib/i18n/config"
+import { swapLocaleInPathname } from "@/lib/i18n/locale"
+import { cn } from "@/lib/utils"
+import type { NavDictionary } from "@/lib/i18n/dictionaries/types"
+
+interface LanguageSwitcherProps {
+    currentLocale: Locale
+    labels: NavDictionary["languageSwitcher"]
+    variant?: "nav" | "footer"
+}
+
+export function LanguageSwitcher({
+    currentLocale,
+    labels,
+    variant = "nav",
+}: LanguageSwitcherProps) {
+    const pathname = usePathname()
+    const searchParams = useSearchParams()
+    const [hash, setHash] = useState("")
+
+    useEffect(() => {
+        const updateHash = () => setHash(window.location.hash)
+        updateHash()
+        window.addEventListener("hashchange", updateHash)
+        return () => window.removeEventListener("hashchange", updateHash)
+    }, [pathname, searchParams])
+
+    return (
+        <div className="flex items-center gap-1" aria-label={labels.label}>
+            {locales.map((locale) => {
+                const isActive = locale === currentLocale
+                const nextPath = swapLocaleInPathname(pathname, locale)
+                const queryString = searchParams.toString()
+                const href = `${nextPath}${queryString ? `?${queryString}` : ""}${hash}`
+                const optionLabel = labels.optionLabels[locale]
+                const actionLabel = isActive
+                    ? optionLabel
+                    : labels.switchTo[locale]
+                return (
+                    <Link
+                        key={locale}
+                        href={href}
+                        aria-current={isActive ? "page" : undefined}
+                        aria-disabled={isActive || undefined}
+                        aria-label={actionLabel}
+                        title={actionLabel}
+                        tabIndex={isActive ? -1 : undefined}
+                        className={cn(
+                            variant === "footer"
+                                ? "px-0.5 py-0 text-xs font-medium uppercase tracking-wide transition-colors"
+                                : "px-2 py-1 text-sm font-medium uppercase rounded transition-colors",
+                            variant === "footer"
+                                ? isActive
+                                    ? "text-gray-700 dark:text-gray-300 cursor-default pointer-events-none"
+                                    : "text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200"
+                                : isActive
+                                  ? "text-white bg-white/30 cursor-default pointer-events-none"
+                                  : "text-white/70 hover:text-white hover:bg-white/20"
+                        )}
+                    >
+                        {locale}
+                        {locale !== locales[locales.length - 1] &&
+                        variant === "footer"
+                            ? " /"
+                            : null}
+                    </Link>
+                )
+            })}
+        </div>
+    )
+}
