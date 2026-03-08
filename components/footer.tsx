@@ -1,11 +1,16 @@
 import { DekyilInformation } from "@/lib/constants"
-import type { FooterDictionary } from "@/lib/i18n/dictionaries/types"
+import type { Locale } from "@/lib/i18n/config"
+import type {
+    FooterDictionary,
+    NavDictionary,
+} from "@/lib/i18n/dictionaries/types"
 import { Facebook, Instagram } from "lucide-react"
 import Link from "next/link"
 
 interface FooterProps {
     dict?: FooterDictionary
-    locale?: string
+    locale: Locale
+    languageSwitcher: NavDictionary["languageSwitcher"]
 }
 
 const DEFAULT_DICT: FooterDictionary = {
