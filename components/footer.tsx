@@ -1,11 +1,30 @@
+import { LanguageSwitcher } from "@/components/language-switcher"
 import { DekyilInformation } from "@/lib/constants"
-import type { FooterDictionary } from "@/lib/i18n/dictionaries/types"
+import type { Locale } from "@/lib/i18n/config"
+import type {
+    FooterDictionary,
+    NavDictionary,
+} from "@/lib/i18n/dictionaries/types"
 import { Facebook, Instagram } from "lucide-react"
 import Link from "next/link"
+import { Suspense } from "react"
 
 interface FooterProps {
     dict?: FooterDictionary
-    locale?: string
+    locale?: Locale
+    languageSwitcherLabels?: NavDictionary["languageSwitcher"]
+}
+
+const DEFAULT_LANGUAGE_SWITCHER_LABELS: NavDictionary["languageSwitcher"] = {
+    label: "Language",
+    optionLabels: {
+        en: "English",
+        de: "German",
+    },
+    switchTo: {
+        en: "Switch language to English",
+        de: "Switch language to German",
+    },
 }
 
 const DEFAULT_DICT: FooterDictionary = {
@@ -36,7 +55,11 @@ const DEFAULT_DICT: FooterDictionary = {
     copyright: "All rights reserved.",
 }
 
-export function Footer({ dict = DEFAULT_DICT, locale }: FooterProps) {
+export function Footer({
+    dict = DEFAULT_DICT,
+    locale,
+    languageSwitcherLabels = DEFAULT_LANGUAGE_SWITCHER_LABELS,
+}: FooterProps) {
     const prefix = locale ? `/${locale}` : ""
 
     const MENU_LINKS = [
@@ -142,11 +165,22 @@ export function Footer({ dict = DEFAULT_DICT, locale }: FooterProps) {
                     </div>
                 </div>
 
-                <div className="mt-8 border-t border-gray-200 dark:border-gray-800 pt-8 text-center text-sm ">
-                    <p>
-                        &copy; {new Date().getFullYear()} Dekyil Guest House.{" "}
-                        {dict.copyright}
-                    </p>
+                <div className="mt-8 border-t border-gray-200 dark:border-gray-800 pt-8 text-center text-sm text-gray-600 dark:text-gray-400">
+                    <div className="flex flex-col items-center justify-center gap-2 sm:flex-row sm:gap-4">
+                        <p>
+                            &copy; {new Date().getFullYear()} Dekyil Guest
+                            House. {dict.copyright}
+                        </p>
+                        {locale && (
+                            <Suspense fallback={null}>
+                                <LanguageSwitcher
+                                    currentLocale={locale}
+                                    labels={languageSwitcherLabels}
+                                    variant="footer"
+                                />
+                            </Suspense>
+                        )}
+                    </div>
                 </div>
             </div>
         </footer>

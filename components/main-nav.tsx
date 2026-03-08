@@ -15,7 +15,6 @@ import {
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 import type { NavDictionary } from "@/lib/i18n/dictionaries/types"
-import { LanguageSwitcher } from "@/components/language-switcher"
 import type { Locale } from "@/lib/i18n/config"
 
 interface MainNavProps {
@@ -197,14 +196,6 @@ export function MainNav({ dict = DEFAULT_DICT, locale }: MainNavProps) {
                                 ))}
                             </NavigationMenuList>
                         </NavigationMenu>
-                        {locale && (
-                            <React.Suspense fallback={null}>
-                                <LanguageSwitcher
-                                    currentLocale={locale}
-                                    labels={dict.languageSwitcher}
-                                />
-                            </React.Suspense>
-                        )}
                     </div>
                 </nav>
 
@@ -253,17 +244,6 @@ export function MainNav({ dict = DEFAULT_DICT, locale }: MainNavProps) {
                                     {item.title}
                                 </Link>
                             ))}
-
-                            {locale && (
-                                <div className="pt-2 pb-1 px-3">
-                                    <React.Suspense fallback={null}>
-                                        <LanguageSwitcher
-                                            currentLocale={locale}
-                                            labels={dict.languageSwitcher}
-                                        />
-                                    </React.Suspense>
-                                </div>
-                            )}
                         </div>
                     </div>
                 )}

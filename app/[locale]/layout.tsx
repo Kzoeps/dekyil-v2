@@ -82,7 +82,11 @@ export default async function LocaleLayout({
             <LocaleHtmlLang locale={validLocale} />
             <MainNav dict={dict.nav} locale={validLocale} />
             {children}
-            <Footer dict={dict.footer} locale={validLocale} />
+            <Footer
+                dict={dict.footer}
+                locale={validLocale}
+                languageSwitcherLabels={dict.nav.languageSwitcher}
+            />
         </>
     )
 }

@@ -11,11 +11,13 @@ import type { NavDictionary } from "@/lib/i18n/dictionaries/types"
 interface LanguageSwitcherProps {
     currentLocale: Locale
     labels: NavDictionary["languageSwitcher"]
+    variant?: "nav" | "footer"
 }
 
 export function LanguageSwitcher({
     currentLocale,
     labels,
+    variant = "nav",
 }: LanguageSwitcherProps) {
     const pathname = usePathname()
     const searchParams = useSearchParams()
@@ -49,13 +51,23 @@ export function LanguageSwitcher({
                         title={actionLabel}
                         tabIndex={isActive ? -1 : undefined}
                         className={cn(
-                            "px-2 py-1 text-sm font-medium uppercase rounded transition-colors",
-                            isActive
-                                ? "text-white bg-white/30 cursor-default pointer-events-none"
-                                : "text-white/70 hover:text-white hover:bg-white/20"
+                            variant === "footer"
+                                ? "px-0.5 py-0 text-xs font-medium uppercase tracking-wide transition-colors"
+                                : "px-2 py-1 text-sm font-medium uppercase rounded transition-colors",
+                            variant === "footer"
+                                ? isActive
+                                    ? "text-gray-700 dark:text-gray-300 cursor-default pointer-events-none"
+                                    : "text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200"
+                                : isActive
+                                  ? "text-white bg-white/30 cursor-default pointer-events-none"
+                                  : "text-white/70 hover:text-white hover:bg-white/20"
                         )}
                     >
                         {locale}
+                        {locale !== locales[locales.length - 1] &&
+                        variant === "footer"
+                            ? " /"
+                            : null}
                     </Link>
                 )
             })}
