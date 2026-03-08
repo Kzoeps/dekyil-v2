@@ -1,18 +1,11 @@
-import { Suspense } from "react"
 import { DekyilInformation } from "@/lib/constants"
-import type { Locale } from "@/lib/i18n/config"
-import type {
-    FooterDictionary,
-    NavDictionary,
-} from "@/lib/i18n/dictionaries/types"
-import { LanguageSwitcher } from "@/components/language-switcher"
+import type { FooterDictionary } from "@/lib/i18n/dictionaries/types"
 import { Facebook, Instagram } from "lucide-react"
 import Link from "next/link"
 
 interface FooterProps {
     dict?: FooterDictionary
-    locale: Locale
-    languageSwitcher: NavDictionary["languageSwitcher"]
+    locale?: string
 }
 
 const DEFAULT_DICT: FooterDictionary = {
@@ -43,11 +36,7 @@ const DEFAULT_DICT: FooterDictionary = {
     copyright: "All rights reserved.",
 }
 
-export function Footer({
-    dict = DEFAULT_DICT,
-    locale,
-    languageSwitcher,
-}: FooterProps) {
+export function Footer({ dict = DEFAULT_DICT, locale }: FooterProps) {
     const prefix = locale ? `/${locale}` : ""
 
     const MENU_LINKS = [
@@ -153,33 +142,11 @@ export function Footer({
                     </div>
                 </div>
 
-                <div className="mt-8 border-t border-gray-200 dark:border-gray-800 pt-8 text-sm">
-                    <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-between">
-                        <p className="text-center sm:text-left">
-                            &copy; {new Date().getFullYear()} Dekyil Guest
-                            House. {dict.copyright}
-                        </p>
-                        <div className="flex items-center justify-center sm:justify-end">
-                            <div className="rounded-full bg-gray-900/50 px-1 py-0.5 opacity-80 transition-opacity duration-300 hover:opacity-100">
-                                <Suspense
-                                    fallback={
-                                        <span className="px-2 py-1 text-xs font-semibold uppercase tracking-wide text-white/60">
-                                            {
-                                                languageSwitcher.optionLabels[
-                                                    locale
-                                                ]
-                                            }
-                                        </span>
-                                    }
-                                >
-                                    <LanguageSwitcher
-                                        currentLocale={locale}
-                                        labels={languageSwitcher}
-                                    />
-                                </Suspense>
-                            </div>
-                        </div>
-                    </div>
+                <div className="mt-8 border-t border-gray-200 dark:border-gray-800 pt-8 text-center text-sm ">
+                    <p>
+                        &copy; {new Date().getFullYear()} Dekyil Guest House.{" "}
+                        {dict.copyright}
+                    </p>
                 </div>
             </div>
         </footer>
