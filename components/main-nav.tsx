@@ -130,10 +130,10 @@ export function MainNav({ dict = DEFAULT_DICT, locale }: MainNavProps) {
     return (
         <header
             className={cn(
-                "fixed top-0 z-50 w-full transition-colors transition-shadow duration-300 ease-out",
+                "fixed top-0 z-50 w-full border-b border-white/10 transition-colors transition-shadow duration-300 ease-out",
                 isScrolled
-                    ? "bg-black/70 shadow-lg shadow-black/20 backdrop-blur-md"
-                    : "bg-black/15 backdrop-blur-sm"
+                    ? "bg-black/70 shadow-lg shadow-black/25 backdrop-blur-md border-white/20"
+                    : "bg-black/20 backdrop-blur-md"
             )}
         >
             <div className="container mx-auto px-4">
@@ -164,7 +164,7 @@ export function MainNav({ dict = DEFAULT_DICT, locale }: MainNavProps) {
                     </Button>
 
                     {/* Desktop menu */}
-                    <div className="hidden md:flex items-center gap-2 font-worksans font-normal text-base">
+                    <div className="hidden md:flex items-center gap-2.5 font-worksans font-normal text-base">
                         <NavigationMenu>
                             <NavigationMenuList>
                                 <NavigationMenuItem>
@@ -173,7 +173,7 @@ export function MainNav({ dict = DEFAULT_DICT, locale }: MainNavProps) {
                                             title={dict.home}
                                             href={`${prefix}/`}
                                             className={cn(
-                                                "group inline-flex h-10 w-max items-center justify-center rounded-md px-4 py-2 text-white transition-colors hover:bg-white/20 hover:text-white focus:bg-white/20 focus:text-white focus:outline-none disabled:pointer-events-none disabled:opacity-50"
+                                                "group inline-flex h-9 w-max items-center justify-center rounded-md border border-white/10 bg-white/5 px-4 py-2 text-white/90 transition-colors hover:bg-white/12 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40 disabled:pointer-events-none disabled:opacity-50"
                                             )}
                                         >
                                             {dict.home}
@@ -182,7 +182,7 @@ export function MainNav({ dict = DEFAULT_DICT, locale }: MainNavProps) {
                                 </NavigationMenuItem>
 
                                 <NavigationMenuItem>
-                                    <NavigationMenuTrigger className="text-white text-base bg-transparent hover:bg-white/20">
+                                    <NavigationMenuTrigger className="h-9 border border-white/10 bg-white/5 text-base text-white/90 hover:bg-white/12 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40 data-[state=open]:bg-white/15">
                                         {dict.rooms}
                                     </NavigationMenuTrigger>
                                     <NavigationMenuContent>
@@ -193,12 +193,12 @@ export function MainNav({ dict = DEFAULT_DICT, locale }: MainNavProps) {
                                                         <Link
                                                             title={room.title}
                                                             href={room.href}
-                                                            className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                                                            className="block select-none space-y-1 rounded-md border border-transparent p-3 leading-none no-underline outline-none transition-colors hover:border-black/5 hover:bg-black/5 focus:border-black/10 focus:bg-black/5"
                                                         >
-                                                            <div className="text-base font-medium leading-none">
+                                                            <div className="text-base font-semibold leading-none text-foreground">
                                                                 {room.title}
                                                             </div>
-                                                            <p className="line-clamp-2 mt-1 text-sm leading-snug text-muted-foreground">
+                                                            <p className="line-clamp-2 mt-1 text-sm leading-snug text-foreground/70">
                                                                 {
                                                                     room.description
                                                                 }
@@ -218,7 +218,7 @@ export function MainNav({ dict = DEFAULT_DICT, locale }: MainNavProps) {
                                                 title={item.title}
                                                 href={item.href}
                                                 className={cn(
-                                                    "group inline-flex h-10 w-max items-center justify-center rounded-md px-4 py-2 text-white transition-colors hover:bg-white/20 hover:text-white focus:bg-white/20 focus:text-white focus:outline-none disabled:pointer-events-none disabled:opacity-50"
+                                                    "group inline-flex h-9 w-max items-center justify-center rounded-md border border-white/10 bg-white/5 px-4 py-2 text-white/90 transition-colors hover:bg-white/12 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40 disabled:pointer-events-none disabled:opacity-50"
                                                 )}
                                             >
                                                 {item.title}
