@@ -1,5 +1,3 @@
-import { Footer } from "@/components/footer"
-import { MainNav } from "@/components/main-nav"
 import type { Metadata } from "next"
 import { Playfair_Display, Work_Sans } from "next/font/google"
 import "./globals.css"
@@ -57,13 +55,11 @@ export default function RootLayout({
     children: React.ReactNode
 }>) {
     return (
-        <html lang="en">
+        <html lang="en" suppressHydrationWarning>
             <body
                 className={`${playfair.variable} ${workSans.variable} antialiased`}
             >
-                <MainNav />
                 {children}
-                <Footer />
                 <Script
                     id="umami-script"
                     strategy="lazyOnload"

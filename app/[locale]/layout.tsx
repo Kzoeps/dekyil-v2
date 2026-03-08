@@ -1,4 +1,5 @@
 import { Footer } from "@/components/footer"
+import { LocaleHtmlLang } from "@/components/locale-html-lang"
 import { MainNav } from "@/components/main-nav"
 import { isValidLocale, locales, type Locale } from "@/lib/i18n/config"
 import { getDictionary } from "@/lib/i18n/dictionaries/get-dictionary"
@@ -9,19 +10,7 @@ import {
 } from "@/lib/constants"
 import { SITE_ORIGIN } from "@/lib/seo/site"
 import type { Metadata } from "next"
-import { Playfair_Display, Work_Sans } from "next/font/google"
 import { notFound } from "next/navigation"
-import "../globals.css"
-
-const playfair = Playfair_Display({
-    variable: "--font-playfair-display",
-    subsets: ["latin"],
-})
-
-const workSans = Work_Sans({
-    variable: "--font-work-sans",
-    subsets: ["latin"],
-})
 
 const DEFAULT_DESCRIPTION =
     "Experience warm Bhutanese hospitality at Dekyil Guest House, a family-owned, women-led hotel in Bumthang. Enjoy scenic valley views, modern amenities, and a prime location near Chamkhar town. Book your stay for a cozy and memorable retreat!"
@@ -88,16 +77,12 @@ export default async function LocaleLayout({
     const validLocale = locale as Locale
     const dict = await getDictionary(validLocale)
 
-    // Analytics scripts are centralized in app/layout.tsx to avoid duplicates.
     return (
-        <html lang={validLocale}>
-            <body
-                className={`${playfair.variable} ${workSans.variable} antialiased`}
-            >
-                <MainNav dict={dict.nav} locale={validLocale} />
-                {children}
-                <Footer dict={dict.footer} locale={validLocale} />
-            </body>
-        </html>
+        <>
+            <LocaleHtmlLang locale={validLocale} />
+            <MainNav dict={dict.nav} locale={validLocale} />
+            {children}
+            <Footer dict={dict.footer} locale={validLocale} />
+        </>
     )
 }
