@@ -18,12 +18,14 @@ import { cn } from "@/lib/utils"
 import type { NavDictionary } from "@/lib/i18n/dictionaries/types"
 import type { Locale } from "@/lib/i18n/config"
 
+type MainNavDictionary = Omit<NavDictionary, "languageSwitcher">
+
 interface MainNavProps {
-    dict?: NavDictionary
+    dict?: MainNavDictionary
     locale?: Locale
 }
 
-const DEFAULT_DICT: NavDictionary = {
+const DEFAULT_DICT: MainNavDictionary = {
     home: "Home",
     rooms: "Rooms",
     roomItems: {
@@ -40,17 +42,6 @@ const DEFAULT_DICT: NavDictionary = {
     gallery: "Gallery",
     aboutUs: "About us",
     contact: "Contact",
-    languageSwitcher: {
-        label: "Language",
-        optionLabels: {
-            en: "English",
-            de: "German",
-        },
-        switchTo: {
-            en: "Switch language to English",
-            de: "Switch language to German",
-        },
-    },
     openMenu: "Open menu",
     closeMenu: "Close menu",
 }
