@@ -40,6 +40,7 @@ const DEFAULT_DICT: FooterDictionary = {
             contact: "Contact",
             aboutUs: "About Us",
             gallery: "Gallery",
+            bhutanTravelPolicy: "Bhutan Travel Policy",
         },
     },
     contactUs: {
@@ -62,12 +63,23 @@ export function Footer({
 }: FooterProps) {
     const prefix = locale ? `/${locale}` : ""
 
-    const MENU_LINKS = [
+    const MENU_LINKS: Array<{
+        title: string
+        href: string
+        target?: "_blank"
+        rel?: string
+    }> = [
         { title: dict.quickMenu.links.home, href: `${prefix}/` },
         { title: dict.quickMenu.links.rooms, href: `${prefix}/rooms` },
         { title: dict.quickMenu.links.contact, href: `${prefix}/contact` },
         { title: dict.quickMenu.links.aboutUs, href: `${prefix}/about-us` },
         { title: dict.quickMenu.links.gallery, href: `${prefix}/gallery` },
+        {
+            title: dict.quickMenu.links.bhutanTravelPolicy,
+            href: "https://bhutan.travel/faqs",
+            target: "_blank",
+            rel: "noopener noreferrer",
+        },
     ]
 
     return (
@@ -96,6 +108,8 @@ export function Footer({
                                     <Link
                                         href={link.href}
                                         title={link.title}
+                                        target={link.target}
+                                        rel={link.rel}
                                         className="hover:underline transition-all duration-500 ease-in-out"
                                     >
                                         {link.title}

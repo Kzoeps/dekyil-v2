@@ -50,6 +50,7 @@ export interface FooterDictionary {
             contact: string
             aboutUs: string
             gallery: string
+            bhutanTravelPolicy: string
         }
     }
     contactUs: {

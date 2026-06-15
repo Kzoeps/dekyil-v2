@@ -55,6 +55,7 @@ export const en: Dictionary = {
                 contact: "Contact",
                 aboutUs: "About Us",
                 gallery: "Gallery",
+                bhutanTravelPolicy: "Bhutan Travel Policy",
             },
         },
         contactUs: {

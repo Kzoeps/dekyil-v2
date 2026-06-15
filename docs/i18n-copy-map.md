@@ -36,6 +36,7 @@ Use it to keep future translations deterministic: when adding a new locale, ever
 | `footer.aboutUs.body`             | `components/footer.tsx` — About Us column body text   |
 | `footer.quickMenu.heading`        | `components/footer.tsx` — Quick Menu column heading   |
 | `footer.quickMenu.links.*`        | `components/footer.tsx` — MENU_LINKS list labels      |
+| `footer.quickMenu.links.bhutanTravelPolicy` | `components/footer.tsx` — external Bhutan Travel Policy link label |
 | `footer.contactUs.heading`        | `components/footer.tsx` — Contact Us column heading   |
 | `footer.contactUs.phoneLabel`     | `components/footer.tsx` — phone prefix label          |
 | `footer.contactUs.emailLabel`     | `components/footer.tsx` — email prefix label          |

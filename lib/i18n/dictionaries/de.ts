@@ -56,6 +56,7 @@ export const de: Dictionary = {
                 contact: "Kontakt",
                 aboutUs: "Über uns",
                 gallery: "Galerie",
+                bhutanTravelPolicy: "Bhutan Travel Policy",
             },
         },
         contactUs: {
